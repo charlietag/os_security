@@ -35,28 +35,3 @@ ALL_ARGVS      : F_00_echo_path
 TMP            : /root/os_preparation/tmp
 CONFIG_FOLDER  : /root/os_preparation/templates/F_00_echo_path
 ```
-
-## Note
-### Built-in vim colorscheme
-* /usr/share/vim/vim72/colors
-
-  ```bash
-  colorscheme desert
-  colorscheme elflord
-  colorscheme koehler
-  colorscheme ron
-  colorscheme torte <--- Most proper
-  colorscheme 256-jungle
-  colorscheme lucid
-  colorscheme motus
-  ```
-
-### Optional note
-  * VSFTPD
-
-    ```bash
-    yum install -y vsftpd
-    sed -i s/^root/'#root'/g /etc/vsftpd/ftpusers
-    sed -i s/^root/'#root'/g /etc/vsftpd/user_list
-    ```
-
