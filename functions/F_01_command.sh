@@ -3,7 +3,7 @@ for com in ${COMMANDS[@]}
 do
   COMM="$(which $com)"
   echo "===${COMM}==="
-  BUS="$(rpm -Vf $COMM)"
+  BUS="$(rpm -Vf $COMM 2>&1)"
   if [ -z "${BUGS}" ]
   then
     echo "PASS"
