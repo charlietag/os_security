@@ -7,6 +7,7 @@
   * If you found something is weired.  You'd better reinstall your server.
 
 ## Configuration
+  * Download and run check
 
     ```bash
     yum install -y git
