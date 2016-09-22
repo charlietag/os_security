@@ -3,12 +3,13 @@ for com in ${COMMANDS[@]}
 do
   COMM="$(which $com)"
   echo "===${COMM}==="
-  BUS="$(rpm -Vf $COMM 2>&1)"
+  BUGS="$(rpm -Vf $COMM)"
   if [ -z "${BUGS}" ]
   then
     echo "PASS"
   else
     echo "Command \"${COMM}\" is hacked"
+    echo "${BUGS}"
   fi
   echo ""
 done
