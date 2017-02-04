@@ -1,7 +1,11 @@
-COMMANDS=(chfn chsh login ls passwd ps top netstat ifconfig killall pidof find)
-for com in ${COMMANDS[@]}
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
+for os_command in ${os_commands[@]}
 do
-  COMM="$(which $com)"
+  COMM="$(which $os_command)"
   echo "===${COMM}==="
   BUGS="$(rpm -Vf $COMM)"
   if [ -z "${BUGS}" ]

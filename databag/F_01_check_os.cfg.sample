@@ -1,0 +1,2 @@
+#Put local vars here for the specific function
+local os_commands=(chfn chsh login ls passwd ps top netstat ifconfig killall pidof find)
