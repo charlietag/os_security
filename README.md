@@ -11,6 +11,6 @@
 
     ```bash
     yum install -y git
-    git clone https://github.com/charlietag/linux_security_check.git
+    git clone https://github.com/charlietag/os_security.git
     ```
 
