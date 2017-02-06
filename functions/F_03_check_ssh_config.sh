@@ -36,7 +36,7 @@ fi
 # Check SSH Port in 22
 # =====================
 local port_check="$(cat ${ssh_config_file} | grep "^Port"|grep "22")"
-if [ ! -z "${permit_root_no}" ]
+if [ ! -z "${port_check}" ]
 then
   print_msg 1 "SSH listen port set to 22"
 else
