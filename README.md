@@ -14,3 +14,9 @@
     git clone https://github.com/charlietag/os_security.git
     ```
 
+  * Make sure config files exists , you can copy from sample to **modify**.
+
+    ```bash
+    cd databag
+    ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
+    ```
