@@ -22,7 +22,7 @@ print_msg (){
 # =====================
 # Check SSH PermitRootLogin
 # =====================
-local permit_root_no="$(cat ${ssh_config_file} |grep "^PermitRootLogin no")"
+local permit_root_no="$(cat ${ssh_config_file} |grep -Eo "^PermitRootLogin[ ]+no$")"
 if [ ! -z "${permit_root_no}" ]
 then
   print_msg 0 "PermitRootLogin check"
@@ -35,7 +35,7 @@ fi
 # =====================
 # Check SSH Port in 22
 # =====================
-local port_check="$(cat ${ssh_config_file} | grep "^Port"|grep "22")"
+local port_check="$(cat ${ssh_config_file} | grep -Eo "^Port[ ]+22$")"
 if [ ! -z "${port_check}" ]
 then
   print_msg 1 "SSH listen port set to 22"
