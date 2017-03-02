@@ -5,7 +5,7 @@ L_PRINT_HELP (){
   echo "usage: $(basename "${CURRENT_SCRIPT}")"
   echo "  -a                   ,  run all functions"
   echo "  -i func1 func2 func3 ,  run specified functions"
-  echo "                          example: $(basename "${CURRENT_SCRIPT}") -i ${FUNC_NAMES[@]}"
+  echo -e "                          example: $(basename "${CURRENT_SCRIPT}") -i \\\\\n$(echo "${FUNC_NAMES[@]}" | sed 's/\ /\ \\\\\n/g')"
   exit
 }
 
