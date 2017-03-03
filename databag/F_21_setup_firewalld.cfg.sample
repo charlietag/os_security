@@ -1,0 +1,12 @@
+#Put local vars here for the specific function
+
+# set allowed known ports of services
+#   reference below to see the predefined mapping for service <--> port
+#   /usr/lib/firewalld/services/*.xml
+local firewalld_allow_known_services=(http https)
+
+# set allowed customized ports.
+#   like default ssh port from 22 to 2222
+#   ex.
+#local firewalld_allow_customized_ports=(2222/tcp 5555/tcp)
+local firewalld_allow_customized_ports=(2222/tcp)
