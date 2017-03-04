@@ -1,5 +1,6 @@
 # Purpose
-## This is used for check if your linux server is being hacked.
+l. This is used for check if your linux server is being hacked.
+l. This could also help you to enhance your servers' security with firewalld and fail2ban.
 
 ## Environment
   * CentOS 7
