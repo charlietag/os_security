@@ -1,6 +1,7 @@
 # Purpose
-l. This is used for check if your linux server is being hacked.
-l. This could also help you to enhance your servers' security with firewalld and fail2ban.
+1. This is used for check if your linux server is being hacked.
+1. This could also help you to enhance your servers' security with firewalld and fail2ban.
+1. 
 
 ## Environment
   * CentOS 7
