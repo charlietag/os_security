@@ -1,0 +1,51 @@
+#Put local vars here for the specific function
+
+# -----------------------------
+# Fail2ban global setting
+# -----------------------------
+#   in (findtime) seconds, found faild attempt usage (maxretry) times , ban the IP for (bantime) seconds
+#   findtime does not have to be equal to bantime, I do this just for easy calculation
+local f2b_findtime="600"
+local f2b_bantime="600"
+local f2b_maxretry="5"
+
+# -----------------------------
+# Setup monitored item
+# -----------------------------
+# Enabled usage:
+#   enabled: true | false
+#
+# Port setting: choose which port to be banned if error found
+#   Leverage firewalld daemon , so use predefined info in firewalld /usr/lib/firewalld/services
+#     port   : http | https | ssh | http,https
+#   Customized config
+#     port   : 2222 | 3333 | 2222,3333
+
+# ############
+#   sshd
+# ############
+local sshd_enabled="true"
+local sshd_port="2222"
+# logpath ---> fixed to default
+
+# ############
+#   sshd-ddos
+# ############
+local sshd_ddos_enabled="true"
+local sshd_ddos_port="2222"
+# logpath ---> fixed to default
+
+# ############
+#   nginx-limit-req
+# ############
+local ng_limit_req_enabled="true"
+local ng_limit_req_port="http,https"
+local ng_limit_req_logpaths=(/opt/nginx/logs/*.error.log)
+
+# ############
+#   nginx-botsearch
+# ############
+local ng_botsearch_enabled="true"
+local ng_botsearch_port="http,https"
+local ng_botsearch_logpaths=(/opt/nginx/logs/*.access.log /opt/nginx/logs/*.error.log)
+

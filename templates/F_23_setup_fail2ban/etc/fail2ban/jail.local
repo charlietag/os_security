@@ -1,0 +1,29 @@
+# cat jail.local 
+[DEFAULT]
+findtime          = ${f2b_findtime}
+bantime           = ${f2b_bantime}
+maxretry          = ${f2b_maxretry}
+
+[sshd]
+enabled           = ${sshd_enabled}
+port              = ${sshd_port}
+
+[sshd-ddos]
+enabled           = ${sshd_ddos_enabled}
+port              = ${sshd_ddos_port}
+
+[nginx-limit-req]
+enabled           = ${ng_limit_req_enabled}
+port              = ${ng_limit_req_port}
+#logpath           = /opt/nginx/logs/*.error.log
+logpath           = ${ng_limit_req_logpath}
+
+[nginx-botsearch]
+enabled           = ${ng_botsearch_enabled}
+port              = ${ng_botsearch_port}
+
+# use multi-line for logpath
+#logpath           = /opt/nginx/logs/*.access.log
+#                    /opt/nginx/logs/*.error.log
+logpath           = ${ng_botsearch_logpath}
+
