@@ -33,10 +33,21 @@ done
 # Start firewalld & fail2ban
 #--------------------------------------
 # Start and Enable firewalld service
-systemctl start firewalld
-systemctl enable firewalld.service
+echo "---stopping firewalld---"
+systemctl stop firewalld
+echo "---stopping fail2ban---"
+systemctl stop fail2ban
 
+echo "---starting firewalld---"
+systemctl start firewalld
+echo "---starting fail2ban---"
 systemctl start fail2ban
+
+echo "---enable firewalld---"
+systemctl enable firewalld.service
+echo "---enable fail2ban---"
 systemctl enable fail2ban.service
+
+echo "---reload fail2ban---"
 fail2ban-client reload
 

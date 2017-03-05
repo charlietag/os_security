@@ -55,3 +55,8 @@ do
 done
 firewall-cmd --reload
 
+echo "---stopping firewalld---"
+systemctl stop firewalld
+echo "---starting firewalld---"
+systemctl start firewalld
+
