@@ -40,12 +40,12 @@ local sshd_ddos_port="2222"
 # ############
 local ng_limit_req_enabled="true"
 local ng_limit_req_port="http,https"
-local ng_limit_req_logpaths=(/opt/nginx/logs/*.error.log)
+local ng_limit_req_logpaths=('/opt/nginx/logs/*.error.log')
 
 # ############
 #   nginx-botsearch
 # ############
 local ng_botsearch_enabled="true"
 local ng_botsearch_port="http,https"
-local ng_botsearch_logpaths=(/opt/nginx/logs/*.access.log /opt/nginx/logs/*.error.log)
+local ng_botsearch_logpaths=('/opt/nginx/logs/*.access.log' '/opt/nginx/logs/*.error.log')
 
