@@ -60,3 +60,5 @@ systemctl stop firewalld
 echo "---starting firewalld---"
 systemctl start firewalld
 
+echo "--------------Firewalld Rules-------------"
+firewall-cmd --list-all

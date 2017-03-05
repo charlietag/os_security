@@ -51,3 +51,18 @@ systemctl enable fail2ban.service
 echo "---reload fail2ban---"
 fail2ban-client reload
 
+#--------------------------------------
+# Make sure firewalld works with fail2ban well
+#--------------------------------------
+echo "--------------Firewalld Rules-------------"
+firewall-cmd --list-all
+
+echo "--------------IPTABLES Rules of fail2ban-------------"
+iptables -S | grep -i fail2ban
+
+echo "--------------Fail2ban Status-------------"
+fail2ban-client status
+
+echo "--------------Fail2ban Detail Status-------------"
+fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
+
