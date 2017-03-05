@@ -45,7 +45,10 @@ Run **ALL** to do the following with one command
   reboot
   ```
 
-## Package Installed
+## Installed Packages
+**Run security check**
+* Basic os check
+
 **Firewalld**
 
 **Fail2ban**
