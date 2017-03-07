@@ -79,28 +79,66 @@ Run **ALL** to do the following with one command
 
 **Firewalld usage** *- Default block all traffic, except rules you define below*
 * Allow/revoke specific port
-  * firewall-cmd --add-port=3306/tcp --permanent
-  * firewall-cmd --remove-port=3306/tcp --permanent
+
+  ```
+  firewall-cmd --add-port=3306/tcp --permanent
+  firewall-cmd --remove-port=3306/tcp --permanent
+  ```
+  
 * Allow/revoke specific service
-  * firewall-cmd --add-service=http --permanent
-  * firewall-cmd --remore-service=http --permanent
+
+  ```
+  firewall-cmd --add-service=http --permanent
+  firewall-cmd --remore-service=http --permanent
+  ```
+
 * List all current rules setting
-  * firewall-cmd --list-all
+
+  ```
+  firewall-cmd --list-all
+  ```
+  
 * After setup all rules into "*/etc/firewalld/zone/public.xml*" with argument "**--permanent**", reload firewalld to activate setting.
-  * firewall-cmd --reload
+  ```
+  firewall-cmd --reload
+  ```
+  
 * Services(http,https) defines in
-  * /usr/lib/firewalld/services/*
-* Replace /etc/firewalld/zone/public.xml
+  
+  ```
+  /usr/lib/firewalld/services/*
+  ```
+  
+* Replace **/etc/firewalld/zone/public.xml**
 * In this guide, your firewalld will only allow http , https , custom ssh port
 * Reject all by ipset name
 
 **Fail2ban usage**
 * Port in fail2ban config is based on firewalld services name.
 * check fail2ban sucessfully add rules into iptables via firewalld command
-  * iptables -S | grep -i fail2ban
-* fail2ban-client status nginx-botsearch
-* ipset list fail2ban-nginx-botsearch
-* fail2ban-client set nginx-botsearch unbanip 192.168.1.72
+  * iptables
+  
+  ```
+  iptables -S | grep -i fail2ban
+  ```
+  
+  * detail status [jail name]
+
+  ```
+  fail2ban-client status nginx-botsearch
+  ```
+
+  * check [jail] timeout elapse
+
+  ```
+  ipset list fail2ban-nginx-botsearch
+  ```
+
+  * unban specific jail ip
+
+  ```
+  fail2ban-client set nginx-botsearch unbanip 192.168.1.72
+  ```
 
 ## Fail2ban flow note
 
