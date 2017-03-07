@@ -71,13 +71,17 @@ Run **ALL** to do the following with one command
 * check last login
   * check latest successfully login
 
+## Installed Packages 
+* Firewalld
+* Fail2ban
 
-## Installed Package 
-**Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))**
+## Quick note - Package
+### Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))
   * limit_req_zone
     * This is installed by default on my *os_preparation repo*
 
-**Firewalld usage** *- Default block all traffic, except rules you define below*
+### Firewalld usage
+*- Default block all traffic, except rules you define below*
 * Allow/revoke specific port
 
   ```
@@ -113,7 +117,7 @@ Run **ALL** to do the following with one command
 * In this guide, your firewalld will only allow http , https , custom ssh port
 * Reject all by ipset name
 
-**Fail2ban usage**
+### Fail2ban usage
 * Port in fail2ban config is based on firewalld services name.
 * check fail2ban sucessfully add rules into iptables via firewalld command
   * iptables
@@ -140,7 +144,7 @@ Run **ALL** to do the following with one command
   fail2ban-client set nginx-botsearch unbanip 192.168.1.72
   ```
 
-## Fail2ban flow note
+## Quick note - Fail2ban flow
 
 The following are executed automatically by **Fail2ban**.
   * Create [ipset-nmae]
