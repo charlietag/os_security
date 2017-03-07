@@ -166,8 +166,16 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ```
 
 ## Quick note - Fail2ban flow
+- Be sure start Firewalld / Fail2ban in the following order
 
-The following flow are executed automatically by **Fail2ban**
+  ```
+  systemctl stop firewalld
+  systemctl stop fail2ban
+  systemctl start firewalld
+  systemctl start fail2ban
+  ```
+
+- The following flow are executed automatically by **Fail2ban**
   * Create [ipset-nmae] *(What actually done behind)*
       
       ```
