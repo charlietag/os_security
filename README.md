@@ -87,6 +87,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 ### Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))
   * limit_req_zone
     * This is installed by default on my *os_preparation repo*
+    * This would prevent your server from ddos attacks.
 
 ### Firewalld usage
 *- Default block all traffic, except rules you define below*
