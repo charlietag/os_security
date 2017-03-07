@@ -150,7 +150,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 ## Fail2ban usage
 *- *Setting: port, in fail2ban configuration is based on firewalld services name.*
 
-*- Determine if rules of fail2ban is inserted into iptables via firewalld command*
+*- *Determine if rules of fail2ban is inserted into iptables via firewalld command*
 
   * Confirm fail2ban works with **iptables** well
   
