@@ -1,19 +1,18 @@
 Table of Contents
 =================
-   * [Purpose](#purpose)
-      * [Environment](#environment)
-      * [Warning](#warning)
-      * [Quick Install](#quick-install)
-         * [Configuration](#configuration)
-         * [Installation](#installation)
-      * [Run Security Check](#run-security-check)
-         * [Basic os check](#basic-os-check)
-      * [Installed Packages](#installed-packages)
-      * [Quick note - Package](#quick-note---package)
-         * [Nginx module - os_preparation(<a href="https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf">link</a>)](#nginx-module---os_preparationlink)
-         * [Firewalld usage](#firewalld-usage)
-         * [Fail2ban usage](#fail2ban-usage)
-      * [Quick note - Fail2ban flow](#quick-note---fail2ban-flow)
+- [Purpose](#purpose)
+- [Environment](#environment)
+- [Warning](#warning)
+- [Quick Install](#quick-install)
+  * [Configuration](#configuration)
+  * [Installation](#installation)
+- [Run Security Check](#run-security-check)
+- [Installed Packages](#installed-packages)
+- [Quick note - Package](#quick-note---package)
+  * [Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))](#nginx-module---os-preparation--link--https---githubcom-charlietag-os-preparation-blob-master-templates-f-06-01-setup-nginx-include-opt-nginx-conf-included-limit-req-zoneconf--)
+  * [Firewalld usage](#firewalld-usage)
+  * [Fail2ban usage](#fail2ban-usage)
+- [Quick note - Fail2ban flow](#quick-note---fail2ban-flow)
 
 # Purpose
 1. This is used for check if your linux server is being hacked.
