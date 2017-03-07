@@ -148,7 +148,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 * After running this installation, your firewalld will only allow http , https , ***customized ssh port***
 
 ## Fail2ban usage
-*- ***Setting: port, in fail2ban configuration** is based on firewalld services name.*
+*- *Setting: **port, in fail2ban configuration** is based on firewalld services name.*
 
 *- Determine if **rules of fail2ban** is inserted into iptables via firewalld command*
 
