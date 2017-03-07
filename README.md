@@ -111,7 +111,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   firewall-cmd --list-all
   ```
   
-* After setup all rules into "*/etc/firewalld/zone/public.xml*" with argument "**--permanent**", reload firewalld to activate setting.
+* After setup done with argument "**--permanent**", all rules save into the following file by default
+  
+  ```
+  /etc/firewalld/zone/public.xml
+  ```
+
+* So reload firewalld to activate setting.
   ```
   firewall-cmd --reload
   ```
@@ -120,12 +126,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   
   ```
   /usr/lib/firewalld/services/*
-  ```
-  
-* Firewalld configuration default path
-  
-  ```
-  /etc/firewalld/zone/public.xml**
   ```
   
 * After running this installation, your firewalld will only allow http , https , *custom ssh port*
