@@ -128,7 +128,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   /usr/lib/firewalld/services/*
   ```
   
-* After running this installation, your firewalld will only allow http , https , *custom ssh port*
+* After running this installation, your firewalld will only allow http , https , ***customized ssh port***
 
 ### Fail2ban usage
 *- Port in fail2ban config is based on firewalld services name.*
