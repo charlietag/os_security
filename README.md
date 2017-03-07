@@ -166,7 +166,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ```
 
 ## Quick note - Fail2ban flow
-- Be sure start Firewalld / Fail2ban in the following order
+**- (Procedure) Be sure start Firewalld / Fail2ban in the following order**
 
   ```
   systemctl stop firewalld
