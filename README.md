@@ -46,7 +46,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
 ## Run Security Check
 
-**Basic os check**
+###Basic os check
 * Command
 
   ```
