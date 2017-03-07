@@ -39,7 +39,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   ```bash
   ./start -a
-  reboot
   ```
 
   * Run security check
