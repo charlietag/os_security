@@ -131,9 +131,9 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 * After running this installation, your firewalld will only allow http , https , ***customized ssh port***
 
 ### Fail2ban usage
-*- Port in fail2ban config is based on firewalld services name.*
+*- **Setting of **port** in fail2ban configuration** is based on firewalld services name.*
 
-*- check fail2ban sucessfully add rules into iptables via firewalld command*
+*- Determine if **rules of fail2ban** is inserted into iptables via firewalld command*
 
   * Confirm fail2ban works with **iptables** well
   
@@ -167,7 +167,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
 ## Quick note - Fail2ban flow
 
-The following are executed automatically by **Fail2ban**
+The following flow are executed automatically by **Fail2ban**
   * Create [ipset-nmae] *(What actually done behind)*
       
       ```
