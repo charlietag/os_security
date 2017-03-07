@@ -9,7 +9,7 @@ Table of Contents
 - [Run Security Check](#run-security-check)
 - [Installed Packages](#installed-packages)
 - [Quick note - Package](#quick-note---package)
-  * [Nginx module - os_preparation](#nginx-module---os-preparation)
+  * [Nginx module - os_preparation](#nginx-module---os_preparation)
   * [Firewalld usage](#firewalld-usage)
   * [Fail2ban usage](#fail2ban-usage)
 - [Quick note - Fail2ban flow](#quick-note---fail2ban-flow)
