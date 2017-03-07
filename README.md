@@ -9,7 +9,7 @@ Table of Contents
 - [Run Security Check](#run-security-check)
 - [Installed Packages](#installed-packages)
 - [Quick note - Package](#quick-note---package)
-  * [Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))](#nginx-module---os-preparation--link--https---githubcom-charlietag-os-preparation-blob-master-templates-f-06-01-setup-nginx-include-opt-nginx-conf-included-limit-req-zoneconf--)
+  * [Nginx module - os_preparation](#nginx-module---os-preparation)
   * [Firewalld usage](#firewalld-usage)
   * [Fail2ban usage](#fail2ban-usage)
 - [Quick note - Fail2ban flow](#quick-note---fail2ban-flow)
@@ -100,9 +100,10 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * nginx-botsearch
 
 # Quick note - Package
-## Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))
+## Nginx module - os_preparation
   * limit_req_zone
     * This is installed by default on my *os_preparation repo*
+      * **[Link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf)**
     * This would prevent your server from **DDOS** attacks.
 
 ## Firewalld usage
