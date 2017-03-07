@@ -19,14 +19,14 @@ Table of Contents
 1. This is used for check if your linux server is being hacked.
 1. This could also help you to enhance your servers' security with **firewalld** and **fail2ban**.
 
-## Environment
+# Environment
   * CentOS 7
 
-## Warning
+# Warning
 If you found something is weired and not sure if you've been hacked.  You'd better reinstall your server.
 
-## Quick Install
-### Configuration
+# Quick Install
+## Configuration
   * Download and run check
 
     ```bash
@@ -51,7 +51,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     └── F_23_setup_fail2ban.cfg
     ```
 
-### Installation
+## Installation
 * Run **ALL** to do the following with one command
 
   ```bash
@@ -61,7 +61,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * Run security check
   * Install security package "**firewalld**" , "**fail2ban**"
 
-## Run Security Check
+# Run Security Check
 
 ###Basic os check
 * Command
@@ -87,7 +87,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 * Check last login
   * Check latest successfully login
 
-## Installed Packages 
+# Installed Packages 
 * Firewalld
   * Allowed port
     * http
@@ -100,13 +100,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * nginx-limit-req
     * nginx-botsearch
 
-## Quick note - Package
-### Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))
+# Quick note - Package
+## Nginx module - os_preparation([link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf))
   * limit_req_zone
     * This is installed by default on my *os_preparation repo*
     * This would prevent your server from **DDOS** attacks.
 
-### Firewalld usage
+## Firewalld usage
 *- Default block all traffic, except rules you define below*
 * Allow/revoke specific service
 
@@ -147,7 +147,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   
 * After running this installation, your firewalld will only allow http , https , ***customized ssh port***
 
-### Fail2ban usage
+## Fail2ban usage
 *- **Setting of **port** in fail2ban configuration** is based on firewalld services name.*
 
 *- Determine if **rules of fail2ban** is inserted into iptables via firewalld command*
@@ -182,7 +182,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ipset list fail2ban-nginx-botsearch
     ```
 
-## Quick note - Fail2ban flow
+# Quick note - Fail2ban flow
 * **(Procedure) Be sure to start *"Firewalld / Fail2ban"* in the following order**
 
   ```
