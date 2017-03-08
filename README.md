@@ -212,3 +212,54 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       ```
       ipset add <ipmset> <ip> timeout <bantime> -exist
       ```
+
+# Quick note - Fail2ban all detailed status
+* *List all jail detailed status in faster way*
+
+```
+# fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
+----nginx-botsearch----
+Status for the jail: nginx-botsearch
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     3
+|  `- File list:        /opt/nginx/logs/default.access.log /opt/nginx/logs/mylaravel.error.log /opt/nginx/logs/default.error.log /opt/nginx/logs/myrails.access.log /opt/nginx/logs/mylaravel.access.log /opt/nginx/logs/myrails.error.log
+`- Actions
+   |- Currently banned: 0
+   |- Total banned:     1
+   `- Banned IP list:   
+
+----nginx-limit-req----
+Status for the jail: nginx-limit-req
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     9
+|  `- File list:        /opt/nginx/logs/mylaravel.error.log /opt/nginx/logs/default.error.log /opt/nginx/logs/myrails.error.log
+`- Actions
+   |- Currently banned: 0
+   |- Total banned:     1
+   `- Banned IP list:   
+
+----sshd----
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     0
+|  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
+`- Actions
+   |- Currently banned: 0
+   |- Total banned:     0
+   `- Banned IP list:   
+
+----sshd-ddos----
+Status for the jail: sshd-ddos
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     0
+|  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
+`- Actions
+   |- Currently banned: 0
+   |- Total banned:     0
+   `- Banned IP list:   
+```
+
