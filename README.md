@@ -13,6 +13,7 @@ Table of Contents
   * [Firewalld usage](#firewalld-usage)
   * [Fail2ban usage](#fail2ban-usage)
 - [Quick note - Fail2ban flow](#quick-note---fail2ban-flow)
+- [Quick note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
 
 # Purpose
 1. This is used for check if your linux server is being hacked.
@@ -215,9 +216,14 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
 # Quick note - Fail2ban all detailed status
 * *List all jail detailed status in faster way*
+**Command**
 
 ```
 # fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
+```
+
+**Result**
+```
 ----nginx-botsearch----
 Status for the jail: nginx-botsearch
 |- Filter
