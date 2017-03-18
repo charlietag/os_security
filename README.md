@@ -14,6 +14,7 @@ Table of Contents
   * [Fail2ban usage](#fail2ban-usage)
 - [Quick note - Fail2ban flow](#quick-note---fail2ban-flow)
 - [Quick note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
+- [CHANGELOG](#changelog)
 
 # Purpose
 1. This is used for check if your linux server is being hacked.
