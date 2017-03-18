@@ -270,3 +270,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
      `- Banned IP list:   
   ```
 
+# CHANGELOG
+* 2017/03/04
+  * Add Firewalld & Fail2ban installation and setting to avoid DDOS.
