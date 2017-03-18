@@ -17,6 +17,7 @@ Table of Contents
 - [CHANGELOG](#changelog)
 
 # Purpose
+1. This presumes that you've done with [os_preparation](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf)
 1. This is used for check if your linux server is being hacked.
 1. This could also help you to enhance your servers' security with **firewalld** and **fail2ban**.
 
@@ -274,3 +275,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 # CHANGELOG
 * 2017/03/04
   * Add Firewalld & Fail2ban installation and setting to avoid DDOS.
+* 2017/03/18
+  * Integrate ssl and certs into nginx
+    * Using letsencrypt and certbot
