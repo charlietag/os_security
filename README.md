@@ -8,12 +8,12 @@ Table of Contents
   * [Installation](#installation)
 - [Run Security Check](#run-security-check)
 - [Installed Packages](#installed-packages)
-- [Quick note - Package](#quick-note---package)
+- [Quick Note - Package](#quick-note---package)
   * [Nginx module - os_preparation](#nginx-module---os_preparation)
   * [Firewalld usage](#firewalld-usage)
   * [Fail2ban usage](#fail2ban-usage)
-- [Quick note - Fail2ban flow](#quick-note---fail2ban-flow)
-- [Quick note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
+- [Quick Note - Fail2ban flow](#quick-note---fail2ban-flow)
+- [Quick Note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
 - [CHANGELOG](#changelog)
 
 # Purpose
@@ -102,7 +102,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * nginx-limit-req
     * nginx-botsearch
 
-# Quick note - Package
+# Quick Note - Package
 ## Nginx module - os_preparation
   * limit_req_zone
     * This is installed by default on my *os_preparation repo*
@@ -185,7 +185,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ipset list fail2ban-nginx-botsearch
     ```
 
-# Quick note - Fail2ban flow
+# Quick Note - Fail2ban flow
 * **(Procedure) Be sure to start *"Firewalld / Fail2ban"* in the following order**
 
   ```
@@ -216,7 +216,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       ipset add <ipmset> <ip> timeout <bantime> -exist
       ```
 
-# Quick note - Fail2ban all detailed status
+# Quick Note - Fail2ban all detailed status
 * *List all jail detailed status in faster way*
 
   **Command**
@@ -271,6 +271,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
      |- Total banned:     0
      `- Banned IP list:   
   ```
+
+# Install SSL (Letsencrypt)
+## Setup Nginx
+## Sign Certificate
+## Configuration
+## Quick Note - certbot
+
 
 # CHANGELOG
 * 2017/03/04
