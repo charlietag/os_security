@@ -17,7 +17,7 @@ Table of Contents
 - [CHANGELOG](#changelog)
 
 # Purpose
-1. This presumes that you've done with [os_preparation](https://github.com/charlietag/os_preparation)
+**This presumes that you've done with** [os_preparation](https://github.com/charlietag/os_preparation)
 1. This is used for check if your linux server is being hacked.
 1. This could also help you to enhance your servers' security with **firewalld** and **fail2ban**.
 
