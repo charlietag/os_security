@@ -1,0 +1,3 @@
+# Change to your domain
+local certbot_servername="your.domain.com"
+
