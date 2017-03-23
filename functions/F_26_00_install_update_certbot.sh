@@ -19,3 +19,4 @@ else
   git clone $certbot_src_url
 fi
 
+systemctl disable httpd
