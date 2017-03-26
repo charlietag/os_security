@@ -1,3 +1,20 @@
+Table of Contents
+=================
+- [Purpose](#purpose)
+- [Environment](#environment)
+- [Warning](#warning)
+- [Quick Install](#quick-install)
+  * [Configuration](#configuration)
+  * [Installation](#installation)
+- [Run Security Check](#run-security-check)
+- [Installed Packages](#installed-packages)
+- [Quick Note - Package](#quick-note---package)
+  * [Nginx module - os_preparation](#nginx-module---os_preparation)
+  * [Firewalld usage](#firewalld-usage)
+  * [Fail2ban usage](#fail2ban-usage)
+- [Quick Note - Fail2ban flow](#quick-note---fail2ban-flow)
+- [Quick Note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
+- [CHANGELOG](#changelog)
 
 # Purpose
 **This presumes that you've done with** [os_preparation](https://github.com/charlietag/os_preparation)
@@ -49,7 +66,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
 # Run Security Check
 
-###Basic os check
+## Basic os check
 * Command
 
   ```
@@ -298,31 +315,31 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   **Reference the official description** [GoAccess](https://goaccess.io/)
 
-    ```
-    cat xxx.access.log | goaccess > xxx.html
-    ```
+  ```
+  cat xxx.access.log | goaccess > xxx.html
+  ```
 
 ## Logwatch usage
   *- View log analysis report.*
 
-    ```
-    logwatch
-    ```
+  ```
+  logwatch
+  ```
 
 # Performance monitor
 ## Glances usage
   *- Just like command "top", but more than that.*
 
-    ```
-    glances
-    ```
+  ```
+  glances
+  ```
 
 ## Mytop usage
   *- Just like command "top", but this is designed for mysql.*
 
-    ```
-    mytop
-    ```
+  ```
+  mytop
+  ```
 
 # CHANGELOG
 * 2017/03/04
