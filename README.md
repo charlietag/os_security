@@ -279,10 +279,26 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 ## Configuration
 ## Quick Note - certbot
 
+# Log analyzer
+## GoAccess usage
+*- Generate nginx http log report in html.*
+**Reference the official description** [GoAccess](https://goaccess.io/)
+
+```
+cat xxx.access.log | goaccess > xxx.html
+```
+
 
 # CHANGELOG
 * 2017/03/04
   * Add Firewalld & Fail2ban installation and setting to avoid DDOS.
+    * Firewalld
+    * Fail2ban
 * 2017/03/18
   * Integrate ssl and certs into nginx
     * Using letsencrypt and certbot
+* 2017/03/26
+  * To enhance security, add log analyzer, and enable mail server to mail out alert mail
+    * posfix
+    * goaccess
+    * logwatch (customized for optnginx)
