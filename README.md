@@ -295,10 +295,16 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   1. DNS control , to do ACME verification using TXT record.
 
 ## Certbot usage
-  * Sign certificate
+  * Sign certificate (**RECOMMEND**), verified by DNS txt record
 
     ```
     certbot-auto --agree-tos -m $certbot_email --no-eff-email certonly --manual --preferred-challenges dns -d {domain}
+    ```
+
+  * Sign certificate , verified by web server root
+
+    ```
+    certbot-auto --agree-tos -m $certbot_email --no-eff-email certonly --webroot -w /{PATH}/laravel/public -d {domain} -n
     ```
 
   * Display all certificates
