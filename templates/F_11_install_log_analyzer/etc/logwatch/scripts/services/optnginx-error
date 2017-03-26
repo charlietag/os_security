@@ -1,0 +1,152 @@
+#!/usr/bin/perl -w
+#
+# $Id$
+#
+# Logwatch service for http error logs
+# To be placed in 
+#	/etc/logwatch/scripts/http-error
+#
+# Processes all messages and summarizes them
+# Each message is given with a timestamp and RMS
+#
+########################################################
+##(C) 2006 by Jeremias Reith <jr@terragate.net>
+## Modified 2009 by Michael Baierl
+## Covered under the included MIT/X-Consortium License:
+##    http://www.opensource.org/licenses/mit-license.php
+## All modifications and contributions by other persons to
+## this script are assumed to have been donated to the
+## Logwatch project and thus assume the above copyright
+## and licensing terms.  If you want to make contributions
+## under your own copyright or a different license this
+## must be explicitly stated in the contribution an the
+## Logwatch project reserves the right to not accept such
+## contributions.  If you have made significant
+## contributions to this script and want to claim
+## copyright please contact logwatch-devel@lists.sourceforge.net.
+######################################################### 
+
+use strict;
+use Logwatch ':dates';
+use Time::Local;
+use POSIX qw(strftime);
+
+my $date_format = '... %b %d %H:%M:%S %Y';
+my $filter = TimeFilter($date_format);
+my $detail = exists $ENV{'LOGWATCH_DETAIL_LEVEL'} ? $ENV{'LOGWATCH_DETAIL_LEVEL'} : 0;
+my $Ignore_not_exist_all = $ENV{'ignore_not_exist_all'} || 0;
+my $Ignore_not_exist_no_referer = $ENV{'ignore_not_exist_no_referer'} || 0;
+
+# we do not use any Date:: package (or strptime) as they are probably not available
+my %month2num = ( Jan => 0, Feb => 1, Mar => 2, Apr => 3,
+		  May => 4, Jun => 5, Jul => 6, Aug => 7,
+		  Sep => 8, Oct => 9, Nov => 10, Dec => 11 );
+
+# array of message categories (we do not use a hash to keep the order)
+# first element: catorory name 
+# second element: matching regexp ($1 should contain the message)
+# third element: anonymous hash ref (stores message  counts)
+my @message_categories = (['Errors', qr/\[error\] (.*)$/o, {}],
+			  ['Warnings', qr/\[warn\] (.*)$/o, {}],
+			  ['Notices', qr/\[info\] (.*)$/o, {}]);
+
+# skipping categories depending on detail level
+pop(@message_categories) if $detail < 10;
+pop(@message_categories) if $detail < 5;
+
+# counting messages
+while(<>) {
+    my $line = $_;
+    # skip PHP messages (have a separate script)
+    next if $line =~ / PHP (Warning|Fatal error|Notice):/o;
+    # Ignore does not exist messages if asked
+    if ($line =~ /does not exist:/o) {
+       next if $Ignore_not_exist_all;
+       next if $Ignore_not_exist_no_referer and $line !~ /, referer: /o;
+    }
+    # skipping messages that are not within the requested range
+    next unless $line =~ /^\[($filter)\]/o;
+    $1 =~ /(\w+) (\w+) (\d+) (\d+):(\d+):(\d+) (\d+)/;
+    my $time;
+
+    {
+	# timelocal is quite chatty
+	local $SIG{'__WARN__'}  = sub {};
+	$time = timelocal($6, $5, $4, $3, $month2num{$2}, $7-1900);
+    }
+
+    foreach my $cur_cat (@message_categories) {
+	if($line =~ /$cur_cat->[1]/) {
+	    my $msgs = $cur_cat->[2];
+	    $msgs->{$1} = {count => '0',
+			   first_occurrence => $time,
+			   sum => 0, 
+			   sqrsum => 0} unless exists $msgs->{$1};
+	    $msgs->{$1}->{'count'}++;
+	    # summing up timestamps and squares of timestamps
+	    # in order to calculate the rms
+	    # using first occurrence of message as offset in calculation to 
+	    # prevent an integer overflow
+	    $msgs->{$1}->{'sum'} += $time - $msgs->{$1}->{'first_occurrence'};
+	    $msgs->{$1}->{'sqrsum'} += ($time - $msgs->{$1}->{'first_occurrence'}) ** 2;
+	    last;
+	}
+    }
+}
+
+
+# generating summary
+foreach my $cur_cat (@message_categories) {
+    # skipping non-requested message types
+    next unless keys %{$cur_cat->[2]};
+    my ($name, undef, $msgs) = @{$cur_cat};
+    print $name, ":\n";
+    my $last_count = 0;
+
+    # sorting messages by count
+    my @sorted_msgs = sort { $msgs->{$b}->{'count'} <=> $msgs->{$a}->{'count'} } keys %{$msgs};
+
+    foreach my $msg (@sorted_msgs) {
+	# grouping messages by number of occurrence
+	print "\n", $msgs->{$msg}->{'count'}, " times:\n" unless $last_count == $msgs->{$msg}->{'count'};   
+	my $rms = 0;
+
+
+	# printing timestamp
+        print '[';
+
+	if($msgs->{$msg}->{'count'} > 1) {
+	    # calculating rms
+	    $rms = int(sqrt(
+			   ($msgs->{$msg}->{'count'} * 
+			    $msgs->{$msg}->{'sqrsum'} - 
+			    $msgs->{$msg}->{'sum'}) / 
+			   ($msgs->{$msg}->{'count'} * 
+			    ($msgs->{$msg}->{'count'} - 1))));
+
+	    print strftime($date_format, localtime($msgs->{$msg}->{'first_occurrence'}+int($rms/2)));
+
+	    print ' +/-';
+	    
+	    # printing rms
+	    if($rms > 86400) {
+		print int($rms/86400) , ' day(s)';
+	    } elsif($rms > 3600) {
+		print int($rms/3600) , ' hour(s)';
+	    } elsif($rms > 60) {
+		print int($rms/60) , ' minute(s)';
+	    } else {
+		print $rms, ' seconds';
+	    }
+	} else {
+	    # we have got this message a single time
+	    print strftime($date_format, localtime($msgs->{$msg}->{'first_occurrence'}));
+	}
+	   
+	print '] ', $msg, "\n";	
+	$last_count = $msgs->{$msg}->{'count'};
+    }
+
+    print "\n";
+}
+
