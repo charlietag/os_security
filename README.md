@@ -1,20 +1,3 @@
-Table of Contents
-=================
-- [Purpose](#purpose)
-- [Environment](#environment)
-- [Warning](#warning)
-- [Quick Install](#quick-install)
-  * [Configuration](#configuration)
-  * [Installation](#installation)
-- [Run Security Check](#run-security-check)
-- [Installed Packages](#installed-packages)
-- [Quick Note - Package](#quick-note---package)
-  * [Nginx module - os_preparation](#nginx-module---os_preparation)
-  * [Firewalld usage](#firewalld-usage)
-  * [Fail2ban usage](#fail2ban-usage)
-- [Quick Note - Fail2ban flow](#quick-note---fail2ban-flow)
-- [Quick Note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
-- [CHANGELOG](#changelog)
 
 # Purpose
 **This presumes that you've done with** [os_preparation](https://github.com/charlietag/os_preparation)
@@ -275,19 +258,71 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
 # Install SSL (Letsencrypt)
 ## Setup Nginx
-## Sign Certificate
-## Configuration
-## Quick Note - certbot
+  **This will automatically setup after installation**
+  **Also you will get a A+ in [SSLTEST](https://www.ssllabs.com/ssltest)**
+
+## Certbot prerequisite
+  **You will need 2 privileges**
+  1. Web server control , to install ssl certificates.
+  1. DNS control , to do ACME verification using TXT record.
+
+## Certbot usage
+  * Sign certificate
+
+    ```
+    certbot-auto --agree-tos -m $certbot_email --no-eff-email certonly --manual --preferred-challenges dns -d {domain}
+    ```
+
+  * Display all certificates
+
+    ```
+    certbot-auto certificates
+    ```
+
+  * Renew all certificates
+
+    ```
+    certbot-auto renew
+    ```
+
+  * Revoke and delete certificate
+
+    ```
+    certbot-auto revoke --cert-path /etc/letsencrypt/live/{domain}/cert.pem
+    certbot-auto delete --cert-name {domain}
+    ```
 
 # Log analyzer
 ## GoAccess usage
-*- Generate nginx http log report in html.*
-**Reference the official description** [GoAccess](https://goaccess.io/)
+  *- Generate nginx http log report in html.*
 
-```
-cat xxx.access.log | goaccess > xxx.html
-```
+  **Reference the official description** [GoAccess](https://goaccess.io/)
 
+    ```
+    cat xxx.access.log | goaccess > xxx.html
+    ```
+
+## Logwatch usage
+  *- View log analysis report.*
+
+    ```
+    logwatch
+    ```
+
+# Performance monitor
+## Glances usage
+  *- Just like command "top", but more than that.*
+
+    ```
+    glances
+    ```
+
+## Mytop usage
+  *- Just like command "top", but this is designed for mysql.*
+
+    ```
+    mytop
+    ```
 
 # CHANGELOG
 * 2017/03/04
@@ -302,3 +337,6 @@ cat xxx.access.log | goaccess > xxx.html
     * posfix
     * goaccess
     * logwatch (customized for optnginx)
+  * To know more about server performance
+    * glances
+    * mytop
