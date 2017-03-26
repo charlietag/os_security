@@ -14,7 +14,7 @@ then
 
   # **************** Start *******************
   echo "---Apply cert using certbot via dns txt record---"
-  $certbot_command --agree-tos -m $certbot_email  --no-eff-email certonly --manual --preferred-challenges dns  -d $certbot_servername
+  $certbot_command --agree-tos -m $certbot_email --no-eff-email certonly --manual --preferred-challenges dns -d $certbot_servername
 
   # **************** End *******************
 
