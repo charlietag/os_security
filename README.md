@@ -1,20 +1,3 @@
-Table of Contents
-=================
-- [Purpose](#purpose)
-- [Environment](#environment)
-- [Warning](#warning)
-- [Quick Install](#quick-install)
-  * [Configuration](#configuration)
-  * [Installation](#installation)
-- [Run Security Check](#run-security-check)
-- [Installed Packages](#installed-packages)
-- [Quick Note - Package](#quick-note---package)
-  * [Nginx module - os_preparation](#nginx-module---os_preparation)
-  * [Firewalld usage](#firewalld-usage)
-  * [Fail2ban usage](#fail2ban-usage)
-- [Quick Note - Fail2ban flow](#quick-note---fail2ban-flow)
-- [Quick Note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
-- [CHANGELOG](#changelog)
 
 # Purpose
 **This presumes that you've done with** [os_preparation](https://github.com/charlietag/os_preparation)
@@ -273,10 +256,10 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
      `- Banned IP list:   
   ```
 
-# Install SSL (Letsencrypt)
+# Install SSL (Letsencrypt) - A+
 ## Setup Nginx
   **This will automatically setup after installation**
-  **Also you will get a A+ in [SSLTEST](https://www.ssllabs.com/ssltest)**
+  **Also you will get a score "A+" in [SSLTEST](https://www.ssllabs.com/ssltest)**
 
 ## Certbot prerequisite
   **You will need 2 privileges**
