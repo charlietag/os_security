@@ -1,3 +1,5 @@
 # Change to your domain
-local certbot_servername="your.domain.com"
+#local certbot_servername="your.domain.com"
 
+# Source master config
+. ${DATABAG}/_certbot.cfg
