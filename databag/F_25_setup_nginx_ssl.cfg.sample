@@ -1,6 +1,9 @@
 # ***************************************************
-# * Server type:                                    *
-# * [ ssl-sample-php.conf | ssl-sample-rails.conf ] *
+# Server type                                       *
+# * Rails:                                          *
+#   [ssl-sample-rails.conf]                         *
+# * PHP / Laravel:                                  *
+#   [ssl-sample-php.conf]                           *
 # ***************************************************
 #local sample_config_file="ssl-sample-php.conf"
 local sample_config_file="ssl-sample-rails.conf"
