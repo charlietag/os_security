@@ -1,0 +1,11 @@
+user=${mariadb_user}
+pass=${mariadb_pass}
+host=${mariadb_host}
+db=${mariadb_dbname}
+delay=5
+port=3306
+socket=
+batchmode=0
+header=1
+color=1
+idle=1
