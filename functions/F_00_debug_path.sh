@@ -17,5 +17,6 @@ echo ""
 echo "-----------function use only--------"
 echo "TMP            : ${TMP}"
 echo "CONFIG_FOLDER  : ${CONFIG_FOLDER}"
+echo "DATABAG        : ${DATABAG}"
 echo ""
 
