@@ -15,7 +15,7 @@ Table of Contents
   * [Fail2ban usage](#fail2ban-usage)
 - [Quick Note - Fail2ban flow](#quick-note---fail2ban-flow)
 - [Quick Note - Fail2ban all detailed status](#quick-note---fail2ban-all-detailed-status)
-- [Install SSL (Letsencrypt) - A+](#install-ssl-letsencrypt----a)
+- [Install SSL (Letsencrypt) - A+](#install-ssl-letsencrypt---a)
   * [Setup Nginx](#setup-nginx)
   * [Certbot prerequisite](#certbot-prerequisite)
   * [Certbot usage](#certbot-usage)
