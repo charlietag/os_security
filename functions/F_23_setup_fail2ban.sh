@@ -9,6 +9,21 @@ local ng_limit_req_logpath="$(echo -e "$(echo "${ng_limit_req_logpaths[@]}" | se
 # ### ng_botsearch_logpaths ###
 local ng_botsearch_logpath="$(echo -e "$(echo "${ng_botsearch_logpaths[@]}" | sed -e 's/\s\+/\n  /g' )" )"
 
+#--------------------------------------
+# Installing script
+#--------------------------------------
+# *********************************
+# Install f2b.sh script
+# *********************************
+local f2b_command="/root/bin/f2b"
+echo "fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed \"s/\\s//g\" | tr ',' '\\n' |xargs -i bash -c \"echo \\\"----{}----\\\" ;fail2ban-client status {} ; echo \"" > $f2b_command
+chmod 755 $f2b_command
+
+# *********************************
+# Adding f2b.sh into crontab
+# *********************************
+sed -i /f2b.sh/d /etc/crontab
+echo "1 0 * * * root ${f2b_command}" >> /etc/crontab
 
 #--------------------------------------
 # Rendering fail2ban config
