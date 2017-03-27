@@ -25,5 +25,6 @@ systemctl disable httpd
 # *********************************
 # Adding certificates renewal into crontab
 # *********************************
+echo "Adding cert renewal into crontab..."
 sed -i /certbot-auto/d /etc/crontab
 echo "1 3 * * 1 root ${certbot_command} renew -n -q ; systemctl restart optnginx" >> /etc/crontab
