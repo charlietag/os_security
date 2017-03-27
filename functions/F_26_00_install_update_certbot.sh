@@ -20,6 +20,7 @@ else
   git clone $certbot_src_url
 fi
 
+echo "disable httpd server..."
 systemctl disable httpd
 
 # *********************************
