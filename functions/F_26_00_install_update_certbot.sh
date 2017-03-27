@@ -47,7 +47,7 @@ do
     # Adding certificates renewal into crontab
     # *********************************
     echo "Adding cert renewal into crontab..."
-    sed -i /certbot-auto/d /etc/crontab
+    sed -i /certbot-auto_renew/d /etc/crontab
     echo "1 3 * * * root ${file_certbot_target}" >> /etc/crontab
   fi
 done
