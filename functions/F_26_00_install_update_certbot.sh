@@ -6,6 +6,7 @@
 # ******* Define var *******
 local certbot_root="/opt"
 local certbot_path="${certbot_root}/certbot"
+local certbot_command="${certbot_path}/certbot-auto"
 
 # ******* Fetching / Update certbot *******
 if [ -d $certbot_path ]
@@ -20,3 +21,9 @@ else
 fi
 
 systemctl disable httpd
+
+# *********************************
+# Adding certificates renewal into crontab
+# *********************************
+sed -i /certbot-auto/d /etc/crontab
+echo "1 3 1 * * root ${certbot_command} renew -n -q" >> /etc/crontab
