@@ -33,3 +33,7 @@ else
   exit 1
 fi
 # ******* Start to apply letsencrypt SSL cert with DNS txt record verification End *******
+
+echo "disable httpd server..."
+systemctl disable httpd
+systemctl stop httpd
