@@ -22,6 +22,7 @@ fi
 
 echo "disable httpd server..."
 systemctl disable httpd
+systemctl stop httpd
 
 # ******* Install certbot renew script *******
 echo "========================================="
