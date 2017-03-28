@@ -5,12 +5,18 @@
 # -----------------------------
 #   in (findtime) seconds, found faild attempt usage (maxretry) times , ban the IP for (bantime) seconds
 #   findtime does not have to be equal to bantime, I do this just for easy calculation
+# look up logs for last 10 minutes
 local f2b_findtime="600"
+local f2b_maxretry="5"
+#
+#ban for 10 minutes
 #local f2b_bantime="600"
 
 # ban IP for 3 days - 259200
-local f2b_bantime="259200"
-local f2b_maxretry="5"
+#local f2b_bantime="259200"
+
+# ban IP for 30 days - 2592000
+local f2b_bantime="2592000"
 
 # -----------------------------
 # Setup monitored item
