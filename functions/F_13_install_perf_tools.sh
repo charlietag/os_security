@@ -4,6 +4,11 @@
 yum install -y glances
 
 # ***************************
+# iotop
+# ***************************
+yum install -y iotop
+
+# ***************************
 # mytop - mysql perf monitor
 # ***************************
 yum install -y mytop
