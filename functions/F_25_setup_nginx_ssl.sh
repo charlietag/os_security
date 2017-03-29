@@ -40,7 +40,7 @@ do
   if [ "$(basename $ssl_nginx_target_folder)" = "ssl_dhparam" ]
   then
     echo "-------------------------------------------------------------"
-    echo "enerating openssl dhparam."
+    echo "Generating openssl dhparam."
     echo "This might take \"several minutes!\""
     echo "Base on your server spec. This might take even \"up to hours\"...!"
     echo "-------------------------------------------------------------"
