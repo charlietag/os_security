@@ -71,6 +71,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * ~~./start -a~~
   * ~~Run security check~~
   * ~~Install security package "**firewalld**" , "**fail2ban**"~~
+* To avoid running **ALL**, to **APPLY** and **DESTROY** **letsencrypt** cert **at the same time**.
+  * DO NOT run ***./start.sh -a***
 
 # Run Security Check
 
