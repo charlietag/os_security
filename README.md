@@ -67,14 +67,10 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ```
 
 ## Installation
-* Run **ALL** to do the following with one command
-
-  ```bash
-  ./start -a
-  ```
-
-  * Run security check
-  * Install security package "**firewalld**" , "**fail2ban**"
+* ~~***Run **ALL** to do the following with one command***~~
+  * ~~***./start -a***~~
+  * ~~***Run security check***~~
+  * ~~***Install security package "**firewalld**" , "**fail2ban**"***~~
 
 # Run Security Check
 
