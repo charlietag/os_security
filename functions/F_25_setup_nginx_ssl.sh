@@ -43,7 +43,7 @@ do
     echo "This might take several minutes!"
     echo "Base on your server spec. This might take even up to hours...!"
     local ssl_dhparam_file="${ssl_nginx_target_folder}/dhparam2048.pem"
-    test -f $ssl_dhparam_file || $(which openssl) dhparam -out  2048
+    test -f $ssl_dhparam_file || $(which openssl) dhparam -out $ssl_dhparam_file 2048
   fi
 done
 
