@@ -23,6 +23,7 @@ Table of Contents
   * [GoAccess usage](#goaccess-usage)
   * [Logwatch usage](#logwatch-usage)
 - [Performance monitor](#performance-monitor)
+  * [Iotop usage](#iotop-usage)
   * [Glances usage](#glances-usage)
   * [Mytop usage](#mytop-usage)
 - [CHANGELOG](#changelog)
@@ -349,6 +350,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   ```
   glances
+  ```
+
+## Iotop usage
+  *- Just like command "top", but just for IO.*
+
+  ```
+  iotop
   ```
 
 ## Mytop usage
