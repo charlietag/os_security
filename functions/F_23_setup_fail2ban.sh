@@ -22,7 +22,7 @@ chmod 755 $f2b_command
 # *********************************
 # Adding f2b.sh into crontab
 # *********************************
-sed -i /f2b.sh/d /etc/crontab
+sed -i /f2b/d /etc/crontab
 echo "1 0 * * * root ${f2b_command}" >> /etc/crontab
 
 #--------------------------------------
