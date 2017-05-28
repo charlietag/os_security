@@ -1,6 +1,6 @@
 #!/bin/bash
 CERTBOT_CMD="/opt/certbot/certbot-auto"
-RENEW_BEFORE_DAYS=30
+RENEW_BEFORE_DAYS=25
 
 VALID_DAYS="$($CERTBOT_CMD certificates 2>/dev/null |grep -Eo "VALID: [0-9]+ days" |awk '{print $2}' |sort -n|head -n 1)"
 if [ -z "${VALID_DAYS}" ]
