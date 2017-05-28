@@ -36,6 +36,7 @@ then
   git status
   exit 1
 fi
+echo "${git_ret_certbot}"
 
 # ******* Install certbot renew script *******
 echo "========================================="
