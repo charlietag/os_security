@@ -9,7 +9,7 @@ then
   exit 1
 fi
 
-if [ $VALID_DAYS -le $RENEW_BEFORE_DAYS ]
+if [ $VALID_DAYS -lt $RENEW_BEFORE_DAYS ]
 then
   echo "============================"
   echo " VALID: ${VALID_DAYS} days"
