@@ -24,6 +24,19 @@ echo "disable httpd server..."
 systemctl disable httpd
 systemctl stop httpd
 
+# ******* Check certbot, determine if git clone success*******
+echo "---Determining git status of CERTBOT---"
+echo "change dir to \"${certbot_path}\""
+cd $certbot_path
+local git_ret_certbot="$(git pull | grep 'Already up-to-date')"
+if -z "${git_ret_certbot}"
+then
+  echo "Git clone of certbot is FAILED !..."
+  echo "Please try to reinstall certbot!..."
+  git status
+  exit 1
+fi
+
 # ******* Install certbot renew script *******
 echo "========================================="
 echo "   Install certbot renew script"
