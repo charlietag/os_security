@@ -29,7 +29,7 @@ echo "---Determining git status of CERTBOT---"
 echo "change dir to \"${certbot_path}\""
 cd $certbot_path
 local git_ret_certbot="$(git pull | grep 'Already up-to-date')"
-if -z "${git_ret_certbot}"
+if [ -z "${git_ret_certbot}" ]
 then
   echo "Git clone of certbot is FAILED !..."
   echo "Please try to reinstall certbot!..."
