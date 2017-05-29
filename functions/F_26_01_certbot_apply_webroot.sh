@@ -13,7 +13,7 @@
 #**********************************************
 # Start to apply letsencrypt SSL cert with WEBROOT verification
 echo "---Apply cert using certbot via webroot---"
-$certbot_command --agree-tos -m $certbot_email --no-eff-email certonly --webroot -w $certbot_webroot -d $certbot_servername
+$certbot_command --agree-tos -m $certbot_email --no-eff-email certonly --webroot -w $certbot_webroot -d $certbot_servername -n -q
 #**********************************************
 
 #**********************************************
