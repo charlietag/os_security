@@ -11,8 +11,8 @@
 #**********************************************
 
 #**********************************************
-# Start to apply letsencrypt SSL cert with DNS txt record verification
-echo "---Warning: this cannot be rollback! Revoke and Delete all certs using certbot via dns txt record---"
+echo "---Warning: this cannot be rollback!---"
+echo "---Revoke and Delete all certs using certbot---"
 echo -n "Are you sure (Yes/No)? "
 local revoke_confirm="N"
 read revoke_confirm

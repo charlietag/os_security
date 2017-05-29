@@ -11,8 +11,8 @@
 #**********************************************
 
 #**********************************************
-# Start to apply letsencrypt SSL cert with DNS txt record verification
-echo "---Renewing all certs using certbot via dns txt record---"
+# Start to apply letsencrypt SSL cert "ONLY" with "WEBROOT" verification
+echo "---Renewing all certs using certbot via \"ONLY WEBROOT\"---"
 $certbot_command renew -n
 #**********************************************
 
