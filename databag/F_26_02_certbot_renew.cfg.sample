@@ -1,0 +1,2 @@
+# Source master config
+. ${DATABAG}/_certbot.cfg

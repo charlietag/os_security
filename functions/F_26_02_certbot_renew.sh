@@ -1,25 +1,22 @@
-# ******* Define var *******
-local certbot_root="/opt"
-local certbot_path="${certbot_root}/certbot"
-local certbot_command="${certbot_path}/certbot-auto"
+#**********************************************
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
 
-# ******* Start to apply letsencrypt SSL cert with DNS txt record verification *******
-if [ -f "$certbot_command" ]
-then
+# Init action
+. ${FUNCTIONS}/_certbot_init.sh
+# Before action
+. ${FUNCTIONS}/_certbot_before.sh
+#**********************************************
 
-  # **************** Start *******************
-  echo "---Renewing all certs using certbot via dns txt record---"
-  $certbot_command renew -n
+#**********************************************
+# Start to apply letsencrypt SSL cert with DNS txt record verification
+echo "---Renewing all certs using certbot via dns txt record---"
+$certbot_command renew -n
+#**********************************************
 
-  # **************** End *******************
-
-  $certbot_command certificates
-else
-  echo "${certbot_command} does not exists....!!"
-  exit 1
-fi
-# ******* Start to apply letsencrypt SSL cert with DNS txt record verification End *******
-
-echo "disable httpd server..."
-systemctl disable httpd
-systemctl stop httpd
+#**********************************************
+# After action
+. ${FUNCTIONS}/_certbot_after.sh
+#**********************************************
