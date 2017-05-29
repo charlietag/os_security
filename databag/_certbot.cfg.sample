@@ -6,3 +6,7 @@ local certbot_email="email@gmail.com"
 # Change to your domain
 local certbot_servername="your.domain.com"
 
+# ========================================================
+# Custom your webroot "ONLY for WEBROOT verification"
+local certbot_webroot="/home/myrails/public"
+# ========================================================
