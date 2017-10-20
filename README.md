@@ -342,6 +342,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   logwatch
   ```
 
+## pflogsumm usage
+  *- View log analysis of postfix.*
+
+  ```
+  /usr/sbin/pflogsumm -d yesterday /var/log/maillog
+  ```
+
 # Performance monitor
 ## Glances usage
   *- Just like command "top", but more than that.*
@@ -381,3 +388,5 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * iotop
     * glances
     * mytop
+* 2017/10/20
+  * Add postfix log analyzer - pflogsumm (postfix-perl-scripts)
