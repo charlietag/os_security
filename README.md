@@ -390,3 +390,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * mytop
 * 2017/10/20
   * Add postfix log analyzer - pflogsumm (postfix-perl-scripts)
+* 2017/10/27
+  * Add Nginx http2 (ALPN) support under CentOS 7.4
+  * This change is because openssl version "1.0.2" is supported by default in CentOS 7.4
