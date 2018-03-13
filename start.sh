@@ -11,6 +11,9 @@ CURRENT_SCRIPT="$(readlink -m $0)"
 CURRENT_FOLDER="$(dirname "${CURRENT_SCRIPT}")"
 
 # --- Define os_preparation_lib path ---
+echo "#############################################"
+echo "         Preparing required lib"
+echo "#############################################"
 OS_PRE_LIB="${CURRENT_FOLDER}/../os_preparation_lib"
 if [[ ! -d "${OS_PRE_LIB}" ]]; then
   cd "$CURRENT_FOLDER/../"
@@ -21,13 +24,17 @@ else
   echo "Updating required lib to lastest version..."
   git pull
 fi
+echo ""
 
 # --- Define lib path ---
 ## also in app.sh ##
 LIB="${OS_PRE_LIB}/lib"
 
 # --- Start ---
-echo -e "Starting...\n\n\n"
+echo "#############################################"
+echo "            Running start.sh"
+echo "#############################################"
+echo ""
 
 cd $CURRENT_FOLDER
 . "${OS_PRE_LIB}/lib/app.sh"
