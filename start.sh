@@ -13,7 +13,7 @@ CURRENT_FOLDER="$(dirname "${CURRENT_SCRIPT}")"
 # --- Define os_preparation_lib path ---
 OS_PRE_LIB="${CURRENT_FOLDER}/../os_preparation_lib"
 if [[ ! -d "${OS_PRE_LIB}" ]]; then
-  cd "$CURRENT_FOLDER_PRE/../"
+  cd "$CURRENT_FOLDER/../"
   echo "Downloading required lib..."
   git clone $OS_PRE_LIB_GITHUB
 else
