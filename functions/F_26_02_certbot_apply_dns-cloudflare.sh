@@ -38,7 +38,8 @@ $certbot_command \
   --dns-cloudflare \
   --dns-cloudflare-credentials $certbot_cf_ini \
   --dns-cloudflare-propagation-seconds $certbot_wait_cf_seconds \
-  -d $certbot_servername
+  -d $certbot_servername \
+  -d ${certbot_wild_servername}
 #**********************************************
 
 #**********************************************

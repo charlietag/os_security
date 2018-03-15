@@ -13,9 +13,16 @@ local certbot_webroot="/home/myrails/public"
 
 # ========================================================
 # ONLY for dns-cloudflare
+# -- wildcard --
+# cause *.domain only for http header *.your.domain.com ---> failed for https://your.domain.com
+# your.domain.com means:
+# -d your.domain.com -d *.your.domain.com
+local certbot_wild_servername="*.${certbot_servername}"
+
 # -- api key --
 local certbot_dns_cloudflare_email="email@gmail.com"
 local certbot_dns_cloudflare_api_key="0123456789abcdef0123456789abcdef01234567"
+
 # -- seconds waiting for cloudflare to propagate dns --
 local certbot_wait_cf_seconds="10"
 # ========================================================
