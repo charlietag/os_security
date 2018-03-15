@@ -12,7 +12,10 @@ local certbot_webroot="/home/myrails/public"
 # ========================================================
 
 # ========================================================
-# ONLY for dns-cloudflare api key
+# ONLY for dns-cloudflare
+# -- api key --
 local certbot_dns_cloudflare_email="email@gmail.com"
 local certbot_dns_cloudflare_api_key="0123456789abcdef0123456789abcdef01234567"
+# -- seconds waiting for cloudflare to propagate dns --
+local certbot_wait_cf_seconds="10"
 # ========================================================
