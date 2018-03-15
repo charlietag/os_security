@@ -10,3 +10,9 @@ local certbot_servername="your.domain.com"
 # Custom your webroot "ONLY for WEBROOT verification"
 local certbot_webroot="/home/myrails/public"
 # ========================================================
+
+# ========================================================
+# ONLY for dns-cloudflare api key
+local certbot_dns_cloudflare_email="email@gmail.com"
+local certbot_dns_cloudflare_api_key="0123456789abcdef0123456789abcdef01234567"
+# ========================================================
