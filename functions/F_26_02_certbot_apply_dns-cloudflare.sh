@@ -13,7 +13,7 @@
 #**********************************************
 # Start to apply letsencrypt SSL cert with DNS txt record verification
 echo "---Install dns-cloudflare if needed  ---"
-IF_CF="$($certbot_python_pip_command list | grep certbot-dns-cloudflare)"
+IF_CF="$($certbot_python_pip_command list --format=columns | grep certbot-dns-cloudflare)"
 if [[ -z "$IF_CF" ]]; then
   $certbot_python_pip_command install certbot-dns-cloudflare
 else
