@@ -37,7 +37,7 @@ $certbot_command \
   --server https://acme-v02.api.letsencrypt.org/directory \
   --dns-cloudflare \
   --dns-cloudflare-credentials $certbot_cf_ini \
-  --dns-cloudflare-propagation-seconds $certbot_wait_cf_seconds
+  --dns-cloudflare-propagation-seconds $certbot_wait_cf_seconds \
   -d $certbot_servername
 #**********************************************
 
