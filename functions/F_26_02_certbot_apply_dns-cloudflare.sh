@@ -26,6 +26,7 @@ echo "${certbot_cf_path} ...done"
 
 echo "dns_cloudflare_email = ${certbot_dns_cloudflare_email}" > $certbot_cf_ini
 echo "dns_cloudflare_api_key = ${certbot_dns_cloudflare_api_key}" >> $certbot_cf_ini
+chmod 400 $certbot_cf_ini
 echo "${certbot_cf_ini} ...done"
 
 
