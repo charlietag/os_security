@@ -42,10 +42,6 @@ fi
 echo ""
 # ### Make sure os_preparation_lib exists correctly ###
 
-# --- Define lib path ---
-## also in app.sh ##
-LIB="${OS_PRE_LIB}/lib"
-
 # --- Start ---
 echo "#############################################"
 echo "            Running start.sh"
