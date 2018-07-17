@@ -5,9 +5,9 @@
 # RENDER_CP
 
 # Init action
-. ${FUNCTIONS}/_certbot_init.sh
+. ${HELPERS}/plugin_certbot_path.sh
 # Before action
-. ${FUNCTIONS}/_certbot_before.sh
+. ${HELPERS}/plugin_certbot_install_check.sh
 #**********************************************
 
 #**********************************************
@@ -44,5 +44,5 @@ $certbot_command \
 
 #**********************************************
 # After action
-. ${FUNCTIONS}/_certbot_after.sh
+. ${HELPERS}/plugin_certbot_show_certs.sh
 #**********************************************
