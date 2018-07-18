@@ -1,5 +1,0 @@
-# Setup your db info, used by mytop
-local mariadb_user="user"
-local mariadb_pass="pass"
-local mariadb_host="localhost"
-local mariadb_dbname="dbname"
