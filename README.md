@@ -25,7 +25,6 @@ Table of Contents
 - [Performance monitor](#performance-monitor)
   * [Iotop usage](#iotop-usage)
   * [Glances usage](#glances-usage)
-  * [Mytop usage](#mytop-usage)
 - [CHANGELOG](#changelog)
 
 # Purpose
@@ -364,13 +363,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   iotop
   ```
 
-## Mytop usage
-  *- Just like command "top", but this is designed for mysql.*
-
-  ```
-  mytop
-  ```
-
 # CHANGELOG
 * 2017/03/04
   * Add Firewalld & Fail2ban installation and setting to avoid DDOS.
@@ -387,7 +379,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * To know more about server performance
     * iotop
     * glances
-    * mytop
 * 2017/10/20
   * Add postfix log analyzer - pflogsumm (postfix-perl-scripts)
 * 2017/10/27
