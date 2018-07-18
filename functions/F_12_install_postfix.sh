@@ -1,3 +1,8 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
 #--------------------------------------
 # Start - install postfix
 #--------------------------------------
@@ -8,21 +13,7 @@ systemctl stop postfix
 #--------------------------------------
 # Rendering postfix config
 #--------------------------------------
-echo "========================================="
-echo "  Rendering postfix configuration"
-echo "========================================="
-local postfix_confs=($(find ${CONFIG_FOLDER} -type f))
-local postfix_target=""
-local postfix_target_folder=""
-for postfix_conf in ${postfix_confs[@]}
-do
-  postfix_target="${postfix_conf/${CONFIG_FOLDER}/}"
-  postfix_target_folder="$(dirname $postfix_target)"
-
-  test -d $postfix_target_folder || mkdir -p $postfix_target_folder
-  # use RENDER_CP to fetch var from datadog
-  RENDER_CP $postfix_conf $postfix_target
-done
+task_copy_using_render
 
 #--------------------------------------
 # Setup cron mail config

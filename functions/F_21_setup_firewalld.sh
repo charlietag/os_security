@@ -2,6 +2,7 @@
 # Enable databag
 # =====================
 # RENDER_CP
+
 #--------------------------------------
 # check if firewalld is installed
 #--------------------------------------
@@ -23,18 +24,8 @@ systemctl enable firewalld.service
 echo "========================================="
 echo "      Blocking all incoming traffic using zone \"public\""
 echo "========================================="
-local firewalld_confs=($(find ${CONFIG_FOLDER} -type f))
-local firewalld_target=""
-local firewalld_target_folder=""
-for firewalld_conf in ${firewalld_confs[@]}
-do
-  firewalld_target="${firewalld_conf/${CONFIG_FOLDER}/}"
-  firewalld_target_folder="$(dirname $firewalld_target)"
+task_copy_using_cp
 
-  test -d $firewalld_target_folder || mkdir -p $firewalld_target_folder
-  echo "Setting up config file \"${firewalld_target}\"......"
-  \cp -a --backup=t $firewalld_conf $firewalld_target
-done
 firewall-cmd --reload
 
 # Setup allowed incoming traffic

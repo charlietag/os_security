@@ -2,6 +2,7 @@
 # Enable databag
 # =====================
 # RENDER_CP
+
 # Convert array to multiple lines
 # ### ng_limit_req_logpaths ###
 local ng_limit_req_logpath="$(echo -e "$(echo "${ng_limit_req_logpaths[@]}" | sed -e 's/\s\+/\n  /g' )" )"
@@ -31,18 +32,7 @@ echo "1 0 * * * root ${f2b_command}" >> /etc/crontab
 echo "========================================="
 echo "  Rendering fail2ban configuration"
 echo "========================================="
-local fail2ban_confs=($(find ${CONFIG_FOLDER} -type f))
-local fail2ban_target=""
-local fail2ban_target_folder=""
-for fail2ban_conf in ${fail2ban_confs[@]}
-do
-  fail2ban_target="${fail2ban_conf/${CONFIG_FOLDER}/}"
-  fail2ban_target_folder="$(dirname $fail2ban_target)"
-
-  test -d $fail2ban_target_folder || mkdir -p $fail2ban_target_folder
-  # use RENDER_CP to fetch var from datadog
-  RENDER_CP $fail2ban_conf $fail2ban_target
-done
+task_copy_using_render
 
 #--------------------------------------
 # Start firewalld & fail2ban
@@ -74,9 +64,8 @@ firewall-cmd --list-all
 
 echo "--------------IPTABLES Rules of fail2ban-------------"
 echo -n "Waiting fail2ban for inserting rules into firewalld(iptables)"
-echo -n "."; sleep 1
-echo -n "."; sleep 1
-echo "."; sleep 1
+echo -n "."; sleep 1; echo -n "."; sleep 1; echo "."; sleep 1
+
 iptables -S | grep -i fail2ban
 sleep 3
 
