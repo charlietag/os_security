@@ -4,13 +4,6 @@
 # RENDER_CP
 
 #--------------------------------------
-# Start - install postfix
-#--------------------------------------
-yum install -y postfix
-yum install -y cyrus-sasl-md5 cyrus-sasl-plain cyrus-sasl
-systemctl stop postfix
-
-#--------------------------------------
 # Rendering postfix config
 #--------------------------------------
 task_copy_using_render
