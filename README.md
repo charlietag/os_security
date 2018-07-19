@@ -386,3 +386,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * This change is because openssl version "1.0.2" is supported by default in CentOS 7.4
 * 2018/03/16
   * Add Letsencrypt wildcard ssl support
+* 2018/07/19
+  * Migrate rails ap server from passenger to puma
+  * This movement will make deployment easier, especial security for most people.
+  * Most different effects
+    * Nginx config file no longer under /opt/nginx. Instead, /etc/nginx
+    * Deprecated command
+      * systemctl start optnginx
+    * New command
+      * systemctl start nginx
+
