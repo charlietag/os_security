@@ -5,9 +5,9 @@
 # RENDER_CP
 
 # Init action
-. ${HELPERS}/plugin_certbot_path.sh
+. ${PLUGINS}/plugin_certbot_path.sh
 # Before action
-. ${HELPERS}/plugin_certbot_install_check.sh
+. ${PLUGINS}/plugin_certbot_install_check.sh
 #**********************************************
 
 #**********************************************
@@ -18,5 +18,5 @@ $certbot_command renew -n
 
 #**********************************************
 # After action
-. ${HELPERS}/plugin_certbot_show_certs.sh
+. ${PLUGINS}/plugin_certbot_show_certs.sh
 #**********************************************

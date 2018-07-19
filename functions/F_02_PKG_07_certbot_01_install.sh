@@ -5,7 +5,7 @@
 # RENDER_CP
 
 # Init action
-. ${HELPERS}/plugin_certbot_path.sh
+. ${PLUGINS}/plugin_certbot_path.sh
 #**********************************************
 
 # ******* Download certbot *******
