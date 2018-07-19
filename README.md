@@ -231,56 +231,62 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   **Command**
 
-  ```
-  # fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
-  ```
+    ```
+    # fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
+    ```
 
   **Result**
-  ```
-  ----nginx-botsearch----
-  Status for the jail: nginx-botsearch
-  |- Filter
-  |  |- Currently failed: 0
-  |  |- Total failed:     3
-  |  `- File list:        /opt/nginx/logs/default.access.log /opt/nginx/logs/mylaravel.error.log /opt/nginx/logs/default.error.log /opt/nginx/logs/myrails.access.log /opt/nginx/logs/mylaravel.access.log /opt/nginx/logs/myrails.error.log
-  `- Actions
-     |- Currently banned: 0
-     |- Total banned:     1
-     `- Banned IP list:   
 
-  ----nginx-limit-req----
-  Status for the jail: nginx-limit-req
-  |- Filter
-  |  |- Currently failed: 0
-  |  |- Total failed:     9
-  |  `- File list:        /opt/nginx/logs/mylaravel.error.log /opt/nginx/logs/default.error.log /opt/nginx/logs/myrails.error.log
-  `- Actions
-     |- Currently banned: 0
-     |- Total banned:     1
-     `- Banned IP list:   
+    ```
+    --------------Fail2ban Status-------------
+    Status
+    |- Number of jail:      4
+    `- Jail list:   nginx-botsearch, nginx-limit-req, sshd, sshd-ddos
+    --------------Fail2ban Detail Status-------------
+    ----nginx-botsearch----
+    Status for the jail: nginx-botsearch
+    |- Filter
+    |  |- Currently failed: 0
+    |  |- Total failed:     0
+    |  `- File list:        /var/log/nginx/mylaravel.access.log /var/log/nginx/myrails.error.log /var/log/nginx/myrails.access.log /var/log/nginx/mylaravel.error.log /var/log/nginx/default.access.log /var/log/nginx/default.error.log
+    `- Actions
+       |- Currently banned: 0
+       |- Total banned:     0
+       `- Banned IP list:   
 
-  ----sshd----
-  Status for the jail: sshd
-  |- Filter
-  |  |- Currently failed: 0
-  |  |- Total failed:     0
-  |  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
-  `- Actions
-     |- Currently banned: 0
-     |- Total banned:     0
-     `- Banned IP list:   
+    ----nginx-limit-req----
+    Status for the jail: nginx-limit-req
+    |- Filter
+    |  |- Currently failed: 0
+    |  |- Total failed:     0
+    |  `- File list:        /var/log/nginx/mylaravel.error.log /var/log/nginx/myrails.error.log /var/log/nginx/default.error.log
+    `- Actions
+       |- Currently banned: 0
+       |- Total banned:     0
+       `- Banned IP list:   
 
-  ----sshd-ddos----
-  Status for the jail: sshd-ddos
-  |- Filter
-  |  |- Currently failed: 0
-  |  |- Total failed:     0
-  |  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
-  `- Actions
-     |- Currently banned: 0
-     |- Total banned:     0
-     `- Banned IP list:   
-  ```
+    ----sshd----
+    Status for the jail: sshd
+    |- Filter
+    |  |- Currently failed: 0
+    |  |- Total failed:     0
+    |  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
+    `- Actions
+       |- Currently banned: 0
+       |- Total banned:     0
+       `- Banned IP list:   
+
+    ----sshd-ddos----
+    Status for the jail: sshd-ddos
+    |- Filter
+    |  |- Currently failed: 0
+    |  |- Total failed:     0
+    |  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
+    `- Actions
+       |- Currently banned: 0
+       |- Total banned:     0
+       `- Banned IP list:   
+    ```
 
 # Install SSL (Letsencrypt) - A+
 ## Setup Nginx
