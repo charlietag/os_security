@@ -3,16 +3,19 @@ local certbot_src_url="https://github.com/certbot/certbot.git"
 # Change to your email
 local certbot_email="email@gmail.com"
 
-# Change to your domain
-local certbot_servername="your.domain.com"
+# ========================================================
+#        Load servername from nginx config
+#           >>> DO NOT modify these vars <<<<<
+# ========================================================
+. ${PLUGINS}/plugin_load_databag.sh F_02_PKG_06_nginx_02_ssl_site_config.cfg
+local certbot_servername="${server_name}"
 
-# ========================================================
 # Custom your webroot "ONLY for WEBROOT verification"
-local certbot_webroot="/home/rubyuser/rails_sites/myrails/public"
-# ========================================================
+local certbot_webroot="${web_root}"
 
 # ========================================================
 # ONLY for dns-cloudflare
+# ========================================================
 # -- wildcard --
 # cause *.domain only for http header *.your.domain.com ---> failed for https://your.domain.com
 # your.domain.com means:
@@ -25,4 +28,3 @@ local certbot_dns_cloudflare_api_key="0123456789abcdef0123456789abcdef01234567"
 
 # -- seconds waiting for cloudflare to propagate dns --
 local certbot_wait_cf_seconds="10"
-# ========================================================

@@ -1,5 +1,1 @@
-# Change to your domain
-#local certbot_servername="your.domain.com"
-
-# Source master config
 . ${PLUGINS}/plugin_load_databag.sh _certbot.cfg
