@@ -78,7 +78,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 ## Basic os check
 * Command
 
-  ```
+  ```bash
   ./start.sh -i \
     F_01_check_os \
     F_02_check_failed_login \
@@ -123,38 +123,38 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 *- Default block all traffic, except rules you define below*
 * Allow/revoke specific service
 
-  ```
+  ```basn
   firewall-cmd --add-service=http --permanent
   firewall-cmd --remore-service=http --permanent
   ```
 
 * Allow/revoke specific port
 
-  ```
+  ```bash
   firewall-cmd --add-port=2222/tcp --permanent
   firewall-cmd --remove-port=2222/tcp --permanent
   ```
   
 * List all current rules setting
 
-  ```
+  ```bash
   firewall-cmd --list-all
   ```
   
 * After setup done with argument "**--permanent**", all rules save into the following file by default
   
-  ```
+  ```bash
   /etc/firewalld/zone/public.xml
   ```
 
 * So reload firewalld to activate setting.
-  ```
+  ```bash
   firewall-cmd --reload
   ```
   
 * Services(http,https) defines in
   
-  ```
+  ```bash
   /usr/lib/firewalld/services/*
   ```
   
@@ -167,38 +167,38 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   * Confirm fail2ban works with **iptables** well
   
-    ```
+    ```bash
     iptables -S | grep -i fail2ban
     ```
   
   * List fail2ban status
   
-    ```
+    ```bash
     fail2ban-client status
     ```
   
   * List detailed status for specific **JAIL NAME**, including banned IP
 
-    ```
+    ```bash
     fail2ban-client status nginx-botsearch
     ```
 
   * Unban banned ip for specific **JAIL NAME**
 
-    ```
+    ```bash
     fail2ban-client set nginx-botsearch unbanip 192.168.1.72
     ```
     
   * List banned ip timeout for specific **JAIL NAME**
 
-    ```
+    ```bash
     ipset list fail2ban-nginx-botsearch
     ```
 
 # Quick Note - Fail2ban flow
 * **(Procedure) Be sure to start *"Firewalld / Fail2ban"* in the following order**
 
-  ```
+  ```bash
   systemctl stop firewalld
   systemctl stop fail2ban
   systemctl start firewalld
@@ -208,13 +208,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 - The following flow are executed automatically by **Fail2ban**
   * Create [ipset-nmae] *(What actually done behind)*
       
-      ```
+      ```bash
       ipset create <ipmset> hash:ip timeout <bantime>
       ```
       
   * Reject all traffic with [ipset-name] *(What actually done behind)*
       
-      ```
+      ```bash
       firewall-cmd --direct --add-rule <family> filter <chain> 0 -p <protocol> -m multiport --dports <port> -m set --match-set <ipmset> src -j <blocktype>
       ```
       
@@ -222,7 +222,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * **Found** illigal IP
   * **Ban** IP using **ipset** with timeout argument *(What actually done behind)*
       
-      ```
+      ```bash
       ipset add <ipmset> <ip> timeout <bantime> -exist
       ```
 
@@ -231,13 +231,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   **Command**
 
-    ```
+    ```bash
     # fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
     ```
 
   **Result**
 
-    ```
+    ```bash
     --------------Fail2ban Status-------------
     Status
     |- Number of jail:      4
@@ -301,33 +301,47 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 ## Certbot usage
   * Sign certificate (**RECOMMEND**), verified by DNS txt record
 
-    ```
+    ```bash
     certbot-auto --agree-tos -m $certbot_email --no-eff-email certonly --manual --preferred-challenges dns -d {domain}
     ```
 
   * Sign certificate , verified by web server root
 
-    ```
+    ```bash
     certbot-auto --agree-tos -m $certbot_email --no-eff-email certonly --webroot -w /{PATH}/laravel/public -d {domain} -n
     ```
 
   * Display all certificates
 
-    ```
+    ```bash
     certbot-auto certificates
     ```
 
   * Renew all certificates
 
-    ```
+    ```bash
     certbot-auto renew
     ```
 
   * Revoke and delete certificate
 
-    ```
+    ```bash
     certbot-auto revoke --cert-path /etc/letsencrypt/live/{domain}/cert.pem
     certbot-auto delete --cert-name {domain}
+    ```
+
+  * New site - url : gen nginx site config + apply letsencrypt ssl only
+
+    ```bash
+    ./start.sh -i F_02_PKG_06_nginx_02_ssl_site_config
+    ./start.sh -i F_02_PKG_07_certbot_02_apply_webroot
+    ```
+
+  * New site - url (wildcard) : gen nginx site config + apply letsencrypt ssl only
+
+    ```bash
+    ./start.sh -i F_02_PKG_06_nginx_02_ssl_site_config
+    ./start.sh -i F_02_PKG_07_certbot_02_apply_dns-cloudflare
     ```
 
 # Log analyzer
@@ -336,21 +350,21 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   **Reference the official description** [GoAccess](https://goaccess.io/)
 
-  ```
+  ```bash
   cat xxx.access.log | goaccess > xxx.html
   ```
 
 ## Logwatch usage
   *- View log analysis report.*
 
-  ```
+  ```bash
   logwatch
   ```
 
 ## pflogsumm usage
   *- View log analysis of postfix.*
 
-  ```
+  ```bash
   /usr/sbin/pflogsumm -d yesterday /var/log/maillog
   ```
 
@@ -358,14 +372,14 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 ## Glances usage
   *- Just like command "top", but more than that.*
 
-  ```
+  ```bash
   glances
   ```
 
 ## Iotop usage
   *- Just like command "top", but just for IO.*
 
-  ```
+  ```bash
   iotop
   ```
 
