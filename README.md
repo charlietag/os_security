@@ -34,7 +34,7 @@ Table of Contents
 1. This is also designed for **PRODUCTION** single server, which means this is suit for small business.
 
 # Environment
-  * CentOS 7
+  * CentOS 7 (7.0 ~ 7.5)
 
 # Warning
 If you found something is weired and not sure if you've been hacked.  You'd better reinstall your server.
