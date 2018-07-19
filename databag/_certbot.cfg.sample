@@ -8,7 +8,7 @@ local certbot_servername="your.domain.com"
 
 # ========================================================
 # Custom your webroot "ONLY for WEBROOT verification"
-local certbot_webroot="/home/myrails/public"
+local certbot_webroot="/home/rubyuser/rails_sites/myrails/public"
 # ========================================================
 
 # ========================================================
