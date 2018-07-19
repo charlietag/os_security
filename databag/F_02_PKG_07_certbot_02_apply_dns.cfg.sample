@@ -5,4 +5,4 @@
 #local certbot_servername="your.domain.com"
 
 # Source master config
-. ${HELPERS}/plugin_load_databag.sh _certbot.cfg
+. ${PLUGINS}/plugin_load_databag.sh _certbot.cfg

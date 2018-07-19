@@ -1,2 +1,2 @@
 # Source master config
-. ${HELPERS}/plugin_load_databag.sh _certbot.cfg
+. ${PLUGINS}/plugin_load_databag.sh _certbot.cfg
