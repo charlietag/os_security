@@ -17,6 +17,10 @@ local ng_botsearch_logpath="$(echo -e "$(echo "${ng_botsearch_logpaths[@]}" | se
 # Install f2b.sh script
 # *********************************
 local f2b_command="/root/bin/f2b"
+
+local f2b_command_dir="$(dirname $f2b_command)"
+test -d $f2b_command_dir || mkdir -p $f2b_command_dir
+
 echo "fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed \"s/\\s//g\" | tr ',' '\\n' |xargs -i bash -c \"echo \\\"----{}----\\\" ;fail2ban-client status {} ; echo \"" > $f2b_command
 chmod 755 $f2b_command
 
