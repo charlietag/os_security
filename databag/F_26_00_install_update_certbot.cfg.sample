@@ -1,5 +1,2 @@
-# Certbot git url
-#local certbot_src_url="https://github.com/certbot/certbot.git"
-
 # Source master config
-. ${DATABAG}/_certbot.cfg
+. ${HELPERS}/plugin_load_databag.sh _certbot.cfg

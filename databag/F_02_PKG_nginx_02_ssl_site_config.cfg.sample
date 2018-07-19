@@ -1,0 +1,28 @@
+# ***************************************************
+# * change your domain name here                    *
+# ***************************************************
+#local server_name="mylaravel.centos7.localdomain"
+local server_name="myrails.centos7.localdomain"
+#local site_app_name="mylaravel"
+local site_app_name="myrails"
+#local site_user_name="phpuser"
+local site_user_name="rubyuser"
+
+# [ rails | laravel ]
+local site_type="rails"
+
+
+# ***************************************************
+# * web root setting                                *
+# ***************************************************
+local web_root="/home/${site_user_name}/${site_type}_sites/${site_app_name}/public"
+
+# ***************************************************
+# Server type                                       *
+# * Rails:                                          *
+#   [ssl-sample-rails.conf]                         *
+# * PHP / Laravel:                                  *
+#   [ssl-sample-php.conf]                           *
+# ***************************************************
+[[ "${site_type}" = "laravel" ]] && local sample_config_file="ssl-sample-php.conf"
+[[ "${site_type}" = "rails" ]]   && local sample_config_file="ssl-sample-rails.conf"
