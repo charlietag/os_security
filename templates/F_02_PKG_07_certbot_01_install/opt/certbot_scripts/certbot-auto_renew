@@ -20,5 +20,5 @@ then
   echo "============================"
   echo " Restarting web server"
   echo "============================"
-  systemctl restart optnginx
+  systemctl restart nginx
 fi

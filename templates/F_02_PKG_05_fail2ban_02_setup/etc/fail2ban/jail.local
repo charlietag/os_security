@@ -15,7 +15,7 @@ port              = ${sshd_ddos_port}
 [nginx-limit-req]
 enabled           = ${ng_limit_req_enabled}
 port              = ${ng_limit_req_port}
-#logpath           = /opt/nginx/logs/*.error.log
+#logpath           = /var/log/nginx/*.error.log
 logpath           = ${ng_limit_req_logpath}
 
 [nginx-botsearch]
@@ -23,7 +23,7 @@ enabled           = ${ng_botsearch_enabled}
 port              = ${ng_botsearch_port}
 
 # use multi-line for logpath
-#logpath           = /opt/nginx/logs/*.access.log
-#                    /opt/nginx/logs/*.error.log
+#logpath           = /var/log/nginx/*.access.log
+#                    /var/log/nginx/*.error.log
 logpath           = ${ng_botsearch_logpath}
 
