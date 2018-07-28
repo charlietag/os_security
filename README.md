@@ -334,6 +334,11 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
     ```bash
     ./start.sh -i F_02_PKG_06_nginx_02_ssl_site_config
+    ```
+
+    **Before going on, be sure http port is reachable, otherwise webroot will fail (limitation for webroot verification!)**
+
+    ```bash
     ./start.sh -i F_02_PKG_07_certbot_02_apply_webroot
     ```
 
