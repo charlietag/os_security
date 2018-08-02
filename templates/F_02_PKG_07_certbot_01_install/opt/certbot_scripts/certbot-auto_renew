@@ -11,12 +11,27 @@ fi
 
 if [ $VALID_DAYS -lt $RENEW_BEFORE_DAYS ]
 then
+
+  echo "============================"
+  echo " Check for cloudflare"
+  echo "============================"
+  echo "---Install dns-cloudflare if needed  ---"
+  CERTBOT_PYTHON_PIP_CMD="/opt/eff.org/certbot/venv/bin/pip"
+  IF_CF="$($CERTBOT_PYTHON_PIP_CMD list --format=columns | grep certbot-dns-cloudflare)"
+  if [[ -z "$IF_CF" ]]; then
+    $CERTBOT_PYTHON_PIP_CMD install certbot-dns-cloudflare
+  else
+    echo "Pass..."
+  fi
+
+  echo ""
   echo "============================"
   echo " VALID: ${VALID_DAYS} days"
   echo " Renewing certifcates"
   echo "============================"
   $CERTBOT_CMD renew -n
 
+  echo ""
   echo "============================"
   echo " Restarting web server"
   echo "============================"
