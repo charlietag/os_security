@@ -5,7 +5,7 @@ maxretry          = ${f2b_maxretry}
 
 # Mail out if some jail banned IP , including whois, log
 # Default %(action_)s , <--- Just ban IP
-#action = %(action_mwl)s
+action = %(action_mwl)s
 
 [sshd]
 enabled           = ${sshd_enabled}
