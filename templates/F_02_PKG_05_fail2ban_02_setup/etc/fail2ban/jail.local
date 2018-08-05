@@ -1,4 +1,3 @@
-# cat jail.local 
 [DEFAULT]
 findtime          = ${f2b_findtime}
 bantime           = ${f2b_bantime}
@@ -16,7 +15,7 @@ port              = ${sshd_ddos_port}
 enabled           = ${ng_limit_req_enabled}
 port              = ${ng_limit_req_port}
 #logpath           = /var/log/nginx/*.error.log
-logpath           = ${ng_limit_req_logpath}
+#logpath           = ${ng_limit_req_logpath}
 
 [nginx-botsearch]
 enabled           = ${ng_botsearch_enabled}
@@ -25,5 +24,5 @@ port              = ${ng_botsearch_port}
 # use multi-line for logpath
 #logpath           = /var/log/nginx/*.access.log
 #                    /var/log/nginx/*.error.log
-logpath           = ${ng_botsearch_logpath}
+#logpath           = ${ng_botsearch_logpath}
 

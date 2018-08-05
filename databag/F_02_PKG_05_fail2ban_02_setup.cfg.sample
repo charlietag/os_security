@@ -35,26 +35,28 @@ local f2b_bantime="2592000"
 # ############
 local sshd_enabled="true"
 local sshd_port="2222"
-# logpath ---> fixed to default
+# logpath ---> fixed to default (systemd+/var/log)
 
 # ############
 #   sshd-ddos
 # ############
 local sshd_ddos_enabled="true"
 local sshd_ddos_port="2222"
-# logpath ---> fixed to default
+# logpath ---> fixed to default (systemd+/var/log)
 
 # ############
 #   nginx-limit-req
 # ############
 local ng_limit_req_enabled="true"
 local ng_limit_req_port="http,https"
-local ng_limit_req_logpaths=('/var/log/nginx/*.error.log')
+# logpath ---> fixed to default
+#local ng_limit_req_logpaths=('/var/log/nginx/*.error.log')
 
 # ############
 #   nginx-botsearch
 # ############
 local ng_botsearch_enabled="true"
 local ng_botsearch_port="http,https"
-local ng_botsearch_logpaths=('/var/log/nginx/*.access.log' '/var/log/nginx/*.error.log')
+# logpath ---> fixed to default
+#local ng_botsearch_logpaths=('/var/log/nginx/*.access.log' '/var/log/nginx/*.error.log')
 
