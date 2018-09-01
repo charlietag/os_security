@@ -199,8 +199,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 * **(Procedure) Be sure to start *"Firewalld / Fail2ban"* in the following order**
 
   ```bash
-  systemctl stop firewalld
   systemctl stop fail2ban
+  systemctl stop firewalld
   systemctl start firewalld
   systemctl start fail2ban
   ```
