@@ -111,6 +111,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * sshd-ddos
     * nginx-limit-req
     * nginx-botsearch
+* yum-cron
+  * Check updates for installed packages
 
 # Quick Note - Package
 ## Nginx module - os_preparation
