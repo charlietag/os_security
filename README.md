@@ -423,3 +423,5 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * New command
       * systemctl start nginx
 
+* 2018/12/13
+  * Adding Nginx WAF
