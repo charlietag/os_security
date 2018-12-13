@@ -1,0 +1,7 @@
+# ------ SpiderLabs/ModSecurity-nginx -----
+# Fetch latest nginx modsecurity version
+local ngx_http_modsecurity_version="$(curl -s "https://github.com/SpiderLabs/ModSecurity-nginx/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
+
+# Latest version url
+local ngx_http_modsecurity_url="https://github.com/SpiderLabs/ModSecurity-nginx/releases/download/${ngx_http_modsecurity_version}/modsecurity-nginx-${ngx_http_modsecurity_version=}.tar.gz"
+
