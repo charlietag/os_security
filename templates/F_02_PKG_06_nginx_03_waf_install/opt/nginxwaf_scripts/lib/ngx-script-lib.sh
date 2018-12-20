@@ -45,8 +45,10 @@ function stop_script (){
   echo ""
 }
 
-#function compare_version(){
-#}
+function check_version(){
+  local log_app_name=$1
+  local log_app_version=$2
+}
 
 function log_version(){
   local log_app_name=$1
@@ -62,3 +64,5 @@ function log_version(){
   echo "${log_app_name}:${log_app_version}" >> $THIS_VERSION_FILE
 }
 
+#function compare_version(){
+#}
