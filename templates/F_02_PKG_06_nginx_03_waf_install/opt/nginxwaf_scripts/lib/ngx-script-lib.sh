@@ -9,6 +9,10 @@ THIS_PATH_BASE="$(dirname "${THIS_SCRIPT}")"
 THIS_PATH_TMP="${THIS_PATH_BASE}/${THIS_SCRIPT_NAME}_TMP"
 THIS_VERSION_FILE="${THIS_PATH_BASE}/${THIS_SCRIPT_NAME}.pre"
 
+test -f $THIS_VERSION_FILE || touch $THIS_VERSION_FILE
+
+THIS_RC_CODE=0
+
 # -----------------------------
 # Debug use
 # -----------------------------
@@ -43,26 +47,52 @@ function stop_script (){
   echo "Folder \"${THIS_PATH_TMP}\" deleted ...!"
   echo "-------------------"
   echo ""
+
+  echo "-------------------"
+  echo "Restarting Nginx... !"
+  echo "-------------------"
+  systemctl restart nginx
+  echo ""
 }
 
-function check_version(){
-  local log_app_name=$1
-  local log_app_version=$2
+function compare_version(){
+  local app_name=$1
+  local app_version=$2
+  local app_version_pre="$(cat ${THIS_VERSION_FILE} | grep -E "^${app_name}:" | cut -d':' -f2)"
+
+  if [[ "${app_version}" != "${app_version_pre}" ]]; then
+    echo "\"${app_name}: ${app_version_pre} -> ${app_version}\""
+    THIS_RC_CODE=1
+  fi
 }
 
 function log_version(){
-  local log_app_name=$1
-  local log_app_version=$2
+  local app_name=$1
+  local app_version=$2
   
-  if [[ -z "${log_app_name}" ]] || [[ -z "${log_app_version}" ]]; then
+
+  sed -ri "/^${app_name}:/d" $THIS_VERSION_FILE
+  echo "${app_name}:${app_version}" >> $THIS_VERSION_FILE
+}
+
+function check_app(){
+  local app_name=$1
+  local app_version=$2
+
+  if [[ -z "${app_name}" ]] || [[ -z "${app_version}" ]]; then
     echo "Some var is missing...??"
     exit
   fi
 
-  test -f $THIS_VERSION_FILE || touch $THIS_VERSION_FILE
-  sed -i "/${log_app_name}/d" $THIS_VERSION_FILE
-  echo "${log_app_name}:${log_app_version}" >> $THIS_VERSION_FILE
+  compare_version "${app_name}" "${app_version}"
+  log_version "${app_name}" "${app_version}"
 }
 
-#function compare_version(){
-#}
+function check_app_done(){
+  if [[ $THIS_RC_CODE -eq 1 ]]; then
+    echo "--------------------------------"
+  else
+    exit
+  fi
+}
+

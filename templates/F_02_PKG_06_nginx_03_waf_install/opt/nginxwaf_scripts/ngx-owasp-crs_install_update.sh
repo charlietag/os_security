@@ -5,18 +5,14 @@
 # ------------------------------------
 . "$(dirname $0)/lib/ngx-script-lib.sh"
 
+check_app "nginx" "1.3"
+check_app_done
 start_script
 # ------------------------------------
 # Start
 # ------------------------------------
 echo "I am @ $(pwd)"
 
-
-log_version "fff" "2.3"
-log_version "abc" "0.9"
-
-log_version "fff" "3.9.3"
-log_version "abc" "0.987655"
 
 
 # ------------------------------------
