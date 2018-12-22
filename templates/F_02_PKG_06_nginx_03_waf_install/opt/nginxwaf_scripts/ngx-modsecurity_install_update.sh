@@ -6,6 +6,11 @@
 . "$(dirname $0)/lib/ngx-script-lib.sh"
 
 # ------------------------------------
+# Install prerequisite package
+# ------------------------------------
+rpm --quiet -q libmodsecurity || yum install -y libmodsecurity*
+
+# ------------------------------------
 # App version
 # ------------------------------------
 NGX_VER="$(nginx -v 2>&1 |cut -d '/' -f2)"
