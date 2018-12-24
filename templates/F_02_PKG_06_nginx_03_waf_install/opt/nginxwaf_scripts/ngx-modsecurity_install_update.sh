@@ -11,19 +11,19 @@
 rpm --quiet -q libmodsecurity || yum install -y libmodsecurity*
 
 # ------------------------------------
-# App version
+# Define and check app version
 # ------------------------------------
+# App version
 NGX_VER="$(nginx -v 2>&1 |cut -d '/' -f2)"
 MODSEC_VER="$(rpm -qi libmodsecurity | grep -i 'version' | awk '{print $3}')"
 NGX_MOD_VER="$(curl -s "https://github.com/SpiderLabs/ModSecurity-nginx/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
 
-# ------------------------------------
 # Check app version
-# ------------------------------------
 check_app "nginx" "${NGX_VER}"
 check_app "libmodsecurity" "${MODSEC_VER}"
 check_app "ModSecurity-nginx" "${NGX_MOD_VER}"
 check_app_done
+
 # ------------------------------------
 
 start_script
@@ -57,7 +57,7 @@ echo
 echo ">>>>>>>>>>>>>>>"
 echo "Copy objs/ngx_http_modsecurity_module.so ---> /etc/nginx/modules ....!"
 echo 
-\cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules
+\cp -f objs/ngx_http_modsecurity_module.so /etc/nginx/modules
 
 echo "Done ...!"
 echo 
