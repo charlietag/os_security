@@ -9,10 +9,10 @@
 # Define and check app version
 # ------------------------------------
 # App version
-OWASP_CRS_VER="$(curl -s "https://github.com/SpiderLabs/owasp-modsecurity-crs/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
+# PARAM_OWASP_CRS_VER : defined in cfg file
 
 # Check app version
-check_app "owasp-crs" "${OWASP_CRS_VER}"
+check_app "owasp-crs" "${PARAM_OWASP_CRS_VER}"
 check_app_done
 
 # ------------------------------------
@@ -25,8 +25,8 @@ start_script
 
 # Install SpiderLabs/owasp-modsecurity-crs....
 # OWASP CRS info
-#OWASP_CRS_VER="$(curl -s "https://github.com/SpiderLabs/owasp-modsecurity-crs/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
-OWASP_CRS_URL="https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/${OWASP_CRS_VER}.tar.gz"
+#PARAM_OWASP_CRS_VER="$(curl -s "https://github.com/SpiderLabs/owasp-modsecurity-crs/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
+OWASP_CRS_URL="https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/${PARAM_OWASP_CRS_VER}.tar.gz"
 OWASP_CRS_PATH="${THIS_PATH_TMP}/owasp-modsecurity-crs-*/rules"
 
 # Start to setup owasp rules

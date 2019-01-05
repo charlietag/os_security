@@ -6,22 +6,18 @@
 . "$(dirname $0)/lib/ngx-script-lib.sh"
 
 # ------------------------------------
-# Install prerequisite package
-# ------------------------------------
-rpm --quiet -q libmodsecurity || yum install -y libmodsecurity*
-
-# ------------------------------------
 # Define and check app version
 # ------------------------------------
 # App version
 NGX_VER="$(nginx -v 2>&1 |cut -d '/' -f2)"
-MODSEC_VER="$(rpm -qi libmodsecurity | grep -i 'version' | awk '{print $3}')"
 NGX_MOD_VER="$(curl -s "https://github.com/SpiderLabs/ModSecurity-nginx/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
+# PARAM_MODSEC_VER : defined in cfg file
+# current libmodsecurity.so version (readlink  /usr/local/modsecurity/lib/libmodsecurity.so)
 
 # Check app version
 check_app "nginx" "${NGX_VER}"
-check_app "libmodsecurity" "${MODSEC_VER}"
 check_app "ModSecurity-nginx" "${NGX_MOD_VER}"
+check_app "libmodsecurity" "${PARAM_MODSEC_VER}"
 check_app_done
 
 # ------------------------------------
@@ -31,10 +27,44 @@ start_script
 # ------------------------------------
 # Start
 # ------------------------------------
-# Install libmodsecurity (ModSecurity for Nginx)
-yum install -y libmodsecurity*
+# ------------------------------------
+# Remove packages which might be conflicted with manually compiled libmodsecurity
+# ------------------------------------
+rpm --quiet -q libmodsecurity || yum remove -y libmodsecurity*
 
-# Install SpiderLabs/ModSecurity-nginx....
+# ------------------------------------
+# Install libmodsecurity (ModSecurity for Nginx)
+# ------------------------------------
+#yum install -y libmodsecurity*
+
+# ------------------------------------
+# Install libmodsecurity (Manually compile libmodsecurity - Modsecurity for Nginx)
+# ------------------------------------
+# modsecurity info
+# PARAM_MODSEC_VER : defined in cfg file
+MODSEC_SRC_URL="https://github.com/SpiderLabs/ModSecurity/releases/download/${PARAM_MODSEC_VER}/modsecurity-${PARAM_MODSEC_VER}.tar.gz"
+MODSEC_SRC_PATH="${THIS_PATH_TMP}/modsecurity-${NGX_VER}"
+
+# Start to compile libmodsecurity.so
+# -- Latest version --
+#git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity
+# submodule(.gitmodules) folder contains nothing, do a submodule init / update
+#git submodule init
+#git submodule update
+#./build.sh
+
+# -- Fiexed version --
+# submodule(.gitmodules) folder contains everything, no need to do a submodule init / update
+wget $MODSEC_SRC_URL -O - | tar -xz
+cd ${MODSEC_SRC_PATH}
+./configure --with-compat --add-dynamic-module=../modsecurity-nginx-${NGX_MOD_VER}
+make || exit 1
+make install || exit 1
+cd $THIS_PATH_TMP # back to tmp folder
+
+# ------------------------------------
+# Install SpiderLabs/ModSecurity-nginx.... (modsecurity-nginx-connector)
+# ------------------------------------
 # Nginx info
 #NGX_VER="$(nginx -v 2>&1 |cut -d '/' -f2)" # defined above
 NGX_SRC_URL="http://nginx.org/download/nginx-${NGX_VER}.tar.gz"
