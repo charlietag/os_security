@@ -1,0 +1,10 @@
+# -----------------------
+# Description:
+# Define script path
+# -----------------------
+
+# Script of ModSecurity (libmodsecurity)
+local modsec_install_script="/opt/nginxwaf_scripts/ngx-modsecurity_install_update.sh"
+
+# Script of OWASP CRS
+local owasp_install_script="/opt/nginxwaf_scripts/ngx-owasp-crs_install_update.sh"
