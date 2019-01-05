@@ -8,3 +8,24 @@ local modsec_install_script="/opt/nginxwaf_scripts/ngx-modsecurity_install_updat
 
 # Script of OWASP CRS
 local owasp_install_script="/opt/nginxwaf_scripts/ngx-owasp-crs_install_update.sh"
+
+
+# -----------------------------
+# Fail2ban setting
+# -----------------------------
+# Enabled usage:
+#   enabled: true | false
+#
+# Port setting: choose which port to be banned if error found
+#   Leverage firewalld daemon , so use predefined info in firewalld /usr/lib/firewalld/services
+#     port   : http | https | ssh | http,https
+#   Customized config
+#     port   : 2222 | 3333 | 2222,3333
+
+# ############
+#   nginx-waf
+# ############
+local ng_waf_enabled="true"
+local ng_waf_port="http,https"
+local ng_waf_logpaths='/var/log/nginx/*.error.log'
+
