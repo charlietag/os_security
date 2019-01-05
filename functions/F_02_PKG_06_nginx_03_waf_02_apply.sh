@@ -6,11 +6,14 @@
 # =====================
 # Install libmodsecurity (ModSecurity for Nginx) + ModSecurity-nginx-connector
 
-# ******* Install Nginx-modsecurity update script *******
+# ******* Install / update : libmodsecurity / Nginx-modsecurity-connector *******
 echo "========================================="
-echo "   Install update Nginx-modsecurity scripts"
+echo "   Install / update : libmodsecurity / Nginx-modsecurity-connector"
 echo "========================================="
-# Build and install ngx_http_modsecurity_module.so 
 ${modsec_install_script}
+
+echo "========================================="
+echo "   Setup OWASP CRS rules"
+echo "========================================="
 ${owasp_install_script}
 
