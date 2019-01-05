@@ -20,5 +20,6 @@ chmod 755 /opt/nginxwaf_scripts/*.sh
 # *********************************
 echo "Adding nginx waf related update scripts into crontab..."
 sed -i /ngx-/d /etc/crontab
-echo "1 2 * * * root ${modsec_install_script} && ${owasp_install_script}" >> /etc/crontab
+echo "1 2 * * * root ${modsec_install_script}" >> /etc/crontab
+echo "30 2 * * * root ${owasp_install_script}" >> /etc/crontab
 
