@@ -27,9 +27,9 @@ start_script
 # ------------------------------------
 # Start
 # ------------------------------------
-# ------------------------------------
-# Remove packages which might be conflicted with manually compiled libmodsecurity
-# ------------------------------------
+echo "------------------------------------"
+echo "Remove packages which might be conflicted with manually compiled libmodsecurity"
+echo "------------------------------------"
 rpm --quiet -q libmodsecurity && yum remove -y libmodsecurity*
 
 # ------------------------------------
@@ -37,9 +37,9 @@ rpm --quiet -q libmodsecurity && yum remove -y libmodsecurity*
 # ------------------------------------
 #yum install -y libmodsecurity*
 
-# ------------------------------------
-# Install libmodsecurity (Manually compile libmodsecurity - Modsecurity for Nginx)
-# ------------------------------------
+echo " ------------------------------------"
+echo " Install libmodsecurity (Manually compile libmodsecurity - Modsecurity for Nginx)"
+echo " ------------------------------------"
 # modsecurity info
 # PARAM_MODSEC_VER : defined in cfg file
 MODSEC_SRC_URL="https://github.com/SpiderLabs/ModSecurity/releases/download/${PARAM_MODSEC_VER}/modsecurity-${PARAM_MODSEC_VER}.tar.gz"
@@ -64,9 +64,9 @@ make install || { echo "FATAL: make install" ; exit 1; }
 cd $THIS_PATH_TMP # back to tmp folder
 
 # ***********************************************************************************************************
-# ------------------------------------
-# Install SpiderLabs/ModSecurity-nginx.... (modsecurity-nginx-connector)
-# ------------------------------------
+echo " ------------------------------------"
+echo " Install SpiderLabs/ModSecurity-nginx.... (modsecurity-nginx-connector)"
+echo " ------------------------------------"
 # Nginx info
 #NGX_VER="$(nginx -v 2>&1 |cut -d '/' -f2)" # defined above
 NGX_SRC_URL="http://nginx.org/download/nginx-${NGX_VER}.tar.gz"
