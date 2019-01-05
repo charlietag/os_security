@@ -57,9 +57,9 @@ MODSEC_SRC_PATH="${THIS_PATH_TMP}/modsecurity-${PARAM_MODSEC_VER}"
 # submodule(.gitmodules) folder contains everything, no need to do a submodule init / update
 wget $MODSEC_SRC_URL -O - | tar -xz
 cd ${MODSEC_SRC_PATH}
-./configure --with-compat --add-dynamic-module=../modsecurity-nginx-${NGX_MOD_VER}
-make || exit 1
-make install || exit 1
+./configure --enable-parser-generation --enable-mutex-on-pm --with-lmdb
+make || { echo "FATAL: make" ; exit 1; }
+make install || { echo "FATAL: make install" ; exit 1; }
 
 cd $THIS_PATH_TMP # back to tmp folder
 
