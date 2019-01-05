@@ -60,6 +60,7 @@ cd ${MODSEC_SRC_PATH}
 ./configure --with-compat --add-dynamic-module=../modsecurity-nginx-${NGX_MOD_VER}
 make || exit 1
 make install || exit 1
+
 cd $THIS_PATH_TMP # back to tmp folder
 
 # ------------------------------------
