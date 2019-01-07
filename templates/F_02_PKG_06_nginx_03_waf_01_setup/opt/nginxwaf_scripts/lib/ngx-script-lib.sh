@@ -91,7 +91,7 @@ function check_app(){
   log_version "${app_name}" "${app_version}"
 }
 
-function check_app_done(){
+function check_app_run(){
   if [[ $THIS_RC_CODE -eq 1 ]]; then
     echo "--------------------------------"
   else

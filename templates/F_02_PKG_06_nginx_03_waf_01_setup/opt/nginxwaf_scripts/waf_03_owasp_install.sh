@@ -13,7 +13,7 @@
 
 # Check app version
 check_app "owasp-crs" "${PARAM_OWASP_CRS_VER}"
-check_app_done
+check_app_run
 
 # ------------------------------------
 
