@@ -83,7 +83,7 @@ wget $NGX_SRC_URL -O - | tar -xz
 # compile
 cd ${NGX_SRC_PATH}
 
-sed -i 's/NGX_LOG_WARN/NGX_LOG_ERROR/g' ../modsecurity-nginx-${NGX_MOD_VER}/src/ngx_http_modsecurity_module.c  # make sure modsecurity writes log into nginx "error" log, instead of using nginx error_log path warn;
+sed -i 's/NGX_LOG_WARN/NGX_LOG_ERR/g' ../modsecurity-nginx-${NGX_MOD_VER}/src/ngx_http_modsecurity_module.c  # make sure modsecurity writes log into nginx "error" log, instead of using nginx error_log path warn;
 
 ./configure --with-compat --add-dynamic-module=../modsecurity-nginx-${NGX_MOD_VER}
 make modules
