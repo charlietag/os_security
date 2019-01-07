@@ -32,6 +32,8 @@ echo "Remove packages which might be conflicted with manually compiled libmodsec
 echo "------------------------------------"
 rpm --quiet -q libmodsecurity && yum remove -y libmodsecurity*
 
+yum install -y libcurl libcurl-devel yajl yajl-devel libxml2 libxml2-devel ssdeep ssdeep-devel lua lua-devel lmdb lmdb-devel lmdb-libs GeoIP GeoIP-devel
+
 # ------------------------------------
 # Install libmodsecurity (ModSecurity for Nginx)
 # ------------------------------------
