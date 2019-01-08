@@ -13,7 +13,7 @@ echo "2. Setup Nginx configs for Nginx-WAF"
 echo "========================================="
 task_copy_using_cat
 
-chmod 755 /opt/nginxwaf_scripts/*.sh
+chmod 755 /opt/nginx_scripts/*.sh
 
 # *********************************
 # Adding nginx waf related update scripts into crontab

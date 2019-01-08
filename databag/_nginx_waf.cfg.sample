@@ -4,13 +4,13 @@
 # -----------------------
 
 # Script of ModSecurity (libmodsecurity)
-local modsec_install_script="/opt/nginxwaf_scripts/waf_01_libmodsecurity_install.sh"
+local modsec_install_script="/opt/nginx_scripts/waf_01_libmodsecurity_install.sh"
 
 # Script of ModSecurity Nginx Connector
-local connector_install_script="/opt/nginxwaf_scripts/waf_02_nginx_connector_install.sh"
+local connector_install_script="/opt/nginx_scripts/waf_02_nginx_connector_install.sh"
 
 # Script of OWASP CRS
-local owasp_install_script="/opt/nginxwaf_scripts/waf_03_owasp_install.sh"
+local owasp_install_script="/opt/nginx_scripts/waf_03_owasp_install.sh"
 
 
 # -----------------------------
