@@ -1,3 +1,8 @@
+# =====================
+# Enable databag
+# =====================
+# RENDER_CP
+
 # ******* Setup Nginx scripts*******
 echo "========================================="
 echo "* Setup Nginx scripts"
