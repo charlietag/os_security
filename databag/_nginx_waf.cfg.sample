@@ -1,5 +1,15 @@
+# ************** Nginx Header **************
 # -----------------------
-# Description:
+# Description
+# Define script path
+# -----------------------
+# Script of nginx headers_more
+local headers_install_script="/opt/nginx_scripts/headers_01_headers_more_install.sh"
+local ng_headers_server="CharlieTag" # Default=> Nginx: "nginx" , Apache: "Apache"
+
+# ************** WAF **************
+# -----------------------
+# Description
 # Define script path
 # -----------------------
 
