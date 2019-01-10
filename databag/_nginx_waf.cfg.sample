@@ -5,6 +5,8 @@
 # -----------------------
 # Script of nginx headers_more
 local headers_install_script="/opt/nginx_scripts/headers_01_headers_more_install.sh"
+
+# Nginx extra config (headers_more)
 local ng_headers_server="CharlieTag" # Default=> Nginx: "nginx" , Apache: "Apache"
 
 # ************** WAF **************
