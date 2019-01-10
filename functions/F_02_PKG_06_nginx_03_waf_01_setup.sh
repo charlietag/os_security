@@ -5,19 +5,17 @@
 
 # =====================
 
-# ******* Setup Nginx scripts lib *******
-helper_nginx_scripts_lib
+# ******* Setup Nginx scripts*******
+echo "* Setup install update Nginx-modsecurity scripts"
+helper_nginx_scripts
 
 # Install libmodsecurity (ModSecurity for Nginx) + ModSecurity-nginx-connector
 
 # ******* Install Nginx-modsecurity update script *******
 echo "========================================="
-echo "1. Setup install update Nginx-modsecurity scripts"
-echo "2. Setup Nginx configs for Nginx-WAF"
+echo "* Setup Nginx configs for Nginx-WAF"
 echo "========================================="
 task_copy_using_cat
-
-chmod 755 /opt/nginx_scripts/*.sh
 
 # *********************************
 # Adding nginx waf related update scripts into crontab
