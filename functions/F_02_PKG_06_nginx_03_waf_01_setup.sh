@@ -4,6 +4,10 @@
 # RENDER_CP
 
 # =====================
+
+# ******* Setup Nginx scripts lib *******
+helper_nginx_scripts_lib
+
 # Install libmodsecurity (ModSecurity for Nginx) + ModSecurity-nginx-connector
 
 # ******* Install Nginx-modsecurity update script *******
