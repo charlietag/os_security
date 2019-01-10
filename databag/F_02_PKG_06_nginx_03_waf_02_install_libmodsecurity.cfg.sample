@@ -1,2 +1,2 @@
-. ${PLUGINS}/plugin_load_databag.sh _nginx_waf.cfg
+. ${PLUGINS}/plugin_load_databag.sh _nginx_modules.cfg
 
