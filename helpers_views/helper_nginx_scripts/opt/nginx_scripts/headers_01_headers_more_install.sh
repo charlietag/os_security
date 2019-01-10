@@ -45,7 +45,6 @@ cd ${NGX_SRC_PATH}
 
 ./configure --with-compat --add-dynamic-module=../headers-more-nginx-module-${NGX_HEADERS_MORE_VER/v}
 make modules
-exit
 echo 
 echo ">>>>>>>>>>>>>>>"
 echo "Copy objs/ngx_http_headers_more_filter_module.so ---> /etc/nginx/modules ....!"
