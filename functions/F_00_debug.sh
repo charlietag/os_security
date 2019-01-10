@@ -21,15 +21,7 @@ echo "-----------function use only--------"
 echo "PLUGINS            : ${PLUGINS}"
 echo "TMP                : ${TMP}"
 echo "CONFIG_FOLDER      : ${CONFIG_FOLDER}"
-echo "HELPER_VIEW_FOLDER : ${HELPER_VIEW_FOLDER}"
 echo "DATABAG            : ${DATABAG}"
-echo ""
-
-#-----------Helper Use----------
-echo "-----------helper use only--------"
-echo "HELPER_VIEW_FOLDER : ${HELPER_VIEW_FOLDER}"
-echo ""
-echo ""
 echo ""
 
 #================= Testing ===============
