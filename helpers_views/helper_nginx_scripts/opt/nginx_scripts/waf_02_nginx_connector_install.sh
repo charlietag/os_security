@@ -36,7 +36,7 @@ NGX_SRC_URL="http://nginx.org/download/nginx-${NGX_VER}.tar.gz"
 NGX_SRC_PATH="${THIS_PATH_TMP}/nginx-${NGX_VER}"
 
 # Nginx modsecurity info
-#NGX_MOD_VER="$(curl -s "https://github.com/SpiderLabs/ModSecurity-nginx/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')" # defined above
+#NGX_MOD_VER # var defined above
 NGX_MOD_URL="https://github.com/SpiderLabs/ModSecurity-nginx/releases/download/${NGX_MOD_VER}/modsecurity-nginx-${NGX_MOD_VER}.tar.gz"
 
 # Start to compile modules/ngx_http_modsecurity_module.so

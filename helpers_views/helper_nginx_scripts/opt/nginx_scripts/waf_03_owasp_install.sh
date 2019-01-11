@@ -13,7 +13,7 @@
 
 # Check app version
 check_app "owasp-crs" "${PARAM_OWASP_CRS_VER}"
-check_app_run
+#check_app_run  # Comment this line, to avoid check app version , always execute this script
 
 # ------------------------------------
 
@@ -25,7 +25,6 @@ start_script
 
 # Install SpiderLabs/owasp-modsecurity-crs....
 # OWASP CRS info
-#PARAM_OWASP_CRS_VER="$(curl -s "https://github.com/SpiderLabs/owasp-modsecurity-crs/releases/latest" | grep -o 'tag/[v.0-9]*' | awk -F/ '{print $2}')"
 OWASP_CRS_URL="https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/${PARAM_OWASP_CRS_VER}.tar.gz"
 OWASP_CRS_PATH="${THIS_PATH_TMP}/owasp-modsecurity-crs-*/rules"
 
