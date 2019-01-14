@@ -42,5 +42,7 @@ local owasp_install_script="/opt/nginx_scripts/waf_03_owasp_install.sh"
 # ############
 local ng_waf_enabled="true"
 local ng_waf_port="http,https"
-local ng_waf_logpaths='/var/log/nginx/*.error.log'
+local ng_waf_logpaths='%(nginx_error_log)s'
+# logpath ---> fixed to default (systemd+/var/log)
+#local ng_waf_logpaths='/var/log/nginx/*.error.log'
 
