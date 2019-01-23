@@ -1,3 +1,6 @@
+# [DEFAULT] will not overwrite param, if param is setup in jail.conf
+# Ex. nginx-botsearch -> maxretry = 2, which is set in jail.conf
+
 [DEFAULT]
 findtime          = ${f2b_findtime}
 bantime           = ${f2b_bantime}
