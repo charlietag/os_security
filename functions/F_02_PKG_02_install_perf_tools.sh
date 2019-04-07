@@ -1,9 +1,11 @@
 # ***************************
-# glances
+# enhanced top
 # ***************************
-yum install -y glances
+yum install -y glances htop nmon
 
 # ***************************
-# iotop
+# enhaned iostat
 # ***************************
-yum install -y iotop
+yum install -y iotop dstat 
+
+

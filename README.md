@@ -425,3 +425,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
 * 2018/12/13
   * Adding Nginx WAF
+* 2019/04/07
+  * More tools about server performance
+    * htop
+    * nmon
+    * dstat
