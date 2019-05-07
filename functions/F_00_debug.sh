@@ -24,6 +24,19 @@ echo "CONFIG_FOLDER      : ${CONFIG_FOLDER}"
 echo "DATABAG            : ${DATABAG}"
 echo ""
 
+#-----------Function Extended Use----------
+echo "-----------function extended use only--------"
+echo "IF_IS_SOURCED_SCRIPT  : $(eval "${IF_IS_SOURCED_SCRIPT}")"
+echo "IF_IS_FUNCTION        : $(eval "${IF_IS_FUNCTION}")"
+echo "IF_IS_SOURCED_OR_FUNCTION  : $(eval "${IF_IS_SOURCED_OR_FUNCTION}")"
+echo ""
+echo "\${BASH_SOURCE[0]}    : ${BASH_SOURCE[0]}"
+echo "\${0}                 : ${0}"
+echo "\${FUNCNAME}          : ${FUNCNAME}"
+echo "Skip script sample    :"
+echo '[[ -n "$(eval "${IF_IS_SOURCED_OR_FUNCTION}")" ]] && return 0 || exit 0'
+echo ""
+
 #================= Testing ===============
 echo "================= Testing ==============="
 #-----------Helper Debug Use----------
