@@ -139,8 +139,10 @@ EOF
 
 SKIP_SCRIPT="$(cat <<EOF
 if [[ -n "\$(eval "\${IF_IS_SOURCED_OR_FUNCTION}")" ]]; then
+  echo "skip ---> return 0"
   return 0
 else
+  echo "skip ---> exit 0"
   exit 0
 fi
 EOF
