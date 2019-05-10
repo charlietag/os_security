@@ -38,13 +38,13 @@ wget $OWASP_CRS_URL -O - | tar -xz
 
 echo 
 echo ">>>>>>>>>>>>>>>"
-echo "rm -f /etc/nginx/server_features/NGINX-WAF/waf_conf/rules/* ....!"
+echo "rm -f ${OWASP_RULES_PATH}/* ....!"
 echo 
-rm -f /etc/nginx/server_features/NGINX-WAF/waf_conf/rules/*
+rm -f ${OWASP_RULES_PATH}/*
 
 echo 
 echo ">>>>>>>>>>>>>>>"
-echo "Copy owasp-modsecurity-crs-*/rules/* ---> /etc/nginx/server_features/NGINX-WAF/waf_conf/rules ....!"
+echo "Copy owasp-modsecurity-crs-*/rules/* ---> ${OWASP_RULES_PATH} ....!"
 echo 
 \cp -f ${OWASP_CRS_PATH}/* /etc/nginx/server_features/NGINX-WAF/waf_conf/rules/
 
