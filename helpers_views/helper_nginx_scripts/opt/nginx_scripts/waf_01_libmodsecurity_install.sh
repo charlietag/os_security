@@ -14,7 +14,7 @@
 
 # Check app version
 check_app "libmodsecurity" "${PARAM_MODSEC_VER}"
-#check_app_run # Comment this line, to avoid check app version , always execute this script
+check_app_run # Comment this line, to avoid check app version , always execute this script
 
 # ------------------------------------
 

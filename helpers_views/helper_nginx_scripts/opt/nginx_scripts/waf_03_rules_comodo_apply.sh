@@ -6,14 +6,19 @@
 . "$(dirname $0)/lib/ngx-script-lib.sh"
 
 # ------------------------------------
+# Only install when you choose to install "OWASP" rules
+# ------------------------------------
+[[ "${PARAM_WAF_RULES}" != "COMODO" ]] && eval "${SKIP_SCRIPT}"
+
+# ------------------------------------
 # Define and check app version
 # ------------------------------------
 # App version
 # PARAM_OWASP_CRS_VER : defined in cfg file
 
 # Check app version
-check_app "owasp-crs" "${PARAM_OWASP_CRS_VER}"
-#check_app_run  # Comment this line, to avoid check app version , always execute this script
+check_app "comodo-rules-version" "${PARAM_COMODO_RULES_VER}"
+check_app_run  # Comment this line, to avoid check app version , always execute this script
 
 # ------------------------------------
 
