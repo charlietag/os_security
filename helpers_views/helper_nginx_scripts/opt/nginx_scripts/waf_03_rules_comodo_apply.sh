@@ -39,7 +39,7 @@ wget \
 --header='User-Agent:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36' \
 --post-data "login=${PARAM_COMODO_RULES_account}&password=${PARAM_COMODO_RULES_password}&act=download&source=4&version=${PARAM_COMODO_RULES_VER}" \
 --content-disposition \
-https://waf.comodo.com/api \
+${PARAM_COMODO_API_URL} \
  -O - | tar -xz
 
 echo 
