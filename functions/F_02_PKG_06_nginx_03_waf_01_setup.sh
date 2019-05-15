@@ -13,5 +13,5 @@ helper_nginx_scripts
 echo "========================================="
 echo "* Setup Nginx configs for Nginx-WAF"
 echo "========================================="
-task_copy_using_cat
+task_copy_using_render_sed
 
