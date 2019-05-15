@@ -11,18 +11,30 @@ local ng_headers_server="CharlieTag" # Default=> Nginx: "nginx" , Apache: "Apach
 
 # ************** WAF **************
 # -----------------------
-# Description
 # Define script path
-# -----------------------
-
 # Script of ModSecurity (libmodsecurity)
+# -----------------------
 local modsec_install_script="/opt/nginx_scripts/waf_01_libmodsecurity_install.sh"
-
 # Script of ModSecurity Nginx Connector
 local connector_install_script="/opt/nginx_scripts/waf_02_nginx_connector_install.sh"
-
 # Script of OWASP CRS
-local owasp_install_script="/opt/nginx_scripts/waf_03_owasp_install.sh"
+local owasp_install_script="/opt/nginx_scripts/waf_03_rules_owasp_apply.sh"
+# Script of COMODO rules
+local owasp_install_script="/opt/nginx_scripts/waf_03_rules_comodo_apply.sh"
+
+# -----------------------
+# Options for default setup
+# ng_waf_rules="COMODO | OWASP" , Default use "COMODO"
+# -----------------------
+# OWASP
+#local ng_waf_rules="OWASP"
+
+
+# COMODO
+# Sign UP : https://waf.comodo.com/
+local ng_waf_rules="COMODO"
+local ng_waf_rules_account="email@gmail.com"
+local ng_waf_rules_password="xxxxxxxxxxxxxx"
 
 
 # -----------------------------
