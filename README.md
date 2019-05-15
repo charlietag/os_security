@@ -66,12 +66,12 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ```
 
 ## Installation
-* ~~Run **ALL** to do the following with one command~~
-  * ~~./start -a~~
-  * ~~Run security check~~
-  * ~~Install security package "**firewalld**" , "**fail2ban**"~~
-* To avoid running **ALL**, to **APPLY** and **DESTROY** **letsencrypt** cert **at the same time**.
-  * DO NOT run ***./start.sh -a***
+* Run **ALL** to do the following with one command
+  * ./start -a
+  * Run security check
+  * Install security package "**firewalld**" , "**fail2ban**"
+* ~~To avoid running **ALL**, to **APPLY** and **DESTROY** **letsencrypt** cert **at the same time**.~~
+  * ~~DO NOT run ***./start.sh -a***~~
 
 # Run Security Check
 
