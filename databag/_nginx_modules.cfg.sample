@@ -58,3 +58,12 @@ local ng_waf_logpaths='%(nginx_error_log)s'
 # logpath ---> fixed to default (systemd+/var/log)
 #local ng_waf_logpaths='/var/log/nginx/*.error.log'
 
+#
+# ************** UPDATE **************
+# -----------------------
+# Define script path
+# Script of updating nginx security related script
+# -----------------------
+local cron_ngx_modules_updates="/opt/nginx_scripts/cron_ngx_modules_updates.sh"
+
+
