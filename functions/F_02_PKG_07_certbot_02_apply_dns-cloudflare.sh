@@ -2,7 +2,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 # Init action
 . ${PLUGINS}/plugin_certbot_path.sh

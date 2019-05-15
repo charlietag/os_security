@@ -22,6 +22,7 @@ echo "PLUGINS            : ${PLUGINS}"
 echo "TMP                : ${TMP}"
 echo "CONFIG_FOLDER      : ${CONFIG_FOLDER}"
 echo "DATABAG            : ${DATABAG}"
+echo "DATABAG_FILE       : ${DATABAG_FILE}"
 echo ""
 
 #-----------Function Extended Use----------

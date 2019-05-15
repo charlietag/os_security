@@ -1,7 +1,7 @@
 # =====================
 # Enable databag
 # =====================
-# RENDER_CP
+# DATABAG_CFG:enable
 
 # Convert array to multiple lines
 # ### ng_limit_req_logpaths ###
