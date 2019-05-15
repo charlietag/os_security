@@ -4,6 +4,12 @@
 # =====================
 # DATABAG_CFG:enable
 
+# ------------------------------------
+# Make sure apply action is currect.
+[[ "${certbot_apply_action}" != "webroot" ]] && eval "${SKIP_SCRIPT}"
+# ------------------------------------
+
+
 # Init action
 . ${PLUGINS}/plugin_certbot_path.sh
 # Before action

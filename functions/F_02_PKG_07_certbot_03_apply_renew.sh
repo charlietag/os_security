@@ -4,6 +4,12 @@
 # =====================
 # DATABAG_CFG:enable
 
+# ------------------------------------
+# Make sure apply action is currect.
+[[ "${certbot_apply_action}" != "renew" ]] && eval "${SKIP_SCRIPT}"
+# ------------------------------------
+
+
 # Init action
 . ${PLUGINS}/plugin_certbot_path.sh
 # Before action
@@ -11,19 +17,9 @@
 #**********************************************
 
 #**********************************************
-echo "---Warning: this cannot be rollback!---"
-echo "---Revoke and Delete all certs using certbot---"
-echo -n "Are you sure (Yes/No)? "
-local revoke_confirm="N"
-read revoke_confirm
-if [ "${revoke_confirm}" != 'Yes' ]
-then
-  echo "canceled..."
-  exit
-fi
-
-$certbot_command revoke --cert-path /etc/letsencrypt/live/${certbot_servername}/cert.pem
-$certbot_command delete --cert-name ${certbot_servername}
+# Start to apply letsencrypt SSL cert "ONLY" with "WEBROOT" verification
+echo "---Renewing all certs using certbot via \"ONLY WEBROOT\"---"
+$certbot_command renew -n
 #**********************************************
 
 #**********************************************

@@ -6,7 +6,7 @@
 
 # ------------------------------------
 # Make sure apply action is currect.
-[[ "${certbot_apply_action}" != "dns" ]] && eval "${SKIP_SCRIPT}"
+[[ "${certbot_apply_action}" != "revoke_destroy" ]] && eval "${SKIP_SCRIPT}"
 # ------------------------------------
 
 
@@ -17,9 +17,19 @@
 #**********************************************
 
 #**********************************************
-# Start to apply letsencrypt SSL cert with DNS txt record verification
-echo "---Apply cert using certbot via dns txt record---"
-$certbot_command --agree-tos -m $certbot_email --no-eff-email certonly --manual --preferred-challenges dns -d $certbot_servername
+echo "---Warning: this cannot be rollback!---"
+echo "---Revoke and Delete all certs using certbot---"
+echo -n "Are you sure (Yes/No)? "
+local revoke_confirm="N"
+read revoke_confirm
+if [ "${revoke_confirm}" != 'Yes' ]
+then
+  echo "canceled..."
+  exit
+fi
+
+$certbot_command revoke --cert-path /etc/letsencrypt/live/${certbot_servername}/cert.pem
+$certbot_command delete --cert-name ${certbot_servername}
 #**********************************************
 
 #**********************************************
