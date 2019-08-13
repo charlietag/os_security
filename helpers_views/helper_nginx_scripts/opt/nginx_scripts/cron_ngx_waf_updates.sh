@@ -10,5 +10,8 @@ exit
 # ------------------------------------
 # Install & Update
 # ------------------------------------
-# nginx headers_more module
-${SCRIPTS_PATH}/headers_01_headers_more_install.sh
+# nginx waf module
+#${SCRIPTS_PATH}/waf_01_libmodsecurity_install.sh
+#${SCRIPTS_PATH}/waf_02_nginx_connector_install.sh
+#${SCRIPTS_PATH}/waf_03_rules_comodo_apply.sh
+${SCRIPTS_PATH}/waf_03_rules_owasp_apply.sh
