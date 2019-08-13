@@ -1,9 +1,10 @@
 #!/bin/bash
+#set -x
 
 # ------------------------------------
 # Source script lib
 # ------------------------------------
-. "$(dirname $0)/lib/ngx-script-lib.sh"
+. "$(dirname $0)/../lib/ngx-script-lib.sh"
 
 # ------------------------------------
 # Only install when you choose to install "OWASP" rules
@@ -38,9 +39,9 @@ wget $OWASP_CRS_URL -O - | tar -xz
 
 echo 
 echo ">>>>>>>>>>>>>>>"
-echo "rm -f ${PARAM_OWASP_RULES_PATH}/* ....!"
+echo "SAFE_DELETE \"${PARAM_OWASP_RULES_PATH}/*\" ....!"
 echo 
-rm -f ${PARAM_OWASP_RULES_PATH}/*
+SAFE_DELETE "${PARAM_OWASP_RULES_PATH}/*"
 
 echo 
 echo ">>>>>>>>>>>>>>>"

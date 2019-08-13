@@ -3,7 +3,7 @@
 # ------------------------------------
 # Source script lib
 # ------------------------------------
-. "$(dirname $0)/lib/ngx-script-lib.sh"
+. "$(dirname $0)/../lib/ngx-script-lib.sh"
 
 # ------------------------------------
 # Only install when you choose to install "COMODO" rules

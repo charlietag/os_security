@@ -3,7 +3,7 @@
 # ------------------------------------
 # Source script lib
 # ------------------------------------
-. "$(dirname $0)/lib/ngx-script-lib.sh"
+. "$(dirname $(readlink -m $0))/../lib/ngx-script-lib.sh"
 
 # ------------------------------------
 # Define and check app version
@@ -14,7 +14,6 @@
 check_app "nginx" "${PARAM_NGX_VER}"
 check_app "headers-more-nginx-module" "${PARAM_NGX_HEADERS_MORE_VER}"
 check_app_run
-
 # ------------------------------------
 
 start_script
@@ -25,6 +24,8 @@ start_script
 echo " ------------------------------------"
 echo " Install headers-more-nginx-module...."
 echo " ------------------------------------"
+stop_script
+exit
 # Nginx info
 #PARAM_NGX_VER # var defined above
 NGX_SRC_URL="http://nginx.org/download/nginx-${PARAM_NGX_VER}.tar.gz"
