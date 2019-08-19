@@ -1,13 +1,12 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG_CFG:enable
+# DATABAG_CFG:disable
 
 # =====================
 # Install libmodsecurity (ModSecurity for Nginx)
 
 echo "========================================="
-echo "   Install libmodsecurity..."
+echo "   Install libmodsecurity... (should be done while step: setup)"
 echo "========================================="
-${modsec_install_script}
 

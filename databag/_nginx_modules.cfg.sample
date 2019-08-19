@@ -4,7 +4,7 @@
 # Define script path
 # -----------------------
 # Script of nginx headers_more
-local headers_install_script="/opt/nginx_scripts/headers_01_headers_more_install.sh"
+local headers_install_script="/opt/nginx_scripts/package_ngx_headers.sh"
 
 # Nginx extra config (headers_more)
 local ng_headers_server="CharlieTag" # Default=> Nginx: "nginx" , Apache: "Apache"
@@ -14,13 +14,8 @@ local ng_headers_server="CharlieTag" # Default=> Nginx: "nginx" , Apache: "Apach
 # Define script path
 # Script of ModSecurity (libmodsecurity)
 # -----------------------
-local modsec_install_script="/opt/nginx_scripts/waf_01_libmodsecurity_install.sh"
-# Script of ModSecurity Nginx Connector
-local connector_install_script="/opt/nginx_scripts/waf_02_nginx_connector_install.sh"
-# Script of OWASP CRS
-local owasp_install_script="/opt/nginx_scripts/waf_03_rules_owasp_apply.sh"
-# Script of COMODO rules
-local owasp_install_script="/opt/nginx_scripts/waf_03_rules_comodo_apply.sh"
+local waf_install_script="/opt/nginx_scripts/package_ngx_waf.sh"
+
 
 # -----------------------
 # Options for default setup

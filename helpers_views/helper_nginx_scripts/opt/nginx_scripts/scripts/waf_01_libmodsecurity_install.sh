@@ -3,7 +3,7 @@
 # ------------------------------------
 # Source script lib
 # ------------------------------------
-. "$(dirname $0)/../lib/ngx-script-lib.sh"
+. "$(dirname $(readlink -m $0))/../lib/ngx-script-lib.sh"
 
 # ------------------------------------
 # Define and check app version

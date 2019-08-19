@@ -13,7 +13,6 @@
 # Install ModSecurity OWASP CRS rules
 
 echo "========================================="
-echo "   Install ModSecurity OWASP CRS rules..."
+echo "   Install ModSecurity OWASP CRS rules... (should be done while step: setup)"
 echo "========================================="
-${owasp_install_script}
 

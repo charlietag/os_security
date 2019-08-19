@@ -15,3 +15,9 @@ echo "* Setup Nginx configs for Nginx-WAF"
 echo "========================================="
 task_copy_using_render_sed
 
+# ******* Install nginx headers_more module *******
+echo "========================================="
+echo "   Install Nginx headers_more module..."
+echo "========================================="
+${headers_install_script}
+

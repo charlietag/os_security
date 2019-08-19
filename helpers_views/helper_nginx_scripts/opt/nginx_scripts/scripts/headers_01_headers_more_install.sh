@@ -24,8 +24,7 @@ start_script
 echo " ------------------------------------"
 echo " Install headers-more-nginx-module...."
 echo " ------------------------------------"
-stop_script
-exit
+
 # Nginx info
 #PARAM_NGX_VER # var defined above
 NGX_SRC_URL="http://nginx.org/download/nginx-${PARAM_NGX_VER}.tar.gz"

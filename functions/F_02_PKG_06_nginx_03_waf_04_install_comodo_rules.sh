@@ -13,7 +13,6 @@
 # Install ModSecurity COMODO rules
 
 echo "========================================="
-echo "   Install ModSecurity COMODO rules..."
+echo "   Install ModSecurity COMODO rules... (should be done while step: setup)"
 echo "========================================="
-${comodo_install_script}
 

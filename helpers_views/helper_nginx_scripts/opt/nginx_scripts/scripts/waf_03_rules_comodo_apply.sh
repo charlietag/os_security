@@ -3,7 +3,7 @@
 # ------------------------------------
 # Source script lib
 # ------------------------------------
-. "$(dirname $0)/../lib/ngx-script-lib.sh"
+. "$(dirname $(readlink -m $0))/../lib/ngx-script-lib.sh"
 
 # ------------------------------------
 # Only install when you choose to install "COMODO" rules
@@ -27,11 +27,12 @@ start_script
 # ------------------------------------
 # Start
 # ------------------------------------
-# Start to setup comodo rules
-echo ">>>>>>>>>>>>>>>"
-echo "Copy comodo rules ---> ${PARAM_COMODO_RULES_PATH} ....!"
-cd ${PARAM_COMODO_RULES_PATH}
+echo " ------------------------------------"
+echo " Install COMODO Rules - CWAF...."
+echo " ------------------------------------"
+# Install Comodo WAF Rules....
 
+# Start to setup comodo rules
 wget \
 --header='Accept-Language:en-us,en;q=0.5' \
 --header='Accept:text/html;q=0.9,*/*;q=0.8' \
@@ -42,7 +43,21 @@ wget \
 ${PARAM_COMODO_API_URL} \
  -O - | tar -xz
 
-echo 
+IF_RULES_DOWNLOADED="$(ls ${THIS_PATH_TMP} | grep '\.conf')"
+if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
+  echo 
+  echo ">>>>>>>>>>>>>>>"
+  echo "SAFE_DELETE \"${PARAM_COMODO_RULES_PATH}/*\" ....!"
+  echo 
+  SAFE_DELETE "${PARAM_COMODO_RULES_PATH}/*"
+
+  echo 
+  echo ">>>>>>>>>>>>>>>"
+  echo "Copy comodo rules ---> ${PARAM_COMODO_RULES_PATH}/ ....!"
+  cd ${PARAM_COMODO_RULES_PATH}
+  echo 
+  \cp -f ${THIS_PATH_TMP}/* ${PARAM_COMODO_RULES_PATH}/
+fi
 
 echo "Done ...!"
 echo 
