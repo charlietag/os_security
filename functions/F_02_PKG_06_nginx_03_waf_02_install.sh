@@ -1,12 +1,13 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG_CFG:disable
+# DATABAG_CFG:enable
 
 # =====================
-# Install ModSecurity-nginx-connector
 
+# ******* Install nginx waf module *******
 echo "========================================="
-echo "   Install Nginx-modsecurity-connector... (should be done while step: setup)"
+echo "   Install Nginx WAF module..."
 echo "========================================="
+${waf_install_script}
 

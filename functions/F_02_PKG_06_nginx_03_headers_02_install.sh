@@ -1,12 +1,13 @@
 # =====================
 # Enable databag
 # =====================
-# DATABAG_CFG:disable
+# DATABAG_CFG:enable
 
 # =====================
-# Install nginx headers_more module
 
+# ******* Install nginx headers_more module *******
 echo "========================================="
-echo "   Install Nginx headers_more module... (should be done while step: setup)"
+echo "   Install Nginx headers_more module..."
 echo "========================================="
+${headers_install_script}
 
