@@ -55,7 +55,7 @@ if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
   \cp -f ${OWASP_CRS_PATH}/* ${PARAM_OWASP_RULES_PATH}/
 
   # Make sure ${OWASP_CRS_SETUP} exists, and not a empty file
-  if [ -s "${OWASP_CRS_SETUP}" ]; then
+  if [ -s ${OWASP_CRS_SETUP} ]; then
     echo 
     echo ">>>>>>>>>>>>>>>"
     echo "cat owasp-modsecurity-crs-*/crs-setup.conf.example > ${PARAM_OWASP_RULES_PATH}/../crs-setup.conf ....!"
