@@ -19,17 +19,17 @@ local waf_install_script="/opt/nginx_scripts/package_ngx_waf.sh"
 
 # -----------------------
 # Options for default setup
-# ng_waf_rules="COMODO | OWASP" , Default use "COMODO"
+# ng_waf_rules="COMODO | OWASP" , Default use "OWSAP"
 # -----------------------
-# OWASP
-#local ng_waf_rules="OWASP"
+# ~~~ OWASP ~~~
+local ng_waf_rules="OWASP"
 
 
-# COMODO
+# ~~~ COMODO ~~~
 # Sign UP : https://waf.comodo.com/
-local ng_waf_rules="COMODO"
-local ng_waf_rules_account="email@gmail.com"
-local ng_waf_rules_password="xxxxxxxxxxxxxx"
+#local ng_waf_rules="COMODO"
+#local ng_waf_rules_account="email@gmail.com"
+#local ng_waf_rules_password="xxxxxxxxxxxxxx"
 
 
 # -----------------------------
