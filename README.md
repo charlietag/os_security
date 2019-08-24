@@ -446,7 +446,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * New command
       * systemctl start nginx
 * 2018/12/13
-  * Adding Nginx WAF
+  * ~~Adding Nginx WAF~~ finished at 2019/08/25
 * 2019/04/07
   * More tools about server performance
     * htop
