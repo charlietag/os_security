@@ -9,5 +9,6 @@
 echo "========================================="
 echo "   Install Nginx headers_more module..."
 echo "========================================="
+echo "This might take a little bit longer... please wail for awhile"
 ${headers_install_script}
 
