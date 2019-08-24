@@ -7,7 +7,7 @@
 echo "========================================="
 echo "   Setup fail2ban for Nginx-modsecurity (Nginx WAF)"
 echo "========================================="
-task_copy_using_render
+task_copy_using_render_sed
 
 echo "---reload fail2ban---"
 fail2ban-client reload

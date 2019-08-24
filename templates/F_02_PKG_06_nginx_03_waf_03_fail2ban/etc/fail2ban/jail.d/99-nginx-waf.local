@@ -1,4 +1,4 @@
 [nginx-modsecurity]
-enabled  = ${ng_waf_enabled}
-port     = ${ng_waf_port}
-logpath  = ${ng_waf_logpaths}
+enabled  = {{ng_waf_enabled}}
+port     = {{ng_waf_port}}
+logpath  = {{ng_waf_logpaths}}
