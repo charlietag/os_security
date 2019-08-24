@@ -69,7 +69,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 * Run **ALL** to do the following with one command
   * ./start -a
   * Run security check
-  * Install security package "**firewalld**" , "**fail2ban**" , "**letsencrypt**" , "**waf**" , "**nginx header**"
+  * Install security package "**firewalld**" , "**fail2ban**" , "**letsencrypt**" , "**nginx waf**" , "**nginx header**"
 * ~~To avoid running **ALL**, to **APPLY** and **DESTROY** **letsencrypt** cert **at the same time**.~~
   * ~~DO NOT run ***./start.sh -a***~~
 
@@ -120,6 +120,29 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * This is installed by default on my *os_preparation repo*
       * **[Link](https://github.com/charlietag/os_preparation/blob/master/templates/F_06_01_setup_nginx_include/opt/nginx/conf/include.d/limit_req_zone.conf)**
     * This would prevent your server from **DDOS** attacks.
+
+## NGINX 3rd Party Modules - os_security
+  https://www.nginx.com/resources/wiki/modules/
+
+  * Headers More
+
+    ```bash
+    more_set_headers    "Server: CharlieTag"; # Default=> Nginx: "nginx" , Apache: "Apache"
+    ```
+
+  * ModSecurity
+
+    ```bash
+    ...
+    modsecurity on;
+    ...
+    ```
+
+  * ModSecurity - supported policies
+    * OWASP CRS
+      * https://github.com/SpiderLabs/owasp-modsecurity-crs
+    * COMODO
+      * https://waf.comodo.com
 
 ## Firewalld usage
 *- Default block all traffic, except rules you define below*
@@ -422,7 +445,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       * systemctl start optnginx
     * New command
       * systemctl start nginx
-
 * 2018/12/13
   * Adding Nginx WAF
 * 2019/04/07
@@ -430,3 +452,14 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * htop
     * nmon
     * dstat
+* 2019/08/25
+  * Add Nginx module 'ngx_http_headers_more_filter_module.so' to change server tag ('Server:Nginx' -> 'Server: CustomizedName')
+  * Finished intergrating Nginx WAF module into os_security
+    * Modules
+      * libmodsecurity.so
+      * ngx_http_modsecurity_module.so (ModSecurity-nginx connector)
+    * WAF Policies
+      * OWASP CRS (https://github.com/SpiderLabs/owasp-modsecurity-crs)
+      * COMODO (register free account required: https://waf.comodo.com)
+  * Finished intergrating Nginx WAF with Fail2ban
+    * nginx-modsecurity (modified from apache-modsecurity)
