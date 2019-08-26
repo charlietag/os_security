@@ -3,6 +3,12 @@
 # =====================
 # DATABAG_CFG:enable
 
+# ------------------------------------
+# Make sure apply action is currect.
+[[ -z "${sample_config_file}" ]] && eval "${SKIP_SCRIPT}"
+# ------------------------------------
+
+
 #--------------------------------------
 # Rendering ssl_nginx config
 #--------------------------------------
@@ -11,10 +17,10 @@ echo "  Rendering ssl_nginx configuration"
 echo "========================================="
 
 # ---------- Define var ---------
-if [[ -z "${sample_config_file}" ]]; then
-  echo "\"sample_config_file\" is not defined !"
-  exit
-fi
+#if [[ -z "${sample_config_file}" ]]; then
+#  echo "\"sample_config_file\" is not defined !"
+#  exit
+#fi
 
 if [[ "${sample_config_file}" = "ssl-sample-php.conf" ]]; then
   local ssl_sample_config="${CONFIG_FOLDER}/etc/nginx/laravel_sites/ssl-sample-php.conf"

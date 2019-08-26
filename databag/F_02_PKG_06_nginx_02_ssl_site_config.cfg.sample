@@ -5,8 +5,8 @@ local server_name="myrails.centos7.localdomain"  # ---> ex: mylaravel.centos7.lo
 local site_app_name="myrails"                    # ---> ex: mylaravel
 local site_user_name="rubyuser"                  # ---> ex: phpuser
 
-# [ rails | laravel ]
-local site_type="rails"
+# [ rails | laravel | disable]
+local site_type="disable"
 
 
 # ***************************************************
