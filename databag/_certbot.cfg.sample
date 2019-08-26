@@ -4,8 +4,8 @@ local certbot_src_url="https://github.com/certbot/certbot.git"
 local certbot_email="email@gmail.com"
 
 # Apply action:
-#               dns-cloudflare | dns | webroot | renew | revoke_destroy
-local certbot_apply_action="webroot"
+#               dns-cloudflare | dns | webroot | renew | revoke_destroy | disable
+local certbot_apply_action="disable"
 
 # ========================================================
 #        Load servername from nginx config

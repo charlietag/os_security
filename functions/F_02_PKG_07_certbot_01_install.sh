@@ -4,6 +4,12 @@
 # =====================
 # DATABAG_CFG:enable
 
+# ------------------------------------
+# Make sure apply action is currect.
+[[ -z "$(echo "${certbot_apply_action}" | grep -E "dns-cloudflare|dns|webroot|renew|revoke_destroy")" ]] && eval "${SKIP_SCRIPT}"
+# ------------------------------------
+
+
 # Init action
 . ${PLUGINS}/plugin_certbot_path.sh
 #**********************************************
