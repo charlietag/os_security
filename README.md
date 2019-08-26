@@ -141,13 +141,17 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * ModSecurity - supported policies
     * OWASP CRS
       * https://github.com/SpiderLabs/owasp-modsecurity-crs
+      * Memory consumption
+        * 70 MB / per nginx process
     * COMODO
       * https://waf.comodo.com
-        * Recommended: COMODO
-          (register an account for 1-year-free, require renew 1-year-free order every year)
-         * OWSASP would have false positive while:
-           * Wordpress , updating articles
-           * Redmine   , Click between pages
+      * Memory consumption
+        * 200 MB / per nginx process
+      * Recommended: COMODO
+        (register an account for 1-year-free, require renew 1-year-free order every year)
+       * OWSASP would have false positive while:
+         * Wordpress , updating articles
+         * Redmine   , Click between pages
 
 ## Firewalld usage
 *- Default block all traffic, except rules you define below*
