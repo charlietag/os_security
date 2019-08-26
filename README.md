@@ -148,7 +148,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * COMODO
       * https://waf.comodo.com
       * Memory consumption
-        * 200 MB / per nginx process
+        * 300 MB / per nginx process
       * Recommended: COMODO
         (register an account for 1-year-free, require renew 1-year-free order every year)
        * OWSASP would have false positive while:
