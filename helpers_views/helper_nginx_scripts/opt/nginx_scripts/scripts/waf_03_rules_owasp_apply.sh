@@ -56,7 +56,7 @@ if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
   \cp -f ${OWASP_CRS_PATH}/* ${PARAM_OWASP_RULES_PATH}/
 
   if [[ "${PARAM_OWASP_CRS_VER_AZURE_IDS}" != "disable" ]]; then
-     ls ${PARAM_OWASP_RULES_PATH}/*.conf | grep -vE "${PARAM_OWASP_CRS_VER_AZURE_IDS}" | xargs -i bash -c "echo --- {} to {}.bak (base on azure)---; mv {} {}.bak"
+    ls ${PARAM_OWASP_RULES_PATH}/*.conf | grep -vE "${PARAM_OWASP_CRS_VER_AZURE_IDS}" | xargs -i bash -c "echo \"--- {} ---\"; echo  \"(based on Azure)  -> {}.bak\"; mv {} {}.bak; echo"
   fi
 
   # Make sure ${OWASP_CRS_SETUP} exists, and not a empty file
