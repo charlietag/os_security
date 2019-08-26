@@ -11,7 +11,7 @@ helper_nginx_scripts
 
 # ******* Setup Nginx config *******
 echo "========================================="
-echo "* Setup Nginx configs for Nginx-WAF"
+echo "* Setup Nginx configs for Nginx headers_more module"
 echo "========================================="
 task_copy_using_render_sed
 
