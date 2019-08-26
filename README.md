@@ -143,6 +143,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       * https://github.com/SpiderLabs/owasp-modsecurity-crs
       * Memory consumption
         * 70 MB / per nginx process
+      * Should reference Azure config (if really need OWASP), to avoid False Positive
+        * https://docs.microsoft.com/en-us/azure/application-gateway/waf-overview
     * COMODO
       * https://waf.comodo.com
       * Memory consumption
