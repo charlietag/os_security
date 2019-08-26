@@ -143,7 +143,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       * https://github.com/SpiderLabs/owasp-modsecurity-crs
       * Memory consumption
         * 100 MB / per nginx process
-      * Should reference Azure config, to Avoid False Positive
+      * (os_security Default) Should reference Azure config, to Avoid False Positive
         * https://docs.microsoft.com/en-us/azure/application-gateway/waf-overview
 
           ```bash

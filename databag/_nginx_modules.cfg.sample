@@ -23,7 +23,7 @@ local waf_install_script="/opt/nginx_scripts/package_ngx_waf.sh"
 # -----------------------
 # ~~~ OWASP ~~~
 local ng_waf_rules="OWASP"
-local ng_waf_rules_azure="disable" #---> [ enable | disable ]
+local ng_waf_rules_azure="enable" #---> [ enable | disable ]
 
 
 # ~~~ COMODO ~~~
