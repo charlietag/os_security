@@ -145,6 +145,11 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
         * 100 MB / per nginx process
       * Should reference Azure config, to Avoid False Positive
         * https://docs.microsoft.com/en-us/azure/application-gateway/waf-overview
+
+          ```bash
+          curl -s https://docs.microsoft.com/zh-tw/azure/application-gateway/waf-overview |grep -Eo "REQUEST-[[:digit:]]+" |sort -n | uniq | sed ':a;N;$!ba;s/\n/|/g'
+          ```
+
         * if you really need OWASP
         * if you have time to maintain WAF rules (OWASP-CRS) yourself
     * COMODO
