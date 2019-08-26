@@ -1,0 +1,37 @@
+#Put local vars here for the specific function
+
+# ***************************************
+# Install & Setup Postfix
+# ***************************************
+local postfix_installation="disable"  # [ enable | disable ]
+
+
+# ***************************************
+# 3rd party SMTP info
+# ***************************************
+#local postfix_relay_host="smtp.gmail.com"
+#local postfix_relay_port="25"
+
+local postfix_relay_host="smtp.mailgun.org"
+local postfix_relay_port="2525"
+
+
+local postfix_relay_user="username"
+local postfix_relay_pass="password"
+
+# ***************************************
+# POSTFIX setting
+# ***************************************
+local postfix_myorigin="$(hostname)"
+
+# ***************************************
+# Cron Setup
+# ***************************************
+local cron_mail_from="root@$(hostname)"
+local cron_mail_to="email@gmail.com"
+
+# ***************************************
+# setup alias in /etc/aliases
+# generally it's the same as cron_mail_to
+# ***************************************
+local mail_root_alias="${cron_mail_to}"

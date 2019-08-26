@@ -3,6 +3,12 @@
 # =====================
 # DATABAG_CFG:enable
 
+# ------------------------------------
+# Make sure apply action is currect.
+[[ -z "$(echo "${postfix_installation}" | grep "enable")" ]] && eval "${SKIP_SCRIPT}"
+# ------------------------------------
+
+
 #--------------------------------------
 # Rendering postfix config
 #--------------------------------------
