@@ -143,14 +143,11 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       * https://github.com/SpiderLabs/owasp-modsecurity-crs
     * COMODO
       * https://waf.comodo.com
-        
-        ```bash
-        # Recommended: COMODO
-        #             (register a account for 1-year-free, require renew 1-year-free order every year)
-        # * OWSASP would have false positive while:
-        #   * Wordpress , updating articles
-        #   * Redmine   , Click between pages
-        ```
+        * Recommended: COMODO
+          (register an account for 1-year-free, require renew 1-year-free order every year)
+         * OWSASP would have false positive while:
+           * Wordpress , updating articles
+           * Redmine   , Click between pages
 
 ## Firewalld usage
 *- Default block all traffic, except rules you define below*

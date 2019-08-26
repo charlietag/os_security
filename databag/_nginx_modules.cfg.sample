@@ -27,7 +27,7 @@ local ng_waf_rules="OWASP"
 
 # ~~~ COMODO ~~~
 # Recommended: COMODO
-#             (register a account for 1-year-free, require renew 1-year-free order every year)
+#             (register an account for 1-year-free, require renew 1-year-free order every year)
 # * OWSASP would have false positive while:
 #   * Wordpress , updating articles
 #   * Redmine   , Click between pages
