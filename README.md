@@ -186,8 +186,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
        * OWSASP would have false positive while:
          * Wordpress , updating articles
          * Redmine   , Click between pages
-    * COMODO
-      * https://waf.comodo.com
     * Website Vulnerability Scanner
       * nikto
         * Install
