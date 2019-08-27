@@ -161,6 +161,32 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
        * OWSASP would have false positive while:
          * Wordpress , updating articles
          * Redmine   , Click between pages
+    * COMODO
+      * https://waf.comodo.com
+    * Website Vulnerability Scanner
+      * nikto
+        * Install
+
+          ```bash
+          yum install -y nikto
+          ```
+          
+        * Start to scan
+          ```bash
+          nikto -h myrails.centos7.localdomain
+          ```
+          
+      * skipfish
+        * Install
+
+          ```bash
+          yum install -y skipfish
+          ```
+          
+        * Start to scan (output_result_folder must be an empty folder)
+          ```bash
+          skipfish -o output_result_folder http://myrails.centos7.localdomain
+          ```
 
 ## Firewalld usage
 *- Default block all traffic, except rules you define below*
