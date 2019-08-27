@@ -152,6 +152,31 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
         * if you really need OWASP
         * if you have time to maintain WAF rules (OWASP-CRS) yourself
+      * Reference: REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example , RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf.example
+        * REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example
+          * Usage
+            
+            ```bash
+            # ModSecurity Rule Exclusion: Disable all SQLi and XSS rules
+            SecRule REQUEST_FILENAME "@beginsWith /admin" \
+                "id:1004,\
+                phase:2,\
+                pass,\
+                nolog,\
+                ctl:ruleRemoveById=941000-942999"
+            # This would cause error
+            # ...no SecRule specified...
+            # ctl:ruleRemoveById=941000-942999"
+            ```
+
+        * RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf.example
+          * Usage
+            
+            ```bash
+            SecRuleRemoveById 949100 949110 959100
+            ```
+
+
     * COMODO
       * https://waf.comodo.com
       * Memory consumption
