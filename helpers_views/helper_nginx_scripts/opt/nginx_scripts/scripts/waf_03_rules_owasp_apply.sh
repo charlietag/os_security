@@ -18,6 +18,7 @@
 
 # Check app version
 check_app "owasp-crs" "${PARAM_OWASP_CRS_VER}"
+check_app "owasp-crs-SecRuleRemoveById" "${PARAM_OWASP_CRS_VER_SecRuleRemoveById}"
 check_app "owasp-crs-azure" "${PARAM_OWASP_CRS_VER_AZURE_IDS}"
 check_app_run  # Comment this line, to avoid check app version , always execute this script
 
@@ -58,6 +59,13 @@ if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
   if [[ "${PARAM_OWASP_CRS_VER_AZURE_IDS}" != "disable" ]]; then
     ls ${PARAM_OWASP_RULES_PATH}/*.conf | grep -vE "${PARAM_OWASP_CRS_VER_AZURE_IDS}" | xargs -i bash -c "echo \"--- {} ---\"; echo  \"(based on Azure)  -> {}.bak\"; mv {} {}.bak; echo"
   fi
+
+  PARAM_OWASP_CRS_VER_SecRuleRemoveByIds="$(echo ${PARAM_OWASP_CRS_VER_SecRuleRemoveById} |grep -Eo "[[:digit:]]+" | sed ':a;N;$!ba;s/\n/ /g')"
+  if [[ -n "${PARAM_OWASP_CRS_VER_SecRuleRemoveByIds}" ]]; then
+    #echo "SecRuleRemoveById ${PARAM_OWASP_CRS_VER_SecRuleRemoveById}" > ${PARAM_OWASP_RULES_PATH}/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
+    echo "SecRuleRemoveById ${PARAM_OWASP_CRS_VER_SecRuleRemoveById}" > ${PARAM_OWASP_RULES_PATH}/Z_SecRuleRemoveById.conf
+  fi
+
 
   # Make sure ${OWASP_CRS_SETUP} exists, and not a empty file
   if [ -s ${OWASP_CRS_SETUP} ]; then
