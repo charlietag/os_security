@@ -60,7 +60,7 @@ if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
     ls ${PARAM_OWASP_RULES_PATH}/*.conf | grep -vE "${PARAM_OWASP_CRS_VER_AZURE_IDS}" | xargs -i bash -c "echo \"--- {} ---\"; echo  \"(based on Azure)  -> {}.bak\"; mv {} {}.bak; echo"
   fi
 
-  PARAM_OWASP_CRS_VER_SecRuleRemoveByIds="$(echo ${PARAM_OWASP_CRS_VER_SecRuleRemoveById} |grep -Eo "[[:digit:]]+" | sed ':a;N;$!ba;s/\n/ /g')"
+  #PARAM_OWASP_CRS_VER_SecRuleRemoveByIds="$(echo ${PARAM_OWASP_CRS_VER_SecRuleRemoveById} |grep -Eo "[[:digit:]]+" | sed ':a;N;$!ba;s/\n/ /g')"
   if [[ -n "${PARAM_OWASP_CRS_VER_SecRuleRemoveByIds}" ]]; then
     #echo "SecRuleRemoveById ${PARAM_OWASP_CRS_VER_SecRuleRemoveById}" > ${PARAM_OWASP_RULES_PATH}/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
     echo "SecRuleRemoveById ${PARAM_OWASP_CRS_VER_SecRuleRemoveById}" > ${PARAM_OWASP_RULES_PATH}/Z_SecRuleRemoveById.conf
