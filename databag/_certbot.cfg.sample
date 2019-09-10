@@ -11,7 +11,7 @@ local certbot_apply_action="disable"
 #        Load servername from nginx config
 #           >>> DO NOT modify these vars <<<<<
 # ========================================================
-. ${PLUGINS}/plugin_load_databag.sh F_02_PKG_06_nginx_02_ssl_site_config.cfg
+. ${PLUGINS}/plugin_load_databag.sh F_02_PKG_07_nginx_02_ssl_site_config.cfg
 local certbot_servername="${server_name}"
 
 # Custom your webroot "ONLY for WEBROOT verification"
