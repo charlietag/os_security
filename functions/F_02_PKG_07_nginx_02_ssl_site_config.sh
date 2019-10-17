@@ -5,8 +5,20 @@
 
 # ------------------------------------
 # Make sure apply action is currect.
-[[ -z "${sample_config_file}" ]] && eval "${SKIP_SCRIPT}"
+[[ -z "${site_type}" ]] && eval "${SKIP_SCRIPT}"
+[[ "${site_type}" = "disable" ]] && eval "${SKIP_SCRIPT}"
 # ------------------------------------
+
+
+# ***************************************************
+# Server type                                       *
+# * Rails:                                          *
+#   [ssl-sample-rails.conf]                         *
+# * PHP / Laravel:                                  *
+#   [ssl-sample-php.conf]                           *
+# ***************************************************
+[[ "${site_type}" = "laravel" ]] && local sample_config_file="ssl-sample-php.conf"
+[[ "${site_type}" = "rails" ]]   && local sample_config_file="ssl-sample-rails.conf"
 
 
 #--------------------------------------
