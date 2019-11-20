@@ -1,0 +1,18 @@
+# -----------------------------
+# Fail2ban setting
+# -----------------------------
+# Enabled usage:
+#   enabled: true | false
+#
+# Port setting: choose which port to be banned if error found
+#   Leverage firewalld daemon , so use predefined info in firewalld /usr/lib/firewalld/services
+#     port   : http | https | ssh | http,https
+#   Customized config
+#     port   : 2222 | 3333 | 2222,3333
+
+# ############
+#   redmine
+# ############
+local redmine_enabled="true"
+local redmine_port="http,https"
+local redmine_logpaths='/home/*/rails_sites/redmine/log/production.log'

@@ -530,3 +530,5 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       * COMODO (register free account required: https://waf.comodo.com)
   * Finished intergrating Nginx WAF with Fail2ban
     * nginx-modsecurity (modified from apache-modsecurity)
+* 2019/11/20
+  * Add fail2ban rules for redmine (Failed Login)
