@@ -15,8 +15,10 @@ local f2b_maxretry="5"
 # ban IP for 3 days - 259200
 #local f2b_bantime="259200"
 
-# ban IP for 30 days - 2592000
-local f2b_bantime="2592000"
+# ipset v7.1: Syntax error: '2592000' is out of range 0-2147483
+# ban IP for 30 days - 2592000 <--- Due to the limit range 0-2147483
+# set this value to 10 days
+local f2b_bantime="864000"
 
 # -----------------------------
 # Setup monitored item
