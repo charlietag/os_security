@@ -1,4 +1,4 @@
-[redmine]
+[nginx-redmine]
 enabled  = {{redmine_enabled}}
 port     = {{redmine_port}}
 logpath  = {{redmine_logpaths}}
