@@ -1,0 +1,2 @@
+local clamav_installation="enable"  # [ enable | disable ]
+local clamav_clamscan_dir="/home"

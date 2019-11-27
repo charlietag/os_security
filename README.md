@@ -532,3 +532,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * nginx-modsecurity (modified from apache-modsecurity)
 * 2019/11/20
   * Add fail2ban rules for redmine (Failed Login)
+* 2019/11/27
+  * Add ClamAV installation and setup
+    * Ref. https://www.clamav.net/
+
