@@ -26,6 +26,6 @@ if [[ "${clamav_installation}" = "enable" ]]; then
   echo "========================================="
   echo "Adding script into crontab..."
   # sed -i /clamav_clamscan.sh/d /etc/crontab
-  echo "1 05 * * * root ${cron_clamav_script}" >> /etc/crontab
+  echo "1 5 * * * root ${cron_clamav_script}" >> /etc/crontab
 fi
 
