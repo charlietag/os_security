@@ -10,7 +10,10 @@ CLAMAV_CLAMSCAN_DIRS="$(cat ${THIS_FILE_CFG} | grep -v '#' | sed 's/ //g')"
 freshclam --quiet
 
 for clamav_dir in ${CLAMAV_CLAMSCAN_DIRS}; do
-  #echo $clamav_dir
+  echo "====================================================="
+  echo $clamav_dir
+  echo "====================================================="
   clamscan -i -r $clamav_dir
+  echo ""
 done
 
