@@ -1,4 +1,11 @@
+# ----------------------------------------------------------------------------
+#   Install and setup crontab
+# ----------------------------------------------------------------------------
 local clamav_installation="disable"  # [ enable | disable ]
+
+# ----------------------------------------------------------------------------
+#   Define which directory you would like to scan for virus everyday
+# ----------------------------------------------------------------------------
 #local clamav_clamscan_dir="/home"
 
 local clamav_clamscan_dir="/home/phpuser/laravel_sites/mylaravel/public /home/rubyuser/rails_sites/redmine/public /home/rubyuser/rails_sites/myrails/public"
