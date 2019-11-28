@@ -55,6 +55,20 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
     ```
 
+  * Verify **modified** config files.
+
+    ```bash
+    cd databag
+
+    echo ; \
+    ls *.cfg | xargs -i bash -c " \
+    echo ---------------------------; \
+    echo {}; \
+    echo ---------------------------; \
+    cat {} | grep -vE '^\s*#' |sed '/^\s*$/d'; \
+    echo "
+    ```
+
   * Edit some personal setting for **firewalld** and **fail2ban**
 
     ```bash
