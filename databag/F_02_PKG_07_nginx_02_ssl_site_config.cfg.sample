@@ -10,7 +10,8 @@ local site_type="disable"
 
 
 # ***************************************************
-# * web root setting                                *
+# DO NOT MODIFY HERE
 # ***************************************************
+# web root setting
 local web_root="/home/${site_user_name}/${site_type}_sites/${site_app_name}/public"
 
