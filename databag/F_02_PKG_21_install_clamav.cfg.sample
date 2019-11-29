@@ -1,7 +1,8 @@
 # ----------------------------------------------------------------------------
 #   Install and setup crontab
 # ----------------------------------------------------------------------------
-local clamav_installation="disable"  # [ enable | disable ]
+# [ enable | disable ]
+local cron_check_script_status="disable"
 
 # ----------------------------------------------------------------------------
 #   Define which directory you would like to scan for virus everyday

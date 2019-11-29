@@ -1,0 +1,2 @@
+# [ enable | disable ]
+local cron_check_script_status="disable"
