@@ -10,25 +10,39 @@
 # ### ng_botsearch_logpaths ###
 #local ng_botsearch_logpath="$(echo -e "$(echo "${ng_botsearch_logpaths[@]}" | sed -e 's/\s\+/\n  /g' )" )"
 
+# ------------------------------------
+# define script location
+# ------------------------------------
+local cron_check_script="/root/bin/f2b"
+
+
+# ------------------------------------
+# Check if this script is enabled
+# ------------------------------------
+# Make sure this script can be run multiple times
+sed -i /"${cron_check_script//\//\/}"/d /etc/crontab
+
+# Make sure apply action is currect.
+[[ -z "$(echo "${cron_check_script_status}" | grep "enable")" ]] && eval "${SKIP_SCRIPT}"
+
 #--------------------------------------
 # Installing script
 #--------------------------------------
 # *********************************
 # Install f2b.sh script
 # *********************************
-local f2b_command="/root/bin/f2b"
+#local cron_check_script="/root/bin/f2b"
 
-local f2b_command_dir="$(dirname $f2b_command)"
-test -d $f2b_command_dir || mkdir -p $f2b_command_dir
+local cron_check_script_dir="$(dirname $cron_check_script)"
+test -d $cron_check_script_dir || mkdir -p $cron_check_script_dir
 
-echo "fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed \"s/\\s//g\" | tr ',' '\\n' |xargs -i bash -c \"echo \\\"----{}----\\\" ;fail2ban-client status {} ; echo \"" > $f2b_command
-chmod 755 $f2b_command
+echo "fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed \"s/\\s//g\" | tr ',' '\\n' |xargs -i bash -c \"echo \\\"----{}----\\\" ;fail2ban-client status {} ; echo \"" > $cron_check_script
+chmod 755 $cron_check_script
 
 # *********************************
 # Adding f2b.sh into crontab
 # *********************************
-sed -i /f2b/d /etc/crontab
-echo "1 0 * * * root ${f2b_command}" >> /etc/crontab
+echo "1 0 * * * root ${cron_check_script}" >> /etc/crontab
 
 #--------------------------------------
 # Rendering fail2ban config

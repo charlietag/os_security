@@ -1,6 +1,12 @@
 #Put local vars here for the specific function
 
 # -----------------------------
+# Do or Not do fail2ban setup
+# -----------------------------
+# [ enable | disable ]
+local cron_check_script_status="disable"
+
+# -----------------------------
 # Fail2ban global setting
 # -----------------------------
 #   in (findtime) seconds, found faild attempt usage (maxretry) times , ban the IP for (bantime) seconds

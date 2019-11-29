@@ -1,3 +1,8 @@
+# -----------------------------
+# Do or Not do fail2ban setup
+# -----------------------------
+# [ enable | disable ]
+local this_script_status="disable"
 # ************** Nginx Header **************
 # -----------------------
 # Description

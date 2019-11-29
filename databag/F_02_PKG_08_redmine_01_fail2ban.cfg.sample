@@ -1,4 +1,10 @@
 # -----------------------------
+# Do or Not do log_analyzer setup
+# -----------------------------
+# [ enable | disable ]
+local this_script_status="disable"
+
+# -----------------------------
 # Fail2ban setting
 # -----------------------------
 # Enabled usage:

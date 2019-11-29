@@ -1,3 +1,9 @@
+# -----------------------------
+# Do or Not do log_analyzer setup
+# -----------------------------
+# [ enable | disable ]
+local this_script_status="disable"
+
 #Put local vars here for the specific function
 
 # set allowed known ports of services

@@ -1,3 +1,16 @@
+# =====================
+# Enable databag
+# =====================
+# DATABAG_CFG:enable
+# ------------------------------------
+# Check if this script is enabled
+# ------------------------------------
+# Make sure apply action is currect.
+[[ -z "$(echo "${this_script_status}" | grep "enable")" ]] && eval "${SKIP_SCRIPT}"
+
+#--------------------------------------
+# Start to setup script
+#--------------------------------------
 task_copy_using_cat
 
 echo "-------------------------------------------------------------"
