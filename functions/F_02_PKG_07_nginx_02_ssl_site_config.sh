@@ -51,3 +51,9 @@ test -d $ssl_nginx_target_folder || mkdir -p $ssl_nginx_target_folder
 local ssl_render_target_file="${ssl_nginx_target_folder}/${server_name}.conf"
 
 RENDER_CP $ssl_sample_config $ssl_render_target_file
+
+echo "-----reload nginx server to load SSL Config & Cert files...-----"
+#systemctl reload nginx
+nginx -s reload
+
+echo "----- Finished reloading nginx server-----"
