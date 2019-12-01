@@ -62,10 +62,14 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
     echo ; \
     ls *.cfg | xargs -i bash -c " \
+    echo -e '\e[0;33m'; \
     echo ---------------------------; \
     echo {}; \
     echo ---------------------------; \
+    echo -n -e '\033[00m' ; \
+    echo -n -e '\e[0;32m'; \
     cat {} | grep -vE '^\s*#' |sed '/^\s*$/d'; \
+    echo -e '\033[00m' ; \
     echo "
     ```
 
