@@ -15,6 +15,14 @@
 . ${PLUGINS}/plugin_certbot_install_check.sh
 #**********************************************
 
+if [[ ! -d "${certbot_eff_org_path}" ]]; then
+  echo "--- Run list current certificates function to make sure ${certbot_eff_org_path} exists (used by dns-cloudflare, pip install certbot-dns-cloudflare) ---"
+  . ${PLUGINS}/plugin_certbot_show_certs.sh
+fi
+
+
+
+
 #**********************************************
 # Start to apply letsencrypt SSL cert with DNS txt record verification
 echo "---Install dns-cloudflare if needed  ---"

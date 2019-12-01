@@ -18,12 +18,15 @@
 if [ -d $certbot_path ]
 then
   rm -fr $certbot_path
-  rm -fr $certbot_root/eff.org
+  rm -fr $certbot_eff_org_path
 fi
 
 echo "---Downloading CERTBOT---"
 cd $certbot_root
 git clone $certbot_src_url
+
+echo "--- Run list current certificates function to make sure ${certbot_eff_org_path} exists (used by dns-cloudflare, pip install certbot-dns-cloudflare) ---"
+. ${PLUGINS}/plugin_certbot_show_certs.sh
 
 echo "disable httpd server..."
 systemctl disable httpd
