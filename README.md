@@ -55,7 +55,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
     ```
 
-  * Verify config files.
+  * Verify config files (with syntax color).
 
     ```bash
     cd databag
@@ -73,7 +73,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     echo "
     ```
 
-  * Verify **ONLY modified** config files.
+  * Verify **ONLY modified** config files (with syntax color).
 
     ```bash
     cd databag
