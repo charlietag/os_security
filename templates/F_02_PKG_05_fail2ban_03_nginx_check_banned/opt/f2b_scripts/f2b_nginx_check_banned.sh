@@ -47,9 +47,11 @@ main() {
     echo "--- New banned IP found! ---"
     echo -e "${DIFF_IP_ADD}"
 
-    echo "Reloading Nginx ..."
+    #echo "Reloading Nginx ..."
+    echo "Restarting Nginx ..."
 
-    nginx -s reload && echo -e "${THIS_BANNED_CONTENTS}" > ${PRE_BANNED_LIST}
+    #nginx -s reload && echo -e "${THIS_BANNED_CONTENTS}" > ${PRE_BANNED_LIST}
+    systemctl restart nginx  && echo -e "${THIS_BANNED_CONTENTS}" > ${PRE_BANNED_LIST}
 
   elif [[ -n "${DIFF_IP_SUBTRACT}" ]]; then
     echo "--- Banned IP expired ... ---"
