@@ -91,15 +91,65 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     echo "
     ```
 
-  * Edit some personal setting for **firewalld** and **fail2ban**
+  * Mostly used configuration :
+    * **DEV** use (server in **Local**)
+      * No need to setup config, just `./start -a` without config, by default, the following will be executed
 
-    ```bash
-    databag/
-    ├── F_01_check_os.cfg
-    ├── F_02_check_failed_login.cfg
-    ├── F_21_setup_firewalld.cfg
-    └── F_23_setup_fail2ban.cfg
-    ```
+        ```bash
+        functions/
+        ├── F_00_list_os_users
+        ├── F_01_CHECK_01_os
+        ├── F_01_CHECK_02_failed_login
+        ├── F_01_CHECK_03_last_login
+        ├── F_01_CHECK_04_ssh_config
+        ├── F_02_PKG_02_install_perf_tools
+        ├── F_02_PKG_04_firewalld_01_install
+        ├── F_02_PKG_05_fail2ban_01_install
+        └── F_02_PKG_99_install_yum-cron
+        ```
+
+    * **DEV** use (server in **Cloud**)
+
+      ```bash
+      databag/
+      ├── F_02_PKG_01_install_log_analyzer.cfg
+      ├── F_02_PKG_04_firewalld_02_setup.cfg (rementer add customized port for dev, like 8000 for laravel, 3000 for rails)
+      ├── F_02_PKG_05_fail2ban_02_setup.cfg
+      ├── F_02_PKG_05_fail2ban_03_nginx_check_banned.cfg
+      ├── F_02_PKG_07_nginx_01_ssl_enhanced.cfg
+      ├── F_02_PKG_08_redmine_01_fail2ban.cfg
+      ├── F_02_PKG_21_install_clamav.cfg
+      ├── F_03_CHECK_01_check_scripts.cfg
+      ├── _nginx_modules.cfg
+      └── _postfix.cfg
+      ```
+
+    * **Production** use (server in **Local**)
+
+      ```bash
+      databag/
+      ├── F_02_PKG_01_install_log_analyzer.cfg
+      ├── F_02_PKG_21_install_clamav.cfg
+      └── _postfix.cfg
+      ```
+
+    * **Production** use (server in **Cloud**)
+
+      ```bash
+      databag/
+      ├── _certbot.cfg
+      ├── F_02_PKG_01_install_log_analyzer.cfg
+      ├── F_02_PKG_04_firewalld_02_setup.cfg
+      ├── F_02_PKG_05_fail2ban_02_setup.cfg
+      ├── F_02_PKG_05_fail2ban_03_nginx_check_banned.cfg
+      ├── F_02_PKG_07_nginx_01_ssl_enhanced.cfg
+      ├── F_02_PKG_07_nginx_02_ssl_site_config.cfg
+      ├── F_02_PKG_08_redmine_01_fail2ban.cfg
+      ├── F_02_PKG_21_install_clamav.cfg
+      ├── F_03_CHECK_01_check_scripts.cfg
+      ├── _nginx_modules.cfg
+      └── _postfix.cfg
+      ```
 
 ## Installation
 * Run **ALL** to do the following with one command
