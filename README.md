@@ -621,4 +621,5 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 * 2019/11/27
   * Add ClamAV installation and setup
     * Ref. https://www.clamav.net/
-
+* 2019/12/06
+  * tag: v0.1.0
