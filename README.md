@@ -625,3 +625,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * Ref. https://www.clamav.net/
 * 2019/12/06
   * tag: v0.1.0
+* 2019/12/07
+  * tag: v0.1.1
+    * changelog: https://github.com/charlietag/os_security/compare/v0.1.0...v0.1.1
