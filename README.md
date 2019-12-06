@@ -109,6 +109,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
         ```
 
     * **DEV** use (server in **Cloud**)
+      * It would be better to work with VPS Firewall for more secure enviroment
+        * Firewalld + Fail2ban + VPS Firewall (Vultr / DigitalOcean)
 
       ```bash
       databag/
