@@ -20,15 +20,15 @@ local postfix_relay_user="username"
 local postfix_relay_pass="password"
 
 # ***************************************
-# POSTFIX setting
-# ***************************************
-local postfix_myorigin="$(hostname)"
-
-# ***************************************
 # Cron Setup
 # ***************************************
 local cron_mail_from="root@$(hostname)"
 local cron_mail_to="email@gmail.com"
+
+# ***************************************
+# POSTFIX setting
+# ***************************************
+local postfix_myorigin="$(hostname)"
 
 # ***************************************
 # setup alias in /etc/aliases
