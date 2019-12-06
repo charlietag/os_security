@@ -12,6 +12,13 @@
 
 # Init action
 . ${PLUGINS}/plugin_certbot_path.sh
+
+# To avoid interactive prompt interrupts the installation
+#   --quiet , not just silence mode , but also force "yum install -y packages"
+#   not just command with--quiet forces "yum install -y packages", while "certbot renew" will also force "yum install -y packages"
+$certbot_command certificates --quiet
+
+
 #**********************************************
 
 # ******* Download certbot *******
