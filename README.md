@@ -93,7 +93,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   * Mostly used configuration :
     * **DEV** use (server in **Local**)
-      * No need to setup config, just `./start -a` without config, by default, the following will be executed
+      * **NO NEED** to setup config, just `./start -a` without config, by default, the following will be executed
 
         ```bash
         functions/
