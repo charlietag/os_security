@@ -13,11 +13,6 @@
 # Init action
 . ${PLUGINS}/plugin_certbot_path.sh
 
-# To avoid interactive prompt interrupts the installation
-#   --quiet , not just silence mode , but also force "yum install -y packages"
-#   not just command with--quiet forces "yum install -y packages", while "certbot renew" will also force "yum install -y packages"
-$certbot_command certificates --quiet
-
 
 #**********************************************
 
@@ -32,8 +27,19 @@ echo "---Downloading CERTBOT---"
 cd $certbot_root
 git clone $certbot_src_url
 
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------
+# To avoid interactive prompt interrupts the installation
+#   --quiet , not just silence mode , but also force "yum install -y packages"
+#   not just command with--quiet forces "yum install -y packages", while "certbot renew" will also force "yum install -y packages"
+
+# Before action
+. ${PLUGINS}/plugin_certbot_install_check.sh
+$certbot_command certificates --quiet
+
+# Make sure eff folder exists
 echo "--- Run list current certificates function to make sure ${certbot_eff_org_path} exists (used by dns-cloudflare, pip install certbot-dns-cloudflare) ---"
 . ${PLUGINS}/plugin_certbot_show_certs.sh
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 echo "disable httpd server..."
 systemctl disable httpd
