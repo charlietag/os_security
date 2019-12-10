@@ -195,8 +195,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * 2222
 * Fail2ban
   * Default filtered
-    * sshd
-    * sshd-ddos
+    * sshd (mode=aggressive)
     * nginx-limit-req
     * nginx-botsearch
 * yum-cron
@@ -421,7 +420,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     --------------Fail2ban Status-------------
     Status
     |- Number of jail:      4
-    `- Jail list:   nginx-botsearch, nginx-limit-req, sshd, sshd-ddos
+    `- Jail list:   nginx-botsearch, nginx-limit-req, sshd
     --------------Fail2ban Detail Status-------------
     ----nginx-botsearch----
     Status for the jail: nginx-botsearch
@@ -447,17 +446,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
     ----sshd----
     Status for the jail: sshd
-    |- Filter
-    |  |- Currently failed: 0
-    |  |- Total failed:     0
-    |  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
-    `- Actions
-       |- Currently banned: 0
-       |- Total banned:     0
-       `- Banned IP list:   
-
-    ----sshd-ddos----
-    Status for the jail: sshd-ddos
     |- Filter
     |  |- Currently failed: 0
     |  |- Total failed:     0
@@ -628,3 +616,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 * 2019/12/07
   * tag: v0.1.1
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.0...v0.1.1
+* 2019/12/11
+  * Fix fail2ban version v0.10 (sshd-ddos is integrated into sshd) issue
+  * tag: v0.1.2
+    * changelog: https://github.com/charlietag/os_security/compare/v0.1.1...v0.1.2

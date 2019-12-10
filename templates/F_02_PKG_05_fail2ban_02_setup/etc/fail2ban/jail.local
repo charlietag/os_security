@@ -10,13 +10,13 @@ maxretry          = ${f2b_maxretry}
 ## Default: %(action_)s , <--- Just ban IP
 #action = %(action_mwl)s
 
+# Ref. https://github.com/fail2ban/fail2ban/issues/1719#issuecomment-287070769
+# normal (default), ddos, extra or aggressive (combines all)
+#mode="aggressive"  # [ normal | ddos | extra | aggressive ]
 [sshd]
 enabled           = ${sshd_enabled}
 port              = ${sshd_port}
-
-[sshd-ddos]
-enabled           = ${sshd_ddos_enabled}
-port              = ${sshd_ddos_port}
+mode              = ${sshd_mode}
 
 [nginx-limit-req]
 enabled           = ${ng_limit_req_enabled}

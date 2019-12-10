@@ -41,16 +41,12 @@ local f2b_bantime="864000"
 # ############
 #   sshd
 # ############
+# Ref. https://github.com/fail2ban/fail2ban/issues/1719
 local sshd_enabled="true"
 local sshd_port="2222"
+local sshd_mode="aggressive"        # normal (default), ddos, extra or aggressive (combines all)
 # logpath ---> fixed to default (systemd+/var/log)
 
-# ############
-#   sshd-ddos
-# ############
-local sshd_ddos_enabled="true"
-local sshd_ddos_port="2222"
-# logpath ---> fixed to default (systemd+/var/log)
 
 # ############
 #   nginx-limit-req
