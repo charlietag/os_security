@@ -379,6 +379,16 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ```bash
     ipset list fail2ban-nginx-botsearch
     ```
+    
+  * Fail2ban keeps showing WARN
+
+    ```bash
+    2019-12-11 16:23:53,108 fail2ban.ipdns          [4812]: WARNING Unable to find a corresponding IP address for xxx.xxx.xxx.xxx.server.com: [Errno -5] No address associated with hostname
+    ```
+
+    * Solution
+      * fail2ban-client unban --all
+      * fail2ban-client restart
 
 # Quick Note - Fail2ban flow
 * **(Procedure) Be sure to start *"Firewalld / Fail2ban"* in the following order**
