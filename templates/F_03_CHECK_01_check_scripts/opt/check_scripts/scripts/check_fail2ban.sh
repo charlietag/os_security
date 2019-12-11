@@ -27,10 +27,15 @@ test_ban() {
   local test_ban_ip="10.255.255.254"
   local f2b_jails="$(fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n'|sort -n )"
   local test_ipset_warning
+  local test_ipset_warning_found
 
+  # --- Check ipset by f2b jail names one by one ---
   for f2b_jail in ${f2b_jails[@]}; do
+    test_ipset_warning_found="N"
+    # --- First Check ---
     test_ipset_warning="$(test_ipset "${f2b_jail}" "${test_ban_ip}")"
     if [[ -n "${test_ipset_warning}" ]]; then
+      test_ipset_warning_found="Y"
       echo "------"
       echo "${test_ipset_warning}"
       echo "try to add ip into ipset banning list..."
@@ -38,10 +43,17 @@ test_ban() {
       sleep 2
       echo "------"
     fi
-    test_ipset_warning="$(test_ipset "${f2b_jail}" "${test_ban_ip}")"
-    if [[ -n "${test_ipset_warning}" ]]; then
-      echo "${test_ipset_warning}"
-      echo "Firewalld is not running correctly!"
+
+    # --- Second Check ---
+    if [[ "${test_ipset_warning_found}" = "Y" ]]; then
+      test_ipset_warning="$(test_ipset "${f2b_jail}" "${test_ban_ip}")"
+      if [[ -n "${test_ipset_warning}" ]]; then
+        echo "${test_ipset_warning}"
+        echo "Firewalld is not running correctly!"
+      else
+        echo "${test_ipset_warning}"
+        echo "ipset rules added !"
+      fi
       echo ""
       echo ""
     fi
