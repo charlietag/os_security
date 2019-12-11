@@ -35,12 +35,15 @@ test_ban() {
       echo "${test_ipset_warning}"
       echo "try to add ip into ipset banning list..."
       fail2ban-client set ${f2b_jail} banip ${test_ban_ip}
+      sleep 2
       echo "------"
     fi
     test_ipset_warning="$(test_ipset "${f2b_jail}" "${test_ban_ip}")"
     if [[ -n "${test_ipset_warning}" ]]; then
       echo "${test_ipset_warning}"
       echo "Firewalld is not running correctly!"
+      echo ""
+      echo ""
     fi
   done
 

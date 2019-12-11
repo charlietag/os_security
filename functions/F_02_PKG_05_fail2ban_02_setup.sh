@@ -56,13 +56,22 @@ task_copy_using_render
 # Start firewalld & fail2ban
 #--------------------------------------
 # Start and Enable firewalld service
-echo "---stopping firewalld---"
-systemctl stop firewalld
 echo "---stopping fail2ban---"
 systemctl stop fail2ban
 
+sleep 2
+
+echo "---stopping firewalld---"
+systemctl stop firewalld
+
+sleep 2
+
+
 echo "---starting firewalld---"
 systemctl start firewalld
+
+sleep 2
+
 echo "---starting fail2ban---"
 systemctl start fail2ban
 
@@ -71,8 +80,11 @@ systemctl enable firewalld.service
 echo "---enable fail2ban---"
 systemctl enable fail2ban.service
 
-echo "---reload fail2ban---"
-fail2ban-client reload
+sleep 2
+
+
+#echo "---reload fail2ban---"
+#fail2ban-client reload
 
 #--------------------------------------
 # Make sure firewalld works with fail2ban well

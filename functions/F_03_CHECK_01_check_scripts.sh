@@ -26,7 +26,7 @@ sed -i /"${cron_check_script//\//\/}"/d /etc/crontab
 echo "========================================="
 echo "   Setup for $(basename ${cron_check_script})"
 echo "========================================="
-task_copy_using_cp
+task_copy_using_cat
 
 chmod 755 ${cron_check_script}
 # *********************************
