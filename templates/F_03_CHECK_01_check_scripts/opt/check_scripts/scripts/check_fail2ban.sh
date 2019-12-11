@@ -38,7 +38,7 @@ test_ipset() {
 
 test_ban() {
   local test_ban_ip="10.255.255.254"
-  local f2b_jails="$(fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n'|sort -n )"
+  local f2b_jails="$(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local |grep -E "\[[^[:space:]]+\]$" | grep -v "DEFAULT" | grep -vE "^#" | sed -re 's/^\[//g' | sed -re 's/\]$//g' | sort -n )"
   local test_ipset_warning
   local test_ipset_warning_found
 
@@ -76,19 +76,12 @@ test_ban() {
 }
 
 check_fail2ban() {
-  local test_ban_msg
   local diff_status_msg="$(test_fail2ban_config_status)"
-
-  # --- check config and f2b running status ---
-  if [[ -n "${diff_status_msg}" ]]; then
+  local test_ban_msg="$(test_ban)"
+  if [[ -n "${diff_status_msg}" ]] || [[ -n "${test_ban_msg}" ]] ; then
     display_check_name
+
     echo -e "${diff_status_msg}"
-  else
-    # --- check ipset running status ---
-    test_ban_msg="$(test_ban)"
-    if [[ -n "${test_ban_msg}" ]]; then
-      display_check_name
-      echo -e "${test_ban_msg}"
-    fi
+    echo -e "${test_ban_msg}"
   fi
 }
