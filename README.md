@@ -636,3 +636,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * Fix fail2ban version v0.10 (sshd-ddos is integrated into sshd) issue
   * tag: v0.1.2
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.1...v0.1.2
+* 2019/12/11
+  * tag: v0.1.3
+    * changelog: https://github.com/charlietag/os_security/compare/v0.1.2...v0.1.3
