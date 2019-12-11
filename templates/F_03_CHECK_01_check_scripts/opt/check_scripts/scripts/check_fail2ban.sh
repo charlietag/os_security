@@ -64,7 +64,6 @@ test_ban() {
         echo "${test_ipset_warning}"
         echo "Firewalld is not running correctly!"
       else
-        echo "${test_ipset_warning}"
         echo "ipset rules added !"
       fi
       echo ""
@@ -77,12 +76,19 @@ test_ban() {
 }
 
 check_fail2ban() {
+  local test_ban_msg
   local diff_status_msg="$(test_fail2ban_config_status)"
-  local test_ban_msg="$(test_ban)"
-  if [[ -n "${diff_status_msg}" ]] || [[ -n "${test_ban_msg}" ]] ; then
-    display_check_name
 
+  # --- check config and f2b running status ---
+  if [[ -n "${diff_status_msg}" ]]; then
+    display_check_name
     echo -e "${diff_status_msg}"
-    echo -e "${test_ban_msg}"
+  else
+    # --- check ipset running status ---
+    test_ban_msg="$(test_ban)"
+    if [[ -n "${test_ban_msg}" ]]; then
+      display_check_name
+      echo -e "${test_ban_msg}"
+    fi
   fi
 }
