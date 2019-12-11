@@ -12,9 +12,13 @@ print_msg (){
 
   if [ ${err_code} -eq 1 ]
   then
+    echo -ne '\e[1;31m'
     echo "Warning : ${err_msg}"
+    echo -n -e '\033[00m'
   else
+    echo -ne '\e[1;32m'
     echo "OK : ${err_msg}"
+    echo -n -e '\033[00m'
   fi
 
 }
