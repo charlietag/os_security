@@ -397,8 +397,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
         ```bash
         # cat /etc/hosts
-        127.0.0.1 dev.leancome.com
-        ::1       dev.leancome.com
+        127.0.0.1 web.example.com
+        ::1       web.example.com
         ```
 
 # Quick Note - Fail2ban flow
