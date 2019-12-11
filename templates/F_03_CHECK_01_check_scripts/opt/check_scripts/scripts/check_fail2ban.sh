@@ -29,6 +29,12 @@ test_fail2ban_config_status() {
   fi
 }
 
+# ----------
+# err msg description:
+# ipset err msg: "ipset v7.1: The set with the given name does not exist"
+#     This means this is the first time to start fail2ban, which needs to be initialized.
+#     This will be solved after first time run this script (fail2ban-client set {jail_name} banip 10.255.255.254)
+# ----------
 test_ipset() {
   local ipset_ban_jail="f2b-${1}"
   local test_ban_ip="${2}"
