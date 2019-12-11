@@ -389,11 +389,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * ~~Solution~~
       * ~~fail2ban-client unban --all~~
       * ~~fail2ban-client restart~~
-    * Root cause
+    * Root cause (Not verified)
       * fail2ban will dns lookup / dns reserve lookup hostname, this will trigger this error message
+      * fail2ban will not dns lookup / dns reserve lookup 127.0.0.1 
+      * And why VM test server will not show this err message
+        * The hostname of VM test server is not in `/etc/hosts` but also not in dns. So all the results when dns resolves. are `NXDOMAIN`, the same result... PASS
     * Solution
       * make sure `hostname` is in `/etc/hosts` (**both ipv4 and ipv6 is needed**)
-      * fail2ban will not dns lookup / dns reserve lookup 127.0.0.1 
 
         ```bash
         # cat /etc/hosts
