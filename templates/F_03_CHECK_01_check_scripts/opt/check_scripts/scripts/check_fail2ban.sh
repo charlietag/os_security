@@ -1,6 +1,6 @@
 test_fail2ban_config_status() {
   local f2b_status="$(fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n'|sort -n )"
-  local f2b_config="$(cat /etc/fail2ban/jail.local /etc/fail2ban/${f2b_config_path}jail.d/*.local |grep -E "\[[^[:space:]]+\]$" | grep -v "DEFAULT" | grep -vE "^#" | sed -re 's/^\[//g' | sed -re 's/\]$//g' | sort -n )"
+  local f2b_config="$(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local |grep -E "\[[^[:space:]]+\]$" | grep -v "DEFAULT" | grep -vE "^#" | sed -re 's/^\[//g' | sed -re 's/\]$//g' | sort -n )"
   local f2b_iptables="$(iptables -S | grep -Eo "f2b-[^[:space:]]+" | sed 's/f2b-//g' | sort -n )"
   local f2b_ipset="$(ipset list | grep -Eo "f2b-[^[:space:]]+" | sed 's/f2b-//g' | sort -n )"
 
@@ -9,10 +9,23 @@ test_fail2ban_config_status() {
                         diff <(echo "${f2b_status}") <(echo "${f2b_ipset}")  
                     )"
   if [[ -n "${diff_check}" ]]; then
-    echo "---------------------------"
+    echo "--------------------------------------------------------"
     echo "fail2ban config is not loaded correctly!"
-    echo "---------------------------"
-    echo -e "${diff_check}"
+    echo "--------------------------------------------------------"
+    echo -e "----- fail2ban-client status ---"
+    echo -e "${f2b_status}"
+    echo ""
+
+    echo -e '----- cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local ---'
+    echo -e "${f2b_config}"
+    echo ""
+
+    echo -e '----- iptables -S ---'
+    echo -e "${f2b_iptables}"
+    echo ""
+
+    echo -e '----- ipset list ---'
+    echo -e "${f2b_ipset}"
   fi
 }
 
