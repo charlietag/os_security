@@ -368,7 +368,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     fail2ban-client set nginx-botsearch unbanip 192.168.1.72
     ```
 
-  * Unban banned ip for all **JAIL NAME**
+  * Unban banned specific ip for all **JAIL NAME**
 
     ```bash
     fail2ban-client unbanip 192.168.1.72 ... 192.168.1.72
