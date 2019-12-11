@@ -386,9 +386,20 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     2019-12-11 16:23:53,108 fail2ban.ipdns          [4812]: WARNING Unable to find a corresponding IP address for xxx.xxx.xxx.xxx.server.com: [Errno -5] No address associated with hostname
     ```
 
+    * ~~Solution~~
+      * ~~fail2ban-client unban --all~~
+      * ~~fail2ban-client restart~~
+    * Root cause
+      * fail2ban will dns lookup / dns reserve lookup hostname, this will trigger this error message
     * Solution
-      * fail2ban-client unban --all
-      * fail2ban-client restart
+      * make sure `hostname` is in `/etc/hosts` (**both ipv4 and ipv6 is needed**)
+      * fail2ban will not dns lookup / dns reserve lookup 127.0.0.1 
+
+        ```bash
+        # cat /etc/hosts
+        127.0.0.1 dev.leancome.com
+        ::1       dev.leancome.com
+        ```
 
 # Quick Note - Fail2ban flow
 * **(Procedure) Be sure to start *"Firewalld / Fail2ban"* in the following order**
