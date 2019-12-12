@@ -653,12 +653,12 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * tag: v0.1.1
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.0...v0.1.1
 * 2019/12/11
-  * Fix fail2ban version v0.10 (sshd-ddos is integrated into sshd) issue
   * tag: v0.1.2
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.1...v0.1.2
+    * Fix fail2ban version v0.10 (sshd-ddos is integrated into sshd) issue
 * 2019/12/11
   * tag: v0.1.3
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.2...v0.1.3
-  * Add check if hostname is in /etc/hosts for fail2ban use
   * tag: v0.1.4
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.3...v0.1.4
+    * Add check if hostname is in /etc/hosts for fail2ban use
