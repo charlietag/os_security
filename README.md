@@ -394,7 +394,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       * fail2ban will not dns lookup / dns reserve lookup 127.0.0.1 
       * And why VM test server will not show this err message
         * The hostname of VM test server is not in `/etc/hosts` but also not in dns. So all the results when dns resolves. are `NXDOMAIN`, the same result... PASS
-    * Solution
+    * Solution 1
       * make sure `hostname` is in `/etc/hosts` (**both ipv4 and ipv6 is needed**)
 
         ```bash
@@ -402,6 +402,13 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
         127.0.0.1 web.example.com
         ::1       web.example.com
         ```
+
+    * Solution 2
+      * make sure DNS record is correct
+        * A record
+          * `web.example.com    A   xxx.xxx.xxx.xxx`
+        * PTR record
+          * `xxx.xxx.xxx.xxx    PTR   web.example.com`
 
 # Quick Note - Fail2ban flow
 * **(Procedure) Be sure to start *"Firewalld / Fail2ban"* in the following order**
