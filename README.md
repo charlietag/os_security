@@ -407,7 +407,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
       * make sure DNS record is correct
         * A record
           * `web.example.com    A   xxx.xxx.xxx.xxx`
-        * PTR record
+        * PTR record (reverse record)
           * `xxx.xxx.xxx.xxx    PTR   web.example.com`
 
 # Quick Note - Fail2ban flow
