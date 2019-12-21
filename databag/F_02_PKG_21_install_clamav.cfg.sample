@@ -9,4 +9,5 @@ local cron_check_script_status="disable"
 # ----------------------------------------------------------------------------
 #local clamav_clamscan_dir="/home"
 
-local clamav_clamscan_dir="/home/phpuser/laravel_sites/mylaravel/public /home/rubyuser/rails_sites/redmine/public /home/rubyuser/rails_sites/myrails/public"
+#local clamav_clamscan_dir="/home/phpuser/laravel_sites/mylaravel/public /home/rubyuser/rails_sites/redmine/files /home/rubyuser/rails_sites/myrails/public"
+local clamav_clamscan_dir="/home/rubyuser/rails_sites/redmine/files"
