@@ -662,3 +662,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * tag: v0.1.4
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.3...v0.1.4
     * Add check if hostname is in /etc/hosts for fail2ban use
+* 2019/12/22
+  * tag: v0.1.5
+    * changelog: https://github.com/charlietag/os_security/compare/v0.1.4...v0.1.5
+    * change default clamav scan path by cron job
