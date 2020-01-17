@@ -666,3 +666,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * tag: v0.1.5
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.4...v0.1.5
     * change default clamav scan path by cron job
+* 2020/01/17
+  * tag: v0.2.0
+    * changelog: https://github.com/charlietag/os_security/compare/v0.1.5...v0.2.0
+    * ssl_protocols TLSv1.2 supported only
