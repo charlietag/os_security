@@ -20,8 +20,9 @@ dnf install -y logwatch
 # -- goaccess does not exist in CentOS8 repos (base, appstream, epel) --
 #dnf install -y goaccess
 
-# -- Manually install --
-dnf install -y GeoIP GeoIP-devel
+# -- For Manually install --
+# Move to F_01_ENV_03_basic_01_pkgs.sh (os_preparation)
+rpm --quiet -q GeoIP || dnf -y install GeoIP GeoIP-devel
 
 #-----------------------------------------------------------------------------------------
 # Compile and install goaccess
