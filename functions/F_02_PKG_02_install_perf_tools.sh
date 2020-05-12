@@ -2,14 +2,14 @@
 # enhanced top
 # ***************************
 # glances does not exist in CentOS 8 (EPEL, base, AppStream)
-#yum install -y glances htop nmon
-yum install -y htop nmon
+#dnf install -y glances htop nmon
+dnf install -y htop nmon
 
 # ***************************
 # enhaned iostat
 # ***************************
 # dstat does not exist in CentOS 8 (EPEL, base, AppStream)
-#yum install -y iotop dstat 
-yum install -y iotop
+#dnf install -y iotop dstat 
+dnf install -y iotop
 
 
