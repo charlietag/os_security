@@ -92,13 +92,6 @@ sleep 2
 echo "--------------Firewalld Rules-------------"
 firewall-cmd --list-all
 
-echo "--------------IPTABLES Rules of fail2ban-------------"
-echo -n "Waiting fail2ban for inserting rules into firewalld(iptables)"
-echo -n "."; sleep 1; echo -n "."; sleep 1; echo "."; sleep 1
-
-iptables -S | grep -i fail2ban
-sleep 3
-
 echo "--------------Fail2ban Status-------------"
 fail2ban-client status
 
