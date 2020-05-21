@@ -36,6 +36,5 @@ echo "========================================="
 echo "   Setup cron for $(basename ${cron_check_script})"
 echo "========================================="
 echo "Adding script into crontab..."
-#sed -i /"${cron_check_script//\//\/}"/d /etc/crontab
 echo "*/15 * * * * root ${cron_check_script}" >> /etc/crontab
 
