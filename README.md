@@ -44,7 +44,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * Download and run check
 
     ```bash
-    yum install -y git
+    dnf install -y git
     git clone https://github.com/charlietag/os_security.git
     ```
 
@@ -69,7 +69,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
         ├── F_02_PKG_02_install_perf_tools
         ├── F_02_PKG_04_firewalld_01_install
         ├── F_02_PKG_05_fail2ban_01_install
-        └── F_02_PKG_99_install_yum-cron
         ```
 
     * **DEV** use (server in **Cloud**)
@@ -198,8 +197,6 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     * sshd (mode=aggressive)
     * nginx-limit-req
     * nginx-botsearch
-* yum-cron
-  * Check updates for installed packages
 
 # Quick Note - Package
 ## Nginx module - os_preparation
@@ -278,7 +275,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
         * Install
 
           ```bash
-          yum install -y nikto
+          dnf install -y nikto
           ```
           
         * Start to scan
@@ -290,7 +287,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
         * Install
 
           ```bash
-          yum install -y skipfish
+          dnf install -y skipfish
           ```
           
         * Start to scan (output_result_folder must be an empty folder)

@@ -29,8 +29,8 @@ git clone $certbot_src_url
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------
 # To avoid interactive prompt interrupts the installation
-#   --quiet , not just silence mode , but also force "yum install -y packages"
-#   not just command with--quiet forces "yum install -y packages", while "certbot renew" will also force "yum install -y packages"
+#   --quiet , not just silence mode , but also force "dnf install -y packages"
+#   not just command with--quiet forces "dnf install -y packages", while "certbot renew" will also force "dnf install -y packages"
 
 # Before action
 . ${PLUGINS}/plugin_certbot_install_check.sh
