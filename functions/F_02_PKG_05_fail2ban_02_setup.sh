@@ -20,7 +20,7 @@ local cron_check_script="/root/bin/f2b"
 # Check if this script is enabled
 # ------------------------------------
 # Make sure this script can be run multiple times
-sed -i /"${cron_check_script//\//\/}"/d /etc/crontab
+sed -i /"${cron_check_script//\//\\/}"/d /etc/crontab
 
 # Make sure apply action is currect.
 [[ -z "$(echo "${cron_check_script_status}" | grep "enable")" ]] && eval "${SKIP_SCRIPT}"

@@ -13,7 +13,7 @@ local cron_check_script="/opt/clamav_script/clamav_clamscan.sh"
 # Check if this script is enabled
 # ------------------------------------
 # Make sure this script can be run multiple times
-sed -i /"${cron_check_script//\//\/}"/d /etc/crontab
+sed -i /"${cron_check_script//\//\\/}"/d /etc/crontab
 
 # Make sure apply action is currect.
 [[ -z "$(echo "${cron_check_script_status}" | grep "enable")" ]] && eval "${SKIP_SCRIPT}"
@@ -42,5 +42,4 @@ echo "========================================="
 echo "   Setup cron for $(basename ${cron_check_script})"
 echo "========================================="
 echo "Adding script into crontab..."
-#sed -i /"${cron_check_script//\//\/}"/d /etc/crontab
 echo "1 5 * * * root ${cron_check_script}" >> /etc/crontab
