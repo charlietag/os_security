@@ -24,7 +24,11 @@ local f2b_maxretry="5"
 # ipset v7.1: Syntax error: '2592000' is out of range 0-2147483
 # ban IP for 30 days - 2592000 <--- Due to the limit range 0-2147483
 # set this value to 10 days
-local f2b_bantime="864000"
+# local f2b_bantime="864000"
+
+# CentOS8 use nft (instead of iptables+ipset)
+# nft works fine with this limit
+local f2b_bantime="2592000"
 
 # -----------------------------
 # Setup monitored item
