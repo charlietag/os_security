@@ -26,7 +26,7 @@ start_script
 echo "------------------------------------"
 echo "Remove packages which might be conflicted with manually compiled libmodsecurity"
 echo "------------------------------------"
-rpm --quiet -q libmodsecurity && dnf remove -y libmodsecurity*
+rpm -qa | grep mod_security > /dev/null && dnf remove -y mod_security*
 
 dnf install -y libcurl libcurl-devel yajl yajl-devel libxml2 libxml2-devel ssdeep ssdeep-devel lua lua-devel lmdb lmdb-devel lmdb-libs GeoIP GeoIP-devel
 
