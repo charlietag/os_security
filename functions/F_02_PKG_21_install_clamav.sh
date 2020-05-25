@@ -26,7 +26,7 @@ sed -i /"${cron_check_script//\//\\/}"/d /etc/crontab
 echo "========================================="
 echo "   Install clamav"
 echo "========================================="
-rpm --quiet -q clamav || dnf install -y clamav
+rpm --quiet -q clamav || dnf install -y clamav clamav-update
 
 echo "========================================="
 echo "   Setup for $(basename ${cron_check_script})"
