@@ -11,8 +11,9 @@ local this_script_status="disable"
 # Script of nginx headers_more
 local headers_install_script="/opt/nginx_scripts/package_ngx_headers.sh"
 
-# Nginx extra config (headers_more)
-local ng_headers_server="CharlieTag" # Default=> Nginx: "nginx" , Apache: "Apache"
+# Nginx extra config (headers_more):
+#   Default=> Nginx: "nginx" , Apache: "Apache"
+local ng_headers_server="CharlieTag"
 
 # ************** WAF **************
 # -----------------------
