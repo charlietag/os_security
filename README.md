@@ -153,6 +153,8 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     ```
 
 ## Installation
+* First time finish [os_preparation](https://github.com/charlietag/os_preparation), be sure to do a **REBOOT**, before installing [os_security](https://github.com/charlietag/os_security)
+
 * Run **ALL** to do the following with one command
   * ./start -a
   * Run security check
@@ -667,3 +669,5 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * tag: v0.2.0
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.5...v0.2.0
     * ssl_protocols TLSv1.2 supported only
+* 2020/05/30
+  * upgrading to CentOS 8
