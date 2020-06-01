@@ -35,7 +35,8 @@ echo " ------------------------------------"
 
 # Install SpiderLabs/owasp-modsecurity-crs....
 # OWASP CRS info
-OWASP_CRS_URL="https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/${PARAM_OWASP_CRS_VER}.tar.gz"
+#OWASP_CRS_URL="https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/${PARAM_OWASP_CRS_VER}.tar.gz"
+OWASP_CRS_URL="https://github.com/coreruleset/coreruleset/archive/${PARAM_OWASP_CRS_VER}.tar.gz"
 OWASP_CRS_PATH="${THIS_PATH_TMP}/owasp-modsecurity-crs-*/rules"
 OWASP_CRS_SETUP="${THIS_PATH_TMP}/owasp-modsecurity-crs-*/crs-setup.conf.example"
 
