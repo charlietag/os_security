@@ -33,7 +33,10 @@ echo " ------------------------------------"
 # Install Comodo WAF Rules....
 
 # Start to setup comodo rules
+# Sometimes ... waf.comodo.com TLS certificate will be expired...
+# add '--no-check-certificate' , to avoid wget download failed
 wget \
+--no-check-certificate \
 --header='Accept-Language:en-us,en;q=0.5' \
 --header='Accept:text/html;q=0.9,*/*;q=0.8' \
 --header='Accept-Charset:ISO-8859-1,utf-8;q=0.7,*;q=0.7' \
