@@ -25,15 +25,16 @@ local waf_install_script="/opt/nginx_scripts/package_ngx_waf.sh"
 
 # -----------------------
 # Options for default setup
-# ng_waf_rules="COMODO | OWASP" , Default use "OWSAP"
+# ng_waf_rules="COMODO | OWASP | cwaf_charlietag" , Default use "cwaf_charlietag"
+# cwaf_charlietag - clone of comodo waf rules
 # -----------------------
 # ~~~ OWASP ~~~
-local ng_waf_rules="OWASP"
+#local ng_waf_rules="OWASP"
 
 # Redmine agile plugin: 949110
 # WordPress post editing: 949100 959100
-local ng_waf_rules_owasp_SecRuleRemoveById="949100 949110 959100"  # ---> [ disable | 949100 | 949100 949110 959100 ]
-local ng_waf_rules_azure="disable" #(experiment) ---> [ enable | disable ]
+#local ng_waf_rules_owasp_SecRuleRemoveById="949100 949110 959100"  # ---> [ disable | 949100 | 949100 949110 959100 ]
+#local ng_waf_rules_azure="disable" #(experiment) ---> [ enable | disable ]
 
 
 # ~~~ COMODO ~~~
@@ -47,6 +48,10 @@ local ng_waf_rules_azure="disable" #(experiment) ---> [ enable | disable ]
 #local ng_waf_rules="COMODO"
 #local ng_waf_rules_account="email@gmail.com"
 #local ng_waf_rules_password="xxxxxxxxxxxxxx"
+
+# ~~~ cwaf_charlietag ~~~
+local ng_waf_rules="cwaf_charlietag"
+
 
 
 # -----------------------------
