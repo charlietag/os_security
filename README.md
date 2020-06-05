@@ -282,7 +282,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
           
         * Start to scan
           ```bash
-          nikto -h myrails.centos7.localdomain
+          nikto -h myrails.centos8.localdomain
           ```
           
       * skipfish
@@ -294,7 +294,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
           
         * Start to scan (output_result_folder must be an empty folder)
           ```bash
-          skipfish -o output_result_folder http://myrails.centos7.localdomain
+          skipfish -o output_result_folder http://myrails.centos8.localdomain
           ```
 
 ## Firewalld usage
