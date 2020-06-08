@@ -31,7 +31,7 @@ print_msg (){
 # =====================
 # Check for IPv4
 # =====================
-local hosts_ipv4="$(cat /etc/hosts | grep -v '#' |grep -E "127.0.0.1[[:print:]]*( ${this_hostname}$| ${this_hostname} )")"
+local hosts_ipv4="$(cat /etc/hosts | grep -Ev '^\s*#' |grep -E "127.0.0.1[[:print:]]*( ${this_hostname}$| ${this_hostname} )")"
 if [ ! -z "${hosts_ipv4}" ]
 then
   print_msg 0 "hostname \"${this_hostname}\" found in /etc/hosts for IPv4"
@@ -45,7 +45,7 @@ fi
 # =====================
 # Check for IPv6
 # =====================
-local hosts_ipv6="$(cat /etc/hosts | grep -v '#' |grep -E "::1[[:print:]]*( ${this_hostname}$| ${this_hostname} )")"
+local hosts_ipv6="$(cat /etc/hosts | grep -Ev '^\s*#' |grep -E "::1[[:print:]]*( ${this_hostname}$| ${this_hostname} )")"
 if [ ! -z "${hosts_ipv6}" ]
 then
   print_msg 0 "hostname \"${this_hostname}\" found in /etc/hosts for IPv6"
