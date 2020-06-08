@@ -11,7 +11,7 @@ test_fail2ban_config_status() {
 #                    )"
   local f2b_nft="$(nft list ruleset |grep "${test_ban_ip}")"
   local diff_check="$(  diff <(echo "${f2b_status}") <(echo "${f2b_config}")    ; \
-                        diff <(echo "${f2b_status}" | wc -l | xargs -i bash -c "echo '{} - 1'| bc " ) <(echo "${f2b_nft}" | wc -l)  
+                        diff <(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local | grep -vE '^\s*#' | grep -E '^\s*port' | awk -F'=' '{print $2}' | sed "s/\s//g" | tr ',' '\n' | sort -n | uniq | wc -l) <(echo "${f2b_nft}" | wc -l)  
                     )"
 
   if [[ -n "${diff_check}" ]]; then
