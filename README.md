@@ -35,6 +35,12 @@ Table of Contents
 
 # Environment
   * CentOS 8 (8.x)
+    * os_preparation
+      * release : `v1.x.x` `master`
+
+  * CentOS 7 (7.x) **(deprecated)**
+    * os_preparation
+      * release : `v0.x.x`
 
 # Warning
 If you found something is weired and not sure if you've been hacked.  You'd better reinstall your server.
@@ -169,11 +175,14 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   ```bash
   ./start.sh -i \
-    F_01_check_os \
-    F_02_check_failed_login \
-    F_03_check_ssh_config \
-    F_04_list_os_users \
-    F_05_check_last_login
+    F_00_debug \
+    F_00_list_os_users \
+    F_01_CHECK_01_os \
+    F_01_CHECK_02_failed_login \
+    F_01_CHECK_03_last_login \
+    F_01_CHECK_04_ssh_config \
+    F_01_CHECK_05_hosts_config \
+    ...
   ```
 
 * Check OS
@@ -187,7 +196,15 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * Check current how many common user created
 * Check last login
   * Check latest successfully login
-
+* Check hosts file (/etc/hosts)
+          
+  ```bash
+  127.0.0.1 original content
+  ::1       original content
+  127.0.0.1 $(hostname)
+  ::1       $(hostname)
+  ```
+      
 # Installed Packages 
 * Firewalld
   * Allowed port
@@ -341,12 +358,12 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 ## Fail2ban usage
 *- Setting: port, in fail2ban configuration is based on firewalld services name.*
 
-*- Determine if rules of fail2ban is inserted into iptables via firewalld command*
+*- Determine if rules of fail2ban is inserted into nft via firewalld command*
 
-  * Confirm fail2ban works with **iptables** well
+  * Confirm fail2ban works with **nft** well
   
     ```bash
-    iptables -S | grep -i fail2ban
+    nft list ruleset | grep {banned_ip}
     ```
   
   * List fail2ban status
@@ -452,33 +469,50 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   **Result**
 
     ```bash
-    --------------Fail2ban Status-------------
-    Status
-    |- Number of jail:      4
-    `- Jail list:   nginx-botsearch, nginx-limit-req, sshd
-    --------------Fail2ban Detail Status-------------
     ----nginx-botsearch----
     Status for the jail: nginx-botsearch
     |- Filter
     |  |- Currently failed: 0
     |  |- Total failed:     0
-    |  `- File list:        /var/log/nginx/mylaravel.access.log /var/log/nginx/myrails.error.log /var/log/nginx/myrails.access.log /var/log/nginx/mylaravel.error.log /var/log/nginx/default.access.log /var/log/nginx/default.error.log
+    |  `- File list:        /var/log/nginx/error.log /var/log/nginx/default.error.log /var/log/nginx/redmine.centos8.localdomain.error.log /var/log/nginx/myrails.centos8.localdomain.error.log /var/log/nginx/mylaravel.centos8.localdomain.error.log
     `- Actions
-       |- Currently banned: 0
-       |- Total banned:     0
-       `- Banned IP list:   
-
+       |- Currently banned: 1
+       |- Total banned:     1
+       `- Banned IP list:   10.255.255.254
+    
     ----nginx-limit-req----
     Status for the jail: nginx-limit-req
     |- Filter
     |  |- Currently failed: 0
     |  |- Total failed:     0
-    |  `- File list:        /var/log/nginx/mylaravel.error.log /var/log/nginx/myrails.error.log /var/log/nginx/default.error.log
+    |  `- File list:        /var/log/nginx/error.log /var/log/nginx/default.error.log /var/log/nginx/redmine.centos8.localdomain.error.log /var/log/nginx/myrails.centos8.localdomain.error.log /var/log/nginx/mylaravel.centos8.localdomain.error.log
     `- Actions
-       |- Currently banned: 0
-       |- Total banned:     0
-       `- Banned IP list:   
-
+       |- Currently banned: 1
+       |- Total banned:     1
+       `- Banned IP list:   10.255.255.254
+    
+    ----nginx-modsecurity----
+    Status for the jail: nginx-modsecurity
+    |- Filter
+    |  |- Currently failed: 0
+    |  |- Total failed:     1
+    |  `- File list:        /var/log/nginx/error.log /var/log/nginx/default.error.log /var/log/nginx/redmine.centos8.localdomain.error.log /var/log/nginx/myrails.centos8.localdomain.error.log /var/log/nginx/mylaravel.centos8.localdomain.error.log
+    `- Actions
+       |- Currently banned: 1
+       |- Total banned:     1
+       `- Banned IP list:   10.255.255.254
+    
+    ----nginx-redmine----
+    Status for the jail: nginx-redmine
+    |- Filter
+    |  |- Currently failed: 0
+    |  |- Total failed:     0
+    |  `- File list:        /home/rubyuser/rails_sites/redmine/log/production.log
+    `- Actions
+       |- Currently banned: 1
+       |- Total banned:     1
+       `- Banned IP list:   10.255.255.254
+    
     ----sshd----
     Status for the jail: sshd
     |- Filter
@@ -486,15 +520,16 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
     |  |- Total failed:     0
     |  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
     `- Actions
-       |- Currently banned: 0
-       |- Total banned:     0
-       `- Banned IP list:   
+       |- Currently banned: 1
+       |- Total banned:     1
+       `- Banned IP list:   10.255.255.254
     ```
 
 # Install SSL (Letsencrypt) - A+
 ## Setup Nginx
   **This will automatically setup after installation**
   **Also you will get a score "A+" in [SSLTEST](https://www.ssllabs.com/ssltest)**
+  **Default : TLS 1.2 1.3 enabled
 
 ## Certbot prerequisite
   **You will need 2 privileges**
@@ -569,7 +604,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   logwatch
   ```
 
-## pflogsumm usage
+## pflogsumm usage (not installed by default, use logwatch instead)
   *- View log analysis of postfix.*
 
   ```bash
@@ -577,7 +612,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   ```
 
 # Performance monitor
-## Glances usage
+## Glances usage (not installed by default, not provide by CentOS 8 - base,epel,appstream)
   *- Just like command "top", but more than that.*
 
   ```bash
@@ -669,5 +704,23 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
   * tag: v0.2.0
     * changelog: https://github.com/charlietag/os_security/compare/v0.1.5...v0.2.0
     * ssl_protocols TLSv1.2 supported only
-* 2020/05/30
-  * upgrading to CentOS 8
+* 2020/06/11
+  * tag: v1.0.0
+    * changelog: https://github.com/charlietag/os_security/compare/v0.2.0...v1.0.0
+      * CentOS 8 - changes for CentOS 8
+        * Rename all centos7 related to centos8 in all config files
+        * Command "yum" -> "dnf"
+        * Package: goaccess
+          * Manually compile, because CentOS8 (epel, base, appstream) doesn't provide this package
+        * clamscan
+          * show error message if memroy is insufficient
+        * TLS 1.3 (Nginx) - Enabled by default
+        * ModSecurity
+          * v3.0.3 -> v3.0.4
+        * Nginx WAF Rules - cwaf_charlietag (comodo waf clone for bad stability of cwaf site) by default
+        * iptables -> nft
+          * check_fail2ban.sh
+            * ipset list check -> nft list ruleset check
+        * Fail2ban default bantime
+          * ban IP for 30 days - 2592000
+        * Other changes for CentOS 8 (reference changelog via link above)
