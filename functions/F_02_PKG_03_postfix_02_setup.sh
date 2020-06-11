@@ -12,7 +12,7 @@
 #--------------------------------------
 # Rendering postfix config
 #--------------------------------------
-task_copy_using_render
+task_copy_using_render_sed
 
 #--------------------------------------
 # Setup cron mail config
