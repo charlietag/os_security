@@ -48,18 +48,18 @@ Table of Contents
   * `clamscan` is a **memory monster**
   * (Tip) mkswap if RAM is insufficient to run clamscan
 
-  ```bash
-  mkdir /swap
-  dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
-  mkswap /swap/swapfile
-  chmod 0600 /swap/swapfile
-  /sbin/swapon /swap/swapfile
-  ```
+    ```bash
+    mkdir /swap
+    dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
+    mkswap /swap/swapfile
+    chmod 0600 /swap/swapfile
+    /sbin/swapon /swap/swapfile
+    ```
 
-  ```bash
-  chmod 755 /etc/rc.d/rc.local
-  echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
-  ```
+    ```bash
+    chmod 755 /etc/rc.d/rc.local
+    echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
+    ```
 
 # Quick Install
 ## Configuration
