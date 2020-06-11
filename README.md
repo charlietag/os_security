@@ -36,7 +36,7 @@ Table of Contents
 # Environment
   * CentOS 8 (8.x)
     * os_preparation
-      * release : `v1.x.x` `master`
+      * release : `master` `v1.x.x`
 
   * CentOS 7 (7.x) **(deprecated)**
     * os_preparation
