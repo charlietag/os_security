@@ -46,6 +46,7 @@ Table of Contents
 * If you found something is weired and not sure if you've been hacked.  You'd better reinstall your server.
 * ClamAV (clamscan) - if you're going to scan virus through clamscan (ClamAV), which is installed by default ([os_security](https://github.com/charlietag/os_security))
   * `clamscan` is a **memory monster**
+  * RAM (Physical + SWAP) Capacity recommendations for clamscan (ClamAV): **>= 4GB**
   * (Tip) mkswap if RAM is insufficient to run clamscan
 
     ```bash
