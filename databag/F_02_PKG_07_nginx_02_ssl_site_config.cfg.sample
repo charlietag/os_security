@@ -1,7 +1,7 @@
 # ***************************************************
 # * change your domain name here                    *
 # ***************************************************
-local server_name="myrails.centos7.localdomain"  # ---> ex: mylaravel.centos7.localdomain
+local server_name="myrails.centos8.localdomain"  # ---> ex: mylaravel.centos8.localdomain
 local site_app_name="myrails"                    # ---> ex: mylaravel
 local site_user_name="rubyuser"                  # ---> ex: phpuser
 

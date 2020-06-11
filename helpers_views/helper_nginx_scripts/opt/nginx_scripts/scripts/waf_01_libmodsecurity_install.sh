@@ -26,14 +26,14 @@ start_script
 echo "------------------------------------"
 echo "Remove packages which might be conflicted with manually compiled libmodsecurity"
 echo "------------------------------------"
-rpm --quiet -q libmodsecurity && yum remove -y libmodsecurity*
+rpm -qa | grep mod_security > /dev/null && dnf remove -y mod_security*
 
-yum install -y libcurl libcurl-devel yajl yajl-devel libxml2 libxml2-devel ssdeep ssdeep-devel lua lua-devel lmdb lmdb-devel lmdb-libs GeoIP GeoIP-devel
+dnf install -y libcurl libcurl-devel yajl yajl-devel libxml2 libxml2-devel ssdeep ssdeep-devel lua lua-devel lmdb lmdb-devel lmdb-libs GeoIP GeoIP-devel
 
 # ------------------------------------
 # Install libmodsecurity (ModSecurity for Nginx)
 # ------------------------------------
-#yum install -y libmodsecurity*
+#dnf install -y libmodsecurity*
 
 echo " ------------------------------------"
 echo " Install libmodsecurity (Manually compile libmodsecurity - Modsecurity for Nginx)"

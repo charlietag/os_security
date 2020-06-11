@@ -33,11 +33,11 @@ echo " ------------------------------------"
 echo " Install OWASP Rules - CRS...."
 echo " ------------------------------------"
 
-# Install SpiderLabs/owasp-modsecurity-crs....
+# Install coreruleset/coreruleset....
 # OWASP CRS info
-OWASP_CRS_URL="https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/${PARAM_OWASP_CRS_VER}.tar.gz"
-OWASP_CRS_PATH="${THIS_PATH_TMP}/owasp-modsecurity-crs-*/rules"
-OWASP_CRS_SETUP="${THIS_PATH_TMP}/owasp-modsecurity-crs-*/crs-setup.conf.example"
+OWASP_CRS_URL="https://github.com/coreruleset/coreruleset/archive/${PARAM_OWASP_CRS_VER}.tar.gz"
+OWASP_CRS_PATH="${THIS_PATH_TMP}/coreruleset-*/rules"
+OWASP_CRS_SETUP="${THIS_PATH_TMP}/coreruleset-*/crs-setup.conf.example"
 
 # Start to setup owasp rules
 wget $OWASP_CRS_URL -O - | tar -xz
@@ -52,7 +52,7 @@ if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
 
   echo 
   echo ">>>>>>>>>>>>>>>"
-  echo "Copy owasp-modsecurity-crs-*/rules/* ---> ${PARAM_OWASP_RULES_PATH}/ ....!"
+  echo "Copy coreruleset-*/rules/* ---> ${PARAM_OWASP_RULES_PATH}/ ....!"
   echo 
   \cp -f ${OWASP_CRS_PATH}/* ${PARAM_OWASP_RULES_PATH}/
 
@@ -71,7 +71,7 @@ if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
   if [ -s ${OWASP_CRS_SETUP} ]; then
     echo 
     echo ">>>>>>>>>>>>>>>"
-    echo "cat owasp-modsecurity-crs-*/crs-setup.conf.example > ${PARAM_OWASP_RULES_PATH}/../crs-setup.conf ....!"
+    echo "cat coreruleset-*/crs-setup.conf.example > ${PARAM_OWASP_RULES_PATH}/../crs-setup.conf ....!"
     echo 
     cat ${OWASP_CRS_SETUP} > ${PARAM_OWASP_RULES_PATH}/../crs-setup.conf
   fi

@@ -1,13 +1,19 @@
 test_fail2ban_config_status() {
-  local f2b_status="$(fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n'|sort -n )"
-  local f2b_config="$(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local |grep -E "\[[^[:space:]]+\]$" | grep -v "DEFAULT" | grep -vE "^#" | sed -re 's/^\[//g' | sed -re 's/\]$//g' | sort -n )"
-  local f2b_iptables="$(iptables -S | grep -Eo "f2b-[^[:space:]]+" | sed 's/f2b-//g' | sort -n )"
-  local f2b_ipset="$(ipset list | grep -Eo "f2b-[^[:space:]]+" | sed 's/f2b-//g' | sort -n )"
+  local test_ban_ip="${1}"
+  local f2b_status="$(fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n'|sort -n)"
+  local f2b_config="$(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local |grep -E "\[[^[:space:]]+\]$" | grep -v "DEFAULT" | grep -vE "^#" | sed -re 's/^\[//g' | sed -re 's/\]$//g' | sort -n)"
+#  local f2b_iptables="$(iptables -S | grep -Eo "f2b-[^[:space:]]+" | sed 's/f2b-//g' | sort -n )"
+#  local f2b_ipset="$(ipset list | grep -Eo "f2b-[^[:space:]]+" | sed 's/f2b-//g' | sort -n )"
 
+#  local diff_check="$(  diff <(echo "${f2b_status}") <(echo "${f2b_config}")    ; \
+#                        diff <(echo "${f2b_status}") <(echo "${f2b_iptables}")  ; \
+#                        diff <(echo "${f2b_status}") <(echo "${f2b_ipset}")  
+#                    )"
+  local f2b_nft="$(nft list ruleset |grep "${test_ban_ip}")"
   local diff_check="$(  diff <(echo "${f2b_status}") <(echo "${f2b_config}")    ; \
-                        diff <(echo "${f2b_status}") <(echo "${f2b_iptables}")  ; \
-                        diff <(echo "${f2b_status}") <(echo "${f2b_ipset}")  
+                        diff <(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local | grep -vE '^\s*#' | grep -E '^\s*port' | awk -F'=' '{print $2}' | sed "s/\s//g" | tr ',' '\n' | sort -n | uniq | wc -l) <(echo "${f2b_nft}" | wc -l)  
                     )"
+
   if [[ -n "${diff_check}" ]]; then
     echo "--------------------------------------------------------"
     echo "fail2ban config is not loaded correctly!"
@@ -20,12 +26,16 @@ test_fail2ban_config_status() {
     echo -e "${f2b_config}"
     echo ""
 
-    echo -e '----- iptables -S ---'
-    echo -e "${f2b_iptables}"
-    echo ""
+    #echo -e '----- iptables -S ---'
+    #echo -e "${f2b_iptables}"
+    #echo ""
 
-    echo -e '----- ipset list ---'
-    echo -e "${f2b_ipset}"
+    #echo -e '----- ipset list ---'
+    #echo -e "${f2b_ipset}"
+
+    echo -e '----- nft list ruleset ---'
+    echo -e "${f2b_nft}"
+    echo ""
   fi
 }
 
@@ -34,43 +44,47 @@ test_fail2ban_config_status() {
 # ipset err msg: "ipset v7.1: The set with the given name does not exist"
 #     This means this is the first time to start fail2ban, which needs to be initialized.
 #     This will be solved after first time run this script (fail2ban-client set {jail_name} banip 10.255.255.254)
+#
+# 20200525
+# CentoOS 8 is using nft rules instead.
 # ----------
-test_ipset() {
-  local ipset_ban_jail="f2b-${1}"
+test_f2b() {
+  local f2b_ban_jail="${1}"
   local test_ban_ip="${2}"
-  local ipset_list="$(ipset list ${ipset_ban_jail} | grep "${test_ban_ip}" )"
-  [[ -z "${ipset_list}" ]] && echo -e "ipset \"${ipset_ban_jail}\":\t\t... WARNING"
+  local f2b_list="$(fail2ban-client get ${f2b_ban_jail} banip | grep "${test_ban_ip}" )"
+  
+  [[ -z "${f2b_list}" ]] && echo -e "fail2ban \"${f2b_ban_jail}\":\t\t... WARNING"
 }
 
 test_ban() {
-  local test_ban_ip="10.255.255.254"
+  local test_ban_ip="${1}"
   local f2b_jails="$(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local |grep -E "\[[^[:space:]]+\]$" | grep -v "DEFAULT" | grep -vE "^#" | sed -re 's/^\[//g' | sed -re 's/\]$//g' | sort -n )"
-  local test_ipset_warning
-  local test_ipset_warning_found
+  local test_f2b_warning
+  local test_f2b_warning_found
 
-  # --- Check ipset by f2b jail names one by one ---
+  # --- Check fail2ban by f2b jail names one by one ---
   for f2b_jail in ${f2b_jails[@]}; do
-    test_ipset_warning_found="N"
+    test_f2b_warning_found="N"
     # --- First Check ---
-    test_ipset_warning="$(test_ipset "${f2b_jail}" "${test_ban_ip}")"
-    if [[ -n "${test_ipset_warning}" ]]; then
-      test_ipset_warning_found="Y"
+    test_f2b_warning="$(test_f2b "${f2b_jail}" "${test_ban_ip}")"
+    if [[ -n "${test_f2b_warning}" ]]; then
+      test_f2b_warning_found="Y"
       echo "------"
-      echo "${test_ipset_warning}"
-      echo "try to add ip into ipset banning list..."
+      echo "${test_f2b_warning}"
+      echo "try to add ip into fail2ban(${f2b_jail} banning list..."
       fail2ban-client set ${f2b_jail} banip ${test_ban_ip}
       sleep 2
       echo "------"
     fi
 
     # --- Second Check ---
-    if [[ "${test_ipset_warning_found}" = "Y" ]]; then
-      test_ipset_warning="$(test_ipset "${f2b_jail}" "${test_ban_ip}")"
-      if [[ -n "${test_ipset_warning}" ]]; then
-        echo "${test_ipset_warning}"
+    if [[ "${test_f2b_warning_found}" = "Y" ]]; then
+      test_f2b_warning="$(test_f2b "${f2b_jail}" "${test_ban_ip}")"
+      if [[ -n "${test_f2b_warning}" ]]; then
+        echo "${test_f2b_warning}"
         echo "Firewalld is not running correctly!"
       else
-        echo "ipset rules added !"
+        echo "fail2ban rules added (nft)!"
       fi
       echo ""
       echo ""
@@ -82,8 +96,9 @@ test_ban() {
 }
 
 check_fail2ban() {
-  local diff_status_msg="$(test_fail2ban_config_status)"
-  local test_ban_msg="$(test_ban)"
+  local test_ban_ip="10.255.255.254"
+  local diff_status_msg="$(test_fail2ban_config_status ${test_ban_ip})"
+  local test_ban_msg="$(test_ban ${test_ban_ip})"
   if [[ -n "${diff_status_msg}" ]] || [[ -n "${test_ban_msg}" ]] ; then
     display_check_name
 

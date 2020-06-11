@@ -16,4 +16,5 @@ chmod 755 ${SCRIPTS_PATH}/*.sh
 ${SCRIPTS_PATH}/waf_01_libmodsecurity_install.sh
 ${SCRIPTS_PATH}/waf_02_nginx_connector_install.sh
 ${SCRIPTS_PATH}/waf_03_rules_comodo_apply.sh
+${SCRIPTS_PATH}/waf_03_rules_cwaf_charlietag_apply.sh
 ${SCRIPTS_PATH}/waf_03_rules_owasp_apply.sh

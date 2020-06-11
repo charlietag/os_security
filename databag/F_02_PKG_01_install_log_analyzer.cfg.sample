@@ -4,3 +4,7 @@
 # [ enable | disable ]
 local this_script_status="disable"
 
+# If this script is enabled,
+# the following setup will be used
+# goaccess tool version
+local goaccess_ver="1.3"
