@@ -532,7 +532,7 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
   **Also you will get a score "A+" in [SSLTEST](https://www.ssllabs.com/ssltest)**
 
-  **Default : TLS 1.2 1.3 enabled
+  **Default : TLS 1.2 1.3 enabled**
 
 ## Certbot prerequisite
   **You will need 2 privileges**
