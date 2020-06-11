@@ -36,7 +36,7 @@ Table of Contents
 # Environment
   * CentOS 8 (8.x)
     * os_preparation
-      * release : `master` `v1.x.x`
+      * release : `master`  `v1.x.x`
 
   * CentOS 7 (7.x) **(deprecated)**
     * os_preparation
@@ -527,8 +527,11 @@ If you found something is weired and not sure if you've been hacked.  You'd bett
 
 # Install SSL (Letsencrypt) - A+
 ## Setup Nginx
+
   **This will automatically setup after installation**
+
   **Also you will get a score "A+" in [SSLTEST](https://www.ssllabs.com/ssltest)**
+
   **Default : TLS 1.2 1.3 enabled
 
 ## Certbot prerequisite
