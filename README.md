@@ -744,3 +744,6 @@ Table of Contents
         * Fail2ban default bantime
           * ban IP for 30 days - 2592000
         * Other changes for CentOS 8 (reference changelog via link above)
+  * tag: v1.0.1
+    * changelog: https://github.com/charlietag/os_security/compare/v1.0.0...v1.0.1
+      * postfix config -> **compatibility_level = 2**
