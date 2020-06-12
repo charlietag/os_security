@@ -19,11 +19,16 @@ local postfix_relay_port="2525"
 local postfix_relay_user="username"
 local postfix_relay_pass="password"
 
+# cron job output mail to
+local cron_mail_to="email@gmail.com"
+
+
+# ------------------- Better NOT Modify Here ------------------
 # ***************************************
 # Cron Setup
 # ***************************************
 local cron_mail_from="root@$(hostname)"
-local cron_mail_to="email@gmail.com"
+#local cron_mail_to="email@gmail.com"
 
 # ***************************************
 # POSTFIX setting
@@ -35,3 +40,4 @@ local postfix_myorigin="$(hostname)"
 # generally it's the same as cron_mail_to
 # ***************************************
 local mail_root_alias="${cron_mail_to}"
+# ------------------- Better NOT Modify Here ------------------
