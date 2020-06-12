@@ -747,3 +747,7 @@ Table of Contents
   * tag: v1.0.1
     * changelog: https://github.com/charlietag/os_security/compare/v1.0.0...v1.0.1
       * postfix config -> **compatibility_level = 2**
+* 2020/06/11
+  * tag: v1.0.2
+    * changelog: https://github.com/charlietag/os_security/compare/v1.0.1...v1.0.2
+      * small changes for _postfix.cfg
