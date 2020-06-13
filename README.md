@@ -764,3 +764,10 @@ Table of Contents
   * tag: v1.0.2
     * changelog: https://github.com/charlietag/os_security/compare/v1.0.1...v1.0.2
       * small changes for _postfix.cfg
+* 2020/06/14
+  * tag: v1.0.3
+    * changelog: https://github.com/charlietag/os_security/compare/v1.0.2...v1.0.3
+      * DO NOT restart Nginx if Nginx is disabled (Otherwise, sometimes I will be shocked if it's started automatically)
+        * When upgrading Nginx related (WAF / Header / Nginx) 
+        * Check banned IP by fail2ban (f2b_nginx_check_banned.sh)
+        * Renew certificates (certbot-auto_renew.sh)
