@@ -26,7 +26,7 @@ function stop_script (){
 
   local service_name="nginx.service"
   local service_status="$(systemctl list-unit-files | grep "enable" | grep "${service_name}")"
-  if [[ -n "{service_status}" ]]; then
+  if [[ -n "${service_status}" ]]; then
     echo "-------------------"
     echo "Restarting Nginx... !"
     echo "-------------------"
