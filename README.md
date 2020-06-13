@@ -62,6 +62,19 @@ Table of Contents
     echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
     ```
 
+* If your ***physical memory is <= 1GB***, be sure stop some service before getting started
+  * (**Nginx) is needed** when **TLS (certbot) certificates is required**
+
+    ```bash
+    echo "mariadb php-fpm puma" | sed 's/ /\n/g' | xargs -i bash -c "echo --- Stop / Disable {} ---; systemctl stop {} ; systemctl disable {}; echo"
+    ```
+
+  * **Nginx is not needed**, when **NO TLS certificates** required
+
+    ```bash
+    echo "mariadb php-fpm puma nginx" | sed 's/ /\n/g' | xargs -i bash -c "echo --- Stop / Disable {} ---; systemctl stop {} ; systemctl disable {}; echo"
+    ```
+
 # Quick Install
 ## Configuration
   * Download and run check
