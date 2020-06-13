@@ -48,20 +48,7 @@ Table of Contents
   * `clamscan` is a **memory monster**
   * RAM (Physical + SWAP) Capacity recommendations for clamscan (ClamAV): **>= 4GB**
   * (Tip) mkswap if RAM is insufficient to run clamscan
-
-    ```bash
-    mkdir /swap
-    dd if=/dev/zero of=/swap/swapfile bs=1M count=2048
-    mkswap /swap/swapfile
-    chmod 0600 /swap/swapfile
-    /sbin/swapon /swap/swapfile
-    ```
-
-    ```bash
-    chmod 755 /etc/rc.d/rc.local
-    echo "/sbin/swapon /swap/swapfile" >> /etc/rc.d/rc.local
-    ```
-
+    * [os_preparation#SWAP_FILE](https://github.com/charlietag/os_preparation#warning)
 * If your ***physical memory is <= 1GB***, be sure stop some service before getting started
   * (**Nginx) is needed** when **TLS (certbot) certificates is required**
 
