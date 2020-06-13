@@ -9,6 +9,20 @@ then
   exit 1
 fi
 
+
+# ------------------ Check service status ------------------------------
+check_service() {
+  local service_name="$1"
+  local service_status="$(systemctl list-unit-files | grep "enable" | grep "${service_name}")"
+
+  if [[ -z "${service_status}" ]]; then
+    exit
+  fi
+}
+# ------------------ Check service status ------------------------------
+
+
+
 if [ $VALID_DAYS -lt $RENEW_BEFORE_DAYS ]
 then
 
@@ -32,6 +46,7 @@ then
   $CERTBOT_CMD renew -n
 
   echo ""
+  check_service "nginx.service"
   echo "============================"
   echo " Restarting web server"
   echo "============================"

@@ -41,6 +41,18 @@ lock_process() {
 }
 # ------------------ Lock Script ------------------------------
 
+# ------------------ Check service status ------------------------------
+check_service() {
+  local service_name="$1"
+  local service_status="$(systemctl list-unit-files | grep "enable" | grep "${service_name}")"
+
+  if [[ -z "${service_status}" ]]; then
+    exit
+  fi
+}
+# ------------------ Check service status ------------------------------
+
+
 # ------------------ Main script ------------------------------
 main() {
   if [[ -n "${DIFF_IP_ADD}" ]]; then
@@ -66,6 +78,7 @@ main() {
 # ------------------ Main script ------------------------------
 
 lock_process
+check_service "nginx.service"
 #sleep 50
 #exit
 main
