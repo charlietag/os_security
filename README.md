@@ -33,10 +33,14 @@ Table of Contents
 1. This could also help you to enhance your servers' security with **firewalld** and **fail2ban**.
 1. This is also designed for **PRODUCTION** single server, which means this is suit for small business.
 
-# Environment
+# Supported Environment
+  * CentOS Stream release 8
+    * os_preparation
+      * release : `master` `v2.x.x`
+
   * CentOS 8 (8.x)
     * os_preparation
-      * release : `master` `v1.x.x`
+      * release : `v1.x.x`
 
   * CentOS 7 (7.x) **(deprecated)**
     * os_preparation
@@ -214,15 +218,15 @@ Table of Contents
 * Check last login
   * Check latest successfully login
 * Check hosts file (/etc/hosts)
-          
+
   ```bash
   127.0.0.1 original content
   ::1       original content
   127.0.0.1 $(hostname)
   ::1       $(hostname)
   ```
-      
-# Installed Packages 
+
+# Installed Packages
 * Firewalld
   * Allowed port
     * http
@@ -275,7 +279,7 @@ Table of Contents
       * Reference: REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example , RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf.example
         * REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example
           * Usage
-            
+
             ```bash
             # ModSecurity Rule Exclusion: Disable all SQLi and XSS rules
             SecRule REQUEST_FILENAME "@beginsWith /admin" \
@@ -291,7 +295,7 @@ Table of Contents
 
         * RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf.example
           * Usage
-            
+
             ```bash
             SecRuleRemoveById 949100 949110 959100
             ```
@@ -313,19 +317,19 @@ Table of Contents
           ```bash
           dnf install -y nikto
           ```
-          
+
         * Start to scan
           ```bash
           nikto -h myrails.centos8.localdomain
           ```
-          
+
       * skipfish
         * Install
 
           ```bash
           dnf install -y skipfish
           ```
-          
+
         * Start to scan (output_result_folder must be an empty folder)
           ```bash
           skipfish -o output_result_folder http://myrails.centos8.localdomain
@@ -346,15 +350,15 @@ Table of Contents
   firewall-cmd --add-port=2222/tcp --permanent
   firewall-cmd --remove-port=2222/tcp --permanent
   ```
-  
+
 * List all current rules setting
 
   ```bash
   firewall-cmd --list-all
   ```
-  
+
 * After setup done with argument "**--permanent**", all rules save into the following file by default
-  
+
   ```bash
   /etc/firewalld/zone/public.xml
   ```
@@ -363,13 +367,13 @@ Table of Contents
   ```bash
   firewall-cmd --reload
   ```
-  
+
 * Services(http,https) defines in
-  
+
   ```bash
   /usr/lib/firewalld/services/*
   ```
-  
+
 * After running this installation, your firewalld will only allow http , https , ***customized ssh port***
 
 ## Fail2ban usage
@@ -378,17 +382,17 @@ Table of Contents
 *- Determine if rules of fail2ban is inserted into nft via firewalld command*
 
   * Confirm fail2ban works with **nft** well
-  
+
     ```bash
     nft list ruleset | grep {banned_ip}
     ```
-  
+
   * List fail2ban status
-  
+
     ```bash
     fail2ban-client status
     ```
-  
+
   * List detailed status for specific **JAIL NAME**, including banned IP
 
     ```bash
@@ -406,13 +410,13 @@ Table of Contents
     ```bash
     fail2ban-client unban 192.168.1.72 ... 192.168.1.72
     ```
-    
+
   * List banned ip timeout for specific **JAIL NAME**
 
     ```bash
     ipset list fail2ban-nginx-botsearch
     ```
-    
+
   * Fail2ban keeps showing WARN
 
     ```bash
@@ -424,7 +428,7 @@ Table of Contents
       * ~~fail2ban-client restart~~
     * Root cause (Not verified)
       * fail2ban will dns lookup / dns reserve lookup hostname, this will trigger this error message
-      * fail2ban will not dns lookup / dns reserve lookup 127.0.0.1 
+      * fail2ban will not dns lookup / dns reserve lookup 127.0.0.1
       * And why VM test server will not show this err message
         * The hostname of VM test server is not in `/etc/hosts` but also not in dns. So all the results when dns resolves. are `NXDOMAIN`, the same result... PASS
     * Solution 1
@@ -455,21 +459,21 @@ Table of Contents
 
 - The following flow are executed automatically by **Fail2ban**
   * Create [ipset-nmae] *(What actually done behind)*
-      
+
       ```bash
       ipset create <ipmset> hash:ip timeout <bantime>
       ```
-      
+
   * Reject all traffic with [ipset-name] *(What actually done behind)*
-      
+
       ```bash
       firewall-cmd --direct --add-rule <family> filter <chain> 0 -p <protocol> -m multiport --dports <port> -m set --match-set <ipmset> src -j <blocktype>
       ```
-      
+
   * Parse log
   * **Found** illigal IP
   * **Ban** IP using **ipset** with timeout argument *(What actually done behind)*
-      
+
       ```bash
       ipset add <ipmset> <ip> timeout <bantime> -exist
       ```
@@ -496,7 +500,7 @@ Table of Contents
        |- Currently banned: 1
        |- Total banned:     1
        `- Banned IP list:   10.255.255.254
-    
+
     ----nginx-limit-req----
     Status for the jail: nginx-limit-req
     |- Filter
@@ -507,7 +511,7 @@ Table of Contents
        |- Currently banned: 1
        |- Total banned:     1
        `- Banned IP list:   10.255.255.254
-    
+
     ----nginx-modsecurity----
     Status for the jail: nginx-modsecurity
     |- Filter
@@ -518,7 +522,7 @@ Table of Contents
        |- Currently banned: 1
        |- Total banned:     1
        `- Banned IP list:   10.255.255.254
-    
+
     ----nginx-redmine----
     Status for the jail: nginx-redmine
     |- Filter
@@ -529,7 +533,7 @@ Table of Contents
        |- Currently banned: 1
        |- Total banned:     1
        `- Banned IP list:   10.255.255.254
-    
+
     ----sshd----
     Status for the jail: sshd
     |- Filter
@@ -755,6 +759,9 @@ Table of Contents
   * tag: v1.0.3
     * changelog: https://github.com/charlietag/os_security/compare/v1.0.2...v1.0.3
       * DO NOT restart Nginx if Nginx is disabled (Otherwise, sometimes I will be shocked if it's started automatically)
-        * When upgrading Nginx related (WAF / Header / Nginx) 
+        * When upgrading Nginx related (WAF / Header / Nginx)
         * Check banned IP by fail2ban (f2b_nginx_check_banned.sh)
         * Renew certificates (certbot-auto_renew.sh)
+* 2021/01/27
+  * tag: v2.0.0
+    * changelog: https://github.com/charlietag/os_security/compare/v1.0.3...v2.0.0
