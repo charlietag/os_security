@@ -762,6 +762,8 @@ Table of Contents
         * When upgrading Nginx related (WAF / Header / Nginx)
         * Check banned IP by fail2ban (f2b_nginx_check_banned.sh)
         * Renew certificates (certbot-auto_renew.sh)
-* 2021/01/27
+* 2021/01/28
   * tag: v2.0.0
     * changelog: https://github.com/charlietag/os_security/compare/v1.0.3...v2.0.0
+      * Install certbot (git clone certbot-auto => dnf install certbot using repo EPEL)
+      * add comment for puma TCP socket in nginx sample ssl config (rails)
