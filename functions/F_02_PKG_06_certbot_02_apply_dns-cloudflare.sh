@@ -15,6 +15,7 @@
 . ${PLUGINS}/plugin_certbot_install_check.sh
 #**********************************************
 
+rpm --quiet -q python3-certbot-dns-cloudflare || dnf -y install certbot python3-certbot-dns-cloudflare
 # --------------------------------------------------
 # Install certbot using EPEL repo - so ignore here
 # --------------------------------------------------

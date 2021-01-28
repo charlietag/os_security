@@ -26,7 +26,7 @@ echo "curl -Is http://${certbot_servername}"
 
 if [[ -z "${response_server_type}" ]]; then
   echo "URL is not alive: http://${certbot_servername}"
-  exit
+  eval "${SKIP_SCRIPT}"
 fi
 
 echo "===> ${response_server_type}"

@@ -27,6 +27,8 @@ check_service() {
 if [ $VALID_DAYS -lt $RENEW_BEFORE_DAYS ]
 then
 
+  rpm --quiet -q certbot || dnf -y install certbot python3-certbot-dns-cloudflare
+  rpm --quiet -q python3-certbot-dns-cloudflare || dnf -y install certbot python3-certbot-dns-cloudflare
   # --------------------------------------------------
   # Install certbot using EPEL repo - so ignore here
   # --------------------------------------------------
