@@ -20,9 +20,9 @@
 # Start to apply letsencrypt SSL cert with WEBROOT verification
 
 echo "---Make sure Nginx is started for the site (${certbot_servername})---"
-local response_server_type="$(curl -Is http://${certbot_servername} | grep 'Server')"
+local response_server_type="$(curl -LIs http://${certbot_servername} | grep -i 'Server' | tail -n 1)"
 
-echo "curl -Is http://${certbot_servername}"
+echo "curl -LIs http://${certbot_servername}"
 
 if [[ -z "${response_server_type}" ]]; then
   echo "URL is not alive: http://${certbot_servername}"
