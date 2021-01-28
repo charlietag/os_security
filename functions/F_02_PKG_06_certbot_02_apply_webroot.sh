@@ -18,6 +18,20 @@
 
 #**********************************************
 # Start to apply letsencrypt SSL cert with WEBROOT verification
+
+echo "---Make sure Nginx is started for the site (${certbot_servername})---"
+local response_server_type="$(curl -Is http://${certbot_servername} | grep 'Server')"
+
+echo "curl -Is http://${certbot_servername}"
+
+if [[ -z "${response_server_type}" ]]; then
+  echo "URL is not alive: http://${certbot_servername}"
+  exit
+fi
+
+echo "===> ${response_server_type}"
+echo ""
+
 echo "---Apply cert using certbot via webroot---"
 $certbot_command --agree-tos -m $certbot_email --no-eff-email certonly --webroot -w $certbot_webroot -d $certbot_servername -n -q
 #**********************************************

@@ -765,5 +765,6 @@ Table of Contents
 * 2021/01/28
   * tag: v2.0.0
     * changelog: https://github.com/charlietag/os_security/compare/v1.0.3...v2.0.0
-      * Install certbot (git clone certbot-auto => dnf install certbot using repo EPEL)
+      * install certbot (git clone certbot-auto => dnf install certbot using repo EPEL)
       * add comment for puma TCP socket in nginx sample ssl config (rails)
+      * make sure http://url is alive before certbot issuing certs via webroot
