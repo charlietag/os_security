@@ -1,5 +1,6 @@
 #!/bin/bash
-CERTBOT_CMD="/opt/certbot/certbot-auto"
+# CERTBOT_CMD="/opt/certbot/certbot-auto"
+CERTBOT_CMD="certbot"
 RENEW_BEFORE_DAYS=25
 
 VALID_DAYS="$($CERTBOT_CMD certificates 2>/dev/null |grep -Eo "VALID: [0-9]+ days" |awk '{print $2}' |sort -n|head -n 1)"
@@ -26,17 +27,24 @@ check_service() {
 if [ $VALID_DAYS -lt $RENEW_BEFORE_DAYS ]
 then
 
-  echo "============================"
-  echo " Check for cloudflare"
-  echo "============================"
-  echo "---Install dns-cloudflare if needed  ---"
-  CERTBOT_PYTHON_PIP_CMD="/opt/eff.org/certbot/venv/bin/pip"
-  IF_CF="$($CERTBOT_PYTHON_PIP_CMD list --format=columns | grep certbot-dns-cloudflare)"
-  if [[ -z "$IF_CF" ]]; then
-    $CERTBOT_PYTHON_PIP_CMD install certbot-dns-cloudflare
-  else
-    echo "Pass..."
-  fi
+  # --------------------------------------------------
+  # Install certbot using EPEL repo - Ignore here
+  # --------------------------------------------------
+  # echo "============================"
+  # echo " Check for cloudflare"
+  # echo "============================"
+  # echo "---Install dns-cloudflare if needed  ---"
+  # CERTBOT_PYTHON_PIP_CMD="/opt/eff.org/certbot/venv/bin/pip"
+  # IF_CF="$($CERTBOT_PYTHON_PIP_CMD list --format=columns | grep certbot-dns-cloudflare)"
+  # if [[ -z "$IF_CF" ]]; then
+  #   $CERTBOT_PYTHON_PIP_CMD install certbot-dns-cloudflare
+  # else
+  #   echo "Pass..."
+  # fi
+  # --------------------------------------------------
+  #                  END
+  # --------------------------------------------------
+
 
   echo ""
   echo "============================"

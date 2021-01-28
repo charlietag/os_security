@@ -10,22 +10,33 @@
 # ------------------------------------
 
 
+# --------------------------------------------------
+# Install certbot using EPEL repo - Ignore here
+# --------------------------------------------------
 # Init action
-. ${PLUGINS}/plugin_certbot_path.sh
+# . ${PLUGINS}/plugin_certbot_path.sh
+# --------------------------------------------------
+#                  END
+# --------------------------------------------------
 
 
 #**********************************************
 
-# ******* Download certbot *******
-if [ -d $certbot_path ]
-then
-  rm -fr $certbot_path
-  rm -fr $certbot_eff_org_path
-fi
+rpm --quiet -q certbot || dnf -y install certbot python3-certbot-dns-cloudflare
 
-echo "---Downloading CERTBOT---"
-cd $certbot_root
-git clone $certbot_src_url
+# --------------------------------------------------
+# Install certbot using EPEL repo - Ignore here
+# --------------------------------------------------
+# ******* Download certbot *******
+# if [ -d $certbot_path ]
+# then
+#   rm -fr $certbot_path
+#   rm -fr $certbot_eff_org_path
+# fi
+#
+# echo "---Downloading CERTBOT---"
+# cd $certbot_root
+# git clone $certbot_src_url
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------
 # To avoid interactive prompt interrupts the installation
@@ -33,31 +44,46 @@ git clone $certbot_src_url
 #   not just command with--quiet forces "dnf install -y packages", while "certbot renew" will also force "dnf install -y packages"
 
 # Before action
-. ${PLUGINS}/plugin_certbot_install_check.sh
-$certbot_command certificates --quiet
+# . ${PLUGINS}/plugin_certbot_install_check.sh
+# $certbot_command certificates --quiet
+# --------------------------------------------------
+#                  END
+# --------------------------------------------------
 
+# --------------------------------------------------
+# Install certbot using EPEL repo - Ignore here
+# --------------------------------------------------
 # Make sure eff folder exists
-echo "--- Run list current certificates function to make sure ${certbot_eff_org_path} exists (used by dns-cloudflare, pip install certbot-dns-cloudflare) ---"
-. ${PLUGINS}/plugin_certbot_show_certs.sh
+# echo "--- Run list current certificates function to make sure ${certbot_eff_org_path} exists (used by dns-cloudflare, pip install certbot-dns-cloudflare) ---"
+# . ${PLUGINS}/plugin_certbot_show_certs.sh
+# --------------------------------------------------
+#                  END
+# --------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-echo "disable httpd server..."
-systemctl disable httpd
-systemctl stop httpd
+# --------------------------------------------------
+# Install certbot using EPEL repo - Ignore here
+# --------------------------------------------------
+# echo "Be sure to disable httpd server..."
+# systemctl disable httpd
+# systemctl stop httpd
 
 # ******* Check certbot, determine if git clone success*******
-echo "---Determining git status of CERTBOT---"
-echo "change dir to \"${certbot_path}\""
-cd $certbot_path
-local git_ret_certbot="$(git pull | grep 'Already up to date')"
-if [ -z "${git_ret_certbot}" ]
-then
-  echo "Git clone of certbot is FAILED !..."
-  echo "Please try to reinstall certbot!..."
-  git status
-  exit 1
-fi
-echo "${git_ret_certbot}"
+# echo "---Determining git status of CERTBOT---"
+# echo "change dir to \"${certbot_path}\""
+# cd $certbot_path
+# local git_ret_certbot="$(git pull | grep 'Already up to date')"
+# if [ -z "${git_ret_certbot}" ]
+# then
+#   echo "Git clone of certbot is FAILED !..."
+#   echo "Please try to reinstall certbot!..."
+#   git status
+#   exit 1
+# fi
+# echo "${git_ret_certbot}"
+# --------------------------------------------------
+#                  END
+# --------------------------------------------------
 
 # ******* Install certbot renew script *******
 echo "========================================="
