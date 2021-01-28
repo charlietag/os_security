@@ -1,4 +1,3 @@
-local certbot_src_url="https://github.com/certbot/certbot.git"
 
 # Change to your email
 local certbot_email="email@gmail.com"
@@ -6,6 +5,20 @@ local certbot_email="email@gmail.com"
 # Apply action:
 #               dns-cloudflare | dns | webroot | renew | revoke_destroy | disable
 local certbot_apply_action="disable"
+
+
+
+
+
+# --------------------------------------------------
+# Install certbot using EPEL repo - So ignore here
+# --------------------------------------------------
+# local certbot_src_url="https://github.com/certbot/certbot.git"
+#
+# --------------------------------------------------
+#                  END
+# --------------------------------------------------
+
 
 # ========================================================
 #        Load servername from nginx config

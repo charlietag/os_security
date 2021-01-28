@@ -16,7 +16,7 @@
 #**********************************************
 
 # --------------------------------------------------
-# Install certbot using EPEL repo - Ignore here
+# Install certbot using EPEL repo - so ignore here
 # --------------------------------------------------
 # if [[ ! -d "${certbot_eff_org_path}" ]]; then
 #   echo "--- Run list current certificates function to make sure ${certbot_eff_org_path} exists (used by dns-cloudflare, pip install certbot-dns-cloudflare) ---"

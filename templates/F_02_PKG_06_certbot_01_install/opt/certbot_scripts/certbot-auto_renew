@@ -28,7 +28,7 @@ if [ $VALID_DAYS -lt $RENEW_BEFORE_DAYS ]
 then
 
   # --------------------------------------------------
-  # Install certbot using EPEL repo - Ignore here
+  # Install certbot using EPEL repo - so ignore here
   # --------------------------------------------------
   # echo "============================"
   # echo " Check for cloudflare"
