@@ -9,7 +9,7 @@
 # Define and check app version
 # ------------------------------------
 # App version --- defined in cfg file
-# PARAM_MODSEC_VER : 
+# PARAM_MODSEC_VER :
 # current libmodsecurity.so version (readlink  /usr/local/modsecurity/lib/libmodsecurity.so)
 
 # Check app version
@@ -46,17 +46,36 @@ cd ${NGX_SRC_PATH}
 
 sed -i 's/NGX_LOG_WARN/NGX_LOG_ERR/g' ../modsecurity-nginx-${PARAM_NGX_MOD_VER}/src/ngx_http_modsecurity_module.c  # make sure modsecurity writes log into nginx "error" log, instead of using nginx error_log path warn;
 
-./configure --with-compat --add-dynamic-module=../modsecurity-nginx-${PARAM_NGX_MOD_VER}
+# -----------------------------------------------------------------------------------------------------------
+# Change for installing Nginx using AppStream
+# -----------------------------------------------------------------------------------------------------------
+ngx_parse_and_configure_module "modsecurity-nginx-${PARAM_NGX_MOD_VER}"
+
+# -----------------------------------------------------------------------------------------------------------
+# Failed , while install Nginx from AppStream becaulse no --with-compat in argv (nginx -V 2>&1 | grep compat)
+# -----------------------------------------------------------------------------------------------------------
+# => is not binary compatible
+# ./configure --with-compat --add-dynamic-module=../modsecurity-nginx-${PARAM_NGX_MOD_VER}
+
+
+# -----------------------------------------------------------------------------------------------------------
+# build module
+# -----------------------------------------------------------------------------------------------------------
 make modules
 
-echo 
+# -----------------------------------------------------------------------------------------------------------
+# copy module
+# -----------------------------------------------------------------------------------------------------------
+set_ngx_module_path_and_mkdir
+
+echo
 echo ">>>>>>>>>>>>>>>"
 echo "Copy objs/ngx_http_modsecurity_module.so ---> /etc/nginx/modules ....!"
-echo 
-\cp -f objs/ngx_http_modsecurity_module.so /etc/nginx/modules
+echo
+\cp -f objs/ngx_http_modsecurity_module.so ${NGX_MODULE_PATH}/
 
 echo "Done ...!"
-echo 
+echo
 
 # ***********************************************************************************************************
 

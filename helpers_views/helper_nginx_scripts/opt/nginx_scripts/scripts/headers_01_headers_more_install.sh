@@ -41,16 +41,36 @@ wget $NGX_HEADERS_URL -O - | tar -xz
 # compile
 cd ${NGX_SRC_PATH}
 
-./configure --with-compat --add-dynamic-module=../headers-more-nginx-module-${PARAM_NGX_HEADERS_MORE_VER/v}
+# -----------------------------------------------------------------------------------------------------------
+# Change for installing Nginx using AppStream
+# -----------------------------------------------------------------------------------------------------------
+ngx_parse_and_configure_module "headers-more-nginx-module-${PARAM_NGX_HEADERS_MORE_VER/v}"
+
+# -----------------------------------------------------------------------------------------------------------
+# Failed , while install Nginx from AppStream becaulse no --with-compat in argv (nginx -V 2>&1 | grep compat)
+# -----------------------------------------------------------------------------------------------------------
+# => is not binary compatible
+#./configure --with-compat --add-dynamic-module=../headers-more-nginx-module-${PARAM_NGX_HEADERS_MORE_VER/v}
+
+
+# -----------------------------------------------------------------------------------------------------------
+# build module
+# -----------------------------------------------------------------------------------------------------------
 make modules
-echo 
+
+# -----------------------------------------------------------------------------------------------------------
+# copy module
+# -----------------------------------------------------------------------------------------------------------
+set_ngx_module_path_and_mkdir
+
+echo
 echo ">>>>>>>>>>>>>>>"
 echo "Copy objs/ngx_http_headers_more_filter_module.so ---> /etc/nginx/modules ....!"
-echo 
-\cp -f objs/ngx_http_headers_more_filter_module.so /etc/nginx/modules
+echo
+\cp -f objs/ngx_http_headers_more_filter_module.so ${NGX_MODULE_PATH}/
 
 echo "Done ...!"
-echo 
+echo
 
 # ***********************************************************************************************************
 
