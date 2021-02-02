@@ -770,3 +770,7 @@ Table of Contents
       * make sure http://url is alive before certbot issuing certs via webroot
       * fix nginx dynamic modules compatibility
         * fix for installing Nginx via both (nginx.org / AppStream)
+* 2021/02/02
+  * tag: v2.0.1
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.0...v2.0.1
+      * Fixes typo
