@@ -65,7 +65,7 @@ set_ngx_module_path_and_mkdir
 
 echo
 echo ">>>>>>>>>>>>>>>"
-echo "Copy objs/ngx_http_headers_more_filter_module.so ---> /etc/nginx/modules ....!"
+echo "Copy objs/ngx_http_headers_more_filter_module.so ---> ${NGX_MODULE_PATH}/ ....!"
 echo
 \cp -f objs/ngx_http_headers_more_filter_module.so ${NGX_MODULE_PATH}/
 
