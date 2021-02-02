@@ -74,12 +74,19 @@ sleep 2
 
 echo "---starting fail2ban---"
 local nginx_service_active="$(systemctl is-active nginx)"
+echo "Nginx: ${nginx_service_active}"
+
+echo "To avoid failing to start fail2ban:"
+echo "restart nginx to make sure nginx log exists..."
+systemctl restart nginx
+sleep 1
+
+echo "Nginx : ${nginx_service_active}"
 if [[ "${nginx_service_active}" != "active" ]]; then
-  echo "To avoid failing to start fail2ban:"
-  echo "start and stop nginx to make sure nginx's log exists..."
-  systemctl start nginx
-  sleep 1
   systemctl stop nginx
+  echo "Nginx restarted and stopped..."
+else
+  echo "Nginx restarted and started..."
 fi
 
 

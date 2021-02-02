@@ -775,3 +775,7 @@ Table of Contents
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.0...v2.0.1
       * Fixes typo
       * To avoid failing to start fail2ban, start and stop nginx to make sure log of nginx exists...
+* 2021/02/03
+  * tag: v2.0.2
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.1...v2.0.2
+      * Add more displayed messages while setup fail2ban
