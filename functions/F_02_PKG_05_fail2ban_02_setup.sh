@@ -73,6 +73,16 @@ systemctl start firewalld
 sleep 2
 
 echo "---starting fail2ban---"
+local nginx_service_active="$(systemctl is-active nginx)"
+if [[ "${nginx_service_active}" != "active" ]]; then
+  echo "To avoid failing to start fail2ban:"
+  echo "start and stop nginx to make sure nginx's log exists..."
+  systemctl start nginx
+  sleep 1
+  systemctl stop nginx
+fi
+
+
 systemctl start fail2ban
 
 echo "---enable firewalld---"
