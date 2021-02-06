@@ -779,3 +779,7 @@ Table of Contents
   * tag: v2.0.2
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.1...v2.0.2
       * Add more displayed messages while setup fail2ban
+* 2021/02/06
+  * tag: v2.0.3
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.2...v2.0.3
+      * Change for newer version of git

@@ -26,7 +26,12 @@ if [[ ! -d "${OS_PRE_LIB}" ]]; then
 else
   cd $OS_PRE_LIB
   echo "Updating required lib to lastest version..."
-  git pull
+
+  # Avoid newer version of git, will warn you to set pull strategy
+  git pull --no-rebase
+
+  # git pull
+
   RC=$?
 fi
 
