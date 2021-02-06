@@ -783,3 +783,7 @@ Table of Contents
   * tag: v2.0.3
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.2...v2.0.3
       * Change for newer version of git
+* 2021/02/07
+  * tag: v2.0.4
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.3...v2.0.4
+      * Few changes for more readable messages
