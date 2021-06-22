@@ -787,3 +787,7 @@ Table of Contents
   * tag: v2.0.4
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.3...v2.0.4
       * Few changes for more readable messages
+* 2021/06/22
+  * tag: v2.0.5
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.4...v2.0.5
+      * Fix nginx issue while building plugin "header" "libmodsecurity"
