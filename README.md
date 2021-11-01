@@ -791,3 +791,12 @@ Table of Contents
   * tag: v2.0.5
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.4...v2.0.5
       * Fix nginx issue while building plugin "header" "libmodsecurity"
+* 2021/11/01
+  * tag: v2.0.6
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.5...v2.0.6
+      * make sure locale (LC_ALL, LANG) is set to "en_US.UTF-8" to avoid errors while compiling programs
+
+        ```bash
+        export LC_ALL="en_US.UTF-8"
+        export LANG="en_US.UTF-8"
+        ```

@@ -2,7 +2,26 @@
 #*****************************************************************************
 #* Choose "Minimal Server" during the intstallation (works With Minimal ISO)
 #*****************************************************************************
-# --- Define github url for os_pre_lib
+
+# --- Fix locale error (LC_ALL) ---
+LOCALE_EN_US_FOUND="$(locale -a 2>&1 |grep -i en_us | grep -i utf)"
+if [[ -z "${LOCALE_EN_US_FOUND}" ]]; then
+  echo "Make sure your os supports language: en_US.UTF-8   !!"
+  echo ""
+  exit 1
+fi
+
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+
+# LC_ERR_FOUND="$(locale 2>&1 | grep -i cannot)"
+# if [[ -n "${LC_ERR_FOUND}" ]]; then
+#   export LC_ALL="en_US.UTF-8"
+#   export LANG="en_US.UTF-8"
+# fi
+
+
+# --- Define github url for os_pre_lib ---
 OS_PRE_LIB_GITHUB="https://github.com/charlietag/os_preparation_lib.git"
 
 # --- Define filepath ---
