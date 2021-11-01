@@ -6,13 +6,29 @@
 # --- Fix locale error (LC_ALL) ---
 LOCALE_EN_US_FOUND="$(locale -a 2>&1 |grep -i en_us | grep -i utf)"
 if [[ -z "${LOCALE_EN_US_FOUND}" ]]; then
-  echo "Make sure your os supports language: en_US.UTF-8   !!"
+  echo "Make sure your server supports language: en_US.UTF-8   !!"
   echo ""
   exit 1
 fi
 
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US.UTF-8"
+LOCALE_EN_US_CHECK="$(locale 2>&1 | grep 'LANG=' | grep -i en_us | grep -i utf)"
+if [[ -z "${LOCALE_EN_US_CHECK}" ]]; then
+  echo "Make sure:"
+  echo "            1. Your terminal will not set locale variables automatically."
+  echo "            2. Your server is installed using language: English"
+  echo ""
+  exit 1
+fi
+
+LC_ERR_FOUND="$(locale 2>&1 | grep -i cannot)"
+if [[ -n "${LC_ERR_FOUND}" ]]; then
+  echo "Make sure your terminal will not set locale variables automatically   !!"
+  echo ""
+  exit 1
+fi
+
+# export LC_ALL="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
 
 # LC_ERR_FOUND="$(locale 2>&1 | grep -i cannot)"
 # if [[ -n "${LC_ERR_FOUND}" ]]; then

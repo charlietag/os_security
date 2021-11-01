@@ -800,3 +800,8 @@ Table of Contents
         export LC_ALL="en_US.UTF-8"
         export LANG="en_US.UTF-8"
         ```
+* 2021/11/02
+  * tag: v2.0.7
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.6...v2.0.7
+      * locale (LC_ALL, LANG)
+        * ask user to disable terminal locale setting
