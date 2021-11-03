@@ -809,3 +809,6 @@ Table of Contents
   * tag: v2.0.8
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.7...v2.0.8
       * Add Example credentials file using restricted API Token (recommended)
+  * tag: v2.0.9
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.8...v2.0.9
+      * Fix nginx header package download path
