@@ -42,8 +42,14 @@ echo "--- Generate cloudflare ini file---"
 test -d $certbot_cf_path || mkdir -p $certbot_cf_path
 echo "${certbot_cf_path} ...done"
 
-echo "dns_cloudflare_email = ${certbot_dns_cloudflare_email}" > $certbot_cf_ini
-echo "dns_cloudflare_api_key = ${certbot_dns_cloudflare_api_key}" >> $certbot_cf_ini
+# Ref. https://certbot-dns-cloudflare.readthedocs.io/en/stable/
+if [[ -n "${certbot_dns_cloudflare_api_token}" ]]; then
+  echo "dns_cloudflare_api_token = ${certbot_dns_cloudflare_api_token}" > $certbot_cf_ini
+else
+  echo "dns_cloudflare_email = ${certbot_dns_cloudflare_email}" > $certbot_cf_ini
+  echo "dns_cloudflare_api_key = ${certbot_dns_cloudflare_api_key}" >> $certbot_cf_ini
+fi
+
 chmod 400 $certbot_cf_ini
 echo "${certbot_cf_ini} ...done"
 

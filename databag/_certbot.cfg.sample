@@ -39,9 +39,20 @@ local certbot_webroot="${web_root}"
 # -d your.domain.com -d *.your.domain.com
 local certbot_wild_servername="*.${certbot_servername}"
 
-# -- api key --
-local certbot_dns_cloudflare_email="email@gmail.com"
-local certbot_dns_cloudflare_api_key="0123456789abcdef0123456789abcdef01234567"
+# --- API ---
+# Ref. https://certbot-dns-cloudflare.readthedocs.io/en/stable/
+
+# -- api token ( Recommended )--
+# Cloudflare API token used by Certbot --- credentials file using restricted API Token
+local certbot_dns_cloudflare_api_token="0123456789abcdef0123456789abcdef01234567"
+
+# -- api key ( NOT Recommended)--
+# Cloudflare API credentials used by Certbot
+# local certbot_dns_cloudflare_email="email@gmail.com"
+# local certbot_dns_cloudflare_api_key="0123456789abcdef0123456789abcdef01234"
+
+
+
 
 # -- seconds waiting for cloudflare to propagate dns --
 local certbot_wait_cf_seconds="10"

@@ -805,3 +805,7 @@ Table of Contents
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.6...v2.0.7
       * locale (LC_ALL, LANG)
         * ask user to disable terminal locale setting
+* 2021/11/04
+  * tag: v2.0.8
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.7...v2.0.8
+      * Add Example credentials file using restricted API Token (recommended)
