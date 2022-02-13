@@ -812,3 +812,12 @@ Table of Contents
   * tag: v2.0.9
     * changelog: https://github.com/charlietag/os_security/compare/v2.0.8...v2.0.9
       * Fix nginx header package download path
+* 2022/02/14
+  * tag: v2.0.10
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.9...v2.0.10
+      * Change default nginx modsecurity upload limit config (Nginx default: 100 MB, set modsecurity rule to 500 MB, non-uploading-file-request to 10 MB)
+
+        ```
+        SecRequestBodyLimit 524288000
+        SecRequestBodyNoFilesLimit 10485760
+        ```
