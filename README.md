@@ -114,8 +114,9 @@ Table of Contents
       └── _postfix.cfg
       ```
 
-      ~~├── F_02_PKG_21_install_clamav.cfg~~
-      ~~├── _nginx_modules.cfg~~
+        ~~├── F_02_PKG_21_install_clamav.cfg~~
+
+        ~~├── _nginx_modules.cfg~~
 
 
     * **Production** use (server in **Local**)
@@ -126,7 +127,7 @@ Table of Contents
       └── _postfix.cfg
       ```
 
-      ~~├── F_02_PKG_21_install_clamav.cfg~~
+        ~~├── F_02_PKG_21_install_clamav.cfg~~
 
     * **Production** use (server in **Cloud**)
 
@@ -144,8 +145,9 @@ Table of Contents
       └── _postfix.cfg
       ```
 
-      ~~├── F_02_PKG_21_install_clamav.cfg~~
-      ~~├── _nginx_modules.cfg~~
+        ~~├── F_02_PKG_21_install_clamav.cfg~~
+
+        ~~├── _nginx_modules.cfg~~
 
   * Verify config files (with syntax color).
 
@@ -832,8 +834,9 @@ Table of Contents
       * Refine doc
         * Do not install packages by default
 
-          ~~├── F_02_PKG_21_install_clamav.cfg~~
-          ~~├── _nginx_modules.cfg~~
+            ~~├── F_02_PKG_21_install_clamav.cfg~~
+
+            ~~├── _nginx_modules.cfg~~
 
           * ClamAV
           * Nginx modules (WAF, Nginx more headers)
