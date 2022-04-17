@@ -110,20 +110,23 @@ Table of Contents
       ├── F_02_PKG_05_fail2ban_03_nginx_check_banned.cfg
       ├── F_02_PKG_07_nginx_01_ssl_enhanced.cfg
       ├── F_02_PKG_08_redmine_01_fail2ban.cfg
-      ├── F_02_PKG_21_install_clamav.cfg
       ├── F_03_CHECK_01_check_scripts.cfg
-      ├── _nginx_modules.cfg
       └── _postfix.cfg
       ```
+
+      ~~├── F_02_PKG_21_install_clamav.cfg~~
+      ~~├── _nginx_modules.cfg~~
+
 
     * **Production** use (server in **Local**)
 
       ```bash
       databag/
       ├── F_02_PKG_01_install_log_analyzer.cfg
-      ├── F_02_PKG_21_install_clamav.cfg
       └── _postfix.cfg
       ```
+
+      ~~├── F_02_PKG_21_install_clamav.cfg~~
 
     * **Production** use (server in **Cloud**)
 
@@ -137,11 +140,12 @@ Table of Contents
       ├── F_02_PKG_07_nginx_01_ssl_enhanced.cfg
       ├── F_02_PKG_07_nginx_02_ssl_site_config.cfg
       ├── F_02_PKG_08_redmine_01_fail2ban.cfg
-      ├── F_02_PKG_21_install_clamav.cfg
       ├── F_03_CHECK_01_check_scripts.cfg
-      ├── _nginx_modules.cfg
       └── _postfix.cfg
       ```
+
+      ~~├── F_02_PKG_21_install_clamav.cfg~~
+      ~~├── _nginx_modules.cfg~~
 
   * Verify config files (with syntax color).
 
@@ -821,3 +825,16 @@ Table of Contents
         SecRequestBodyLimit 524288000
         SecRequestBodyNoFilesLimit 10485760
         ```
+
+* 2022/04/17
+  * tag: v2.1.0
+    * changelog: https://github.com/charlietag/os_security/compare/v2.0.10...v2.1.0
+      * Refine doc
+        * Do not install packages by default
+
+          ~~├── F_02_PKG_21_install_clamav.cfg~~
+          ~~├── _nginx_modules.cfg~~
+
+          * ClamAV
+          * Nginx modules (WAF, Nginx more headers)
+
