@@ -34,9 +34,13 @@ Table of Contents
 1. This is also designed for **PRODUCTION** single server, which means this is suit for small business.
 
 # Supported Environment
+  * CentOS Stream release 9
+    * os_preparation
+      * release : `master` `v3.x.x`
+
   * CentOS Stream release 8
     * os_preparation
-      * release : `master` `v2.x.x`
+      * release : `v2.x.x`
 
   * CentOS 8 (8.x)
     * os_preparation
@@ -835,3 +839,8 @@ Table of Contents
             * ~~F_02_PKG_21_install_clamav.cfg~~
           * Nginx modules (WAF, Nginx more headers)
             * ~~_nginx_modules.cfg~~
+* 2022/10/11
+  * tag: v3.0.0
+    * changelog: https://github.com/charlietag/os_security/compare/v2.1.0...v3.0.0
+      * Migrate to CentOS Stream 9
+        * All packages here are compatible with CentOS Stream 9, **ONLY change tag number**
