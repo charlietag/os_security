@@ -843,4 +843,4 @@ Table of Contents
   * tag: v3.0.0
     * changelog: https://github.com/charlietag/os_security/compare/v2.1.0...v3.0.0
       * Migrate to CentOS Stream 9
-        * All packages here are compatible with CentOS Stream 9, **ONLY change tag number**
+        * goaccess (epel ~~manually compile~~)

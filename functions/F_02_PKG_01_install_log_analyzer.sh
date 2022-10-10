@@ -27,24 +27,25 @@ rpm --quiet -q GeoIP || dnf -y install GeoIP GeoIP-devel
 #-----------------------------------------------------------------------------------------
 # Compile and install goaccess
 #-----------------------------------------------------------------------------------------
-cd $TMP
-
-local goaccess_script="/usr/local/bin/goaccess"
-local goaccess_url="https://github.com/allinurl/goaccess/archive/v${goaccess_ver}.tar.gz"
-
-# Download source code
-wget $goaccess_url -O - | tar -xz
-
-# Compile bin file
-cd goaccess-${goaccess_ver}
-autoreconf -fiv
-./configure --enable-utf8 --enable-geoip=legacy
-make
-cp goaccess ${goaccess_script}
-
-# Delete source code
-cd $TMP
-SAFE_DELETE "goaccess-${goaccess_ver}"
+dnf install -y goaccess
+# cd $TMP
+#
+# local goaccess_script="/usr/local/bin/goaccess"
+# local goaccess_url="https://github.com/allinurl/goaccess/archive/v${goaccess_ver}.tar.gz"
+#
+# # Download source code
+# wget $goaccess_url -O - | tar -xz
+#
+# # Compile bin file
+# cd goaccess-${goaccess_ver}
+# autoreconf -fiv
+# ./configure --enable-utf8 --enable-geoip=legacy
+# make
+# cp goaccess ${goaccess_script}
+#
+# # Delete source code
+# cd $TMP
+# SAFE_DELETE "goaccess-${goaccess_ver}"
 
 
 
