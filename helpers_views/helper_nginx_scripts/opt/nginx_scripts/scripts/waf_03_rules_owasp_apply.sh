@@ -44,20 +44,20 @@ wget $OWASP_CRS_URL -O - | tar -xz
 
 IF_RULES_DOWNLOADED="$(ls ${OWASP_CRS_PATH} | grep '\.conf')"
 if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
-  echo 
+  echo
   echo ">>>>>>>>>>>>>>>"
   echo "SAFE_DELETE \"${PARAM_OWASP_RULES_PATH}/*\" ....!"
-  echo 
+  echo
   SAFE_DELETE "${PARAM_OWASP_RULES_PATH}/*"
 
-  echo 
+  echo
   echo ">>>>>>>>>>>>>>>"
   echo "Copy coreruleset-*/rules/* ---> ${PARAM_OWASP_RULES_PATH}/ ....!"
-  echo 
+  echo
   \cp -f ${OWASP_CRS_PATH}/* ${PARAM_OWASP_RULES_PATH}/
 
   if [[ "${PARAM_OWASP_CRS_VER_AZURE_IDS}" != "disable" ]]; then
-    ls ${PARAM_OWASP_RULES_PATH}/*.conf | grep -vE "${PARAM_OWASP_CRS_VER_AZURE_IDS}" | xargs -i bash -c "echo \"--- {} ---\"; echo  \"(based on Azure)  -> {}.bak\"; mv {} {}.bak; echo"
+    ls ${PARAM_OWASP_RULES_PATH}/*.conf | grep -vE "${PARAM_OWASP_CRS_VER_AZURE_IDS}" | xargs -I{} bash -c "echo \"--- {} ---\"; echo  \"(based on Azure)  -> {}.bak\"; mv {} {}.bak; echo"
   fi
 
   #PARAM_OWASP_CRS_VER_SecRuleRemoveByIds="$(echo ${PARAM_OWASP_CRS_VER_SecRuleRemoveById} |grep -Eo "[[:digit:]]+" | sed ':a;N;$!ba;s/\n/ /g')"
@@ -69,16 +69,16 @@ if [[ -n "${IF_RULES_DOWNLOADED}" ]]; then
 
   # Make sure ${OWASP_CRS_SETUP} exists, and not a empty file
   if [ -s ${OWASP_CRS_SETUP} ]; then
-    echo 
+    echo
     echo ">>>>>>>>>>>>>>>"
     echo "cat coreruleset-*/crs-setup.conf.example > ${PARAM_OWASP_RULES_PATH}/../crs-setup.conf ....!"
-    echo 
+    echo
     cat ${OWASP_CRS_SETUP} > ${PARAM_OWASP_RULES_PATH}/../crs-setup.conf
   fi
 fi
 
 echo "Done ...!"
-echo 
+echo
 
 # ***********************************************************************************************************
 

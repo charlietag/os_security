@@ -12,7 +12,7 @@ PRE_BANNED_LIST="${THIS_FILE}.banned_list"
 # not just redmine failed logged in.  all nginx related fail2ban rules have the same ipset & nginx keep alive issue
 THIS_BANNED_CONTENTS="$(
                         fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' | \
-                        grep "nginx" |xargs -i bash -c "fail2ban-client status {} | grep -i ip | awk -F':' '{print \$2}'" | \
+                        grep "nginx" |xargs -I{} bash -c "fail2ban-client status {} | grep -i ip | awk -F':' '{print \$2}'" | \
                         sed 's/ /\n/g' | sed 's/\t//g' | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | sort -n | uniq
                       )"
 

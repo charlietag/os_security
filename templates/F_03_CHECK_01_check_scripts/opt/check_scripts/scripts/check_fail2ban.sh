@@ -7,11 +7,11 @@ test_fail2ban_config_status() {
 
 #  local diff_check="$(  diff <(echo "${f2b_status}") <(echo "${f2b_config}")    ; \
 #                        diff <(echo "${f2b_status}") <(echo "${f2b_iptables}")  ; \
-#                        diff <(echo "${f2b_status}") <(echo "${f2b_ipset}")  
+#                        diff <(echo "${f2b_status}") <(echo "${f2b_ipset}")
 #                    )"
   local f2b_nft="$(nft list ruleset |grep "${test_ban_ip}")"
   local diff_check="$(  diff <(echo "${f2b_status}") <(echo "${f2b_config}")    ; \
-                        diff <(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local | grep -vE '^\s*#' | grep -E '^\s*port' | awk -F'=' '{print $2}' | sed "s/\s//g" | tr ',' '\n' | sort -n | uniq | wc -l) <(echo "${f2b_nft}" | wc -l)  
+                        diff <(cat /etc/fail2ban/jail.local /etc/fail2ban/jail.d/*.local | grep -vE '^\s*#' | grep -E '^\s*port' | awk -F'=' '{print $2}' | sed "s/\s//g" | tr ',' '\n' | sort -n | uniq | wc -l) <(echo "${f2b_nft}" | wc -l)
                     )"
 
   if [[ -n "${diff_check}" ]]; then
@@ -52,7 +52,7 @@ test_f2b() {
   local f2b_ban_jail="${1}"
   local test_ban_ip="${2}"
   local f2b_list="$(fail2ban-client get ${f2b_ban_jail} banip | grep "${test_ban_ip}" )"
-  
+
   [[ -z "${f2b_list}" ]] && echo -e "fail2ban \"${f2b_ban_jail}\":\t\t... WARNING"
 }
 
@@ -92,7 +92,7 @@ test_ban() {
   done
 
 
-  #fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo ---{}---; fail2ban-client set {} banip 10.255.255.254; echo"
+  #fail2ban-client status | tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -I{} bash -c "echo ---{}---; fail2ban-client set {} banip 10.255.255.254; echo"
 }
 
 check_fail2ban() {

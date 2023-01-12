@@ -36,7 +36,7 @@ sed -i /"${cron_check_script//\//\\/}"/d /etc/crontab
 local cron_check_script_dir="$(dirname $cron_check_script)"
 test -d $cron_check_script_dir || mkdir -p $cron_check_script_dir
 
-echo "fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed \"s/\\s//g\" | tr ',' '\\n' |xargs -i bash -c \"echo \\\"----{}----\\\" ;fail2ban-client status {} ; echo \"" > $cron_check_script
+echo "fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed \"s/\\s//g\" | tr ',' '\\n' |xargs -I{} bash -c \"echo \\\"----{}----\\\" ;fail2ban-client status {} ; echo \"" > $cron_check_script
 chmod 755 $cron_check_script
 
 # *********************************
@@ -113,5 +113,5 @@ echo "--------------Fail2ban Status-------------"
 fail2ban-client status
 
 echo "--------------Fail2ban Detail Status-------------"
-fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
+fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -I{} bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
 

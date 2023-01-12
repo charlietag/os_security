@@ -61,13 +61,13 @@ Table of Contents
   * (**Nginx) is needed** when **TLS (certbot) certificates is required**
 
     ```bash
-    echo "mariadb php-fpm puma" | sed 's/ /\n/g' | xargs -i bash -c "echo --- Stop / Disable {} ---; systemctl stop {} ; systemctl disable {}; echo"
+    echo "mariadb php-fpm puma" | sed 's/ /\n/g' | xargs -I{} bash -c "echo --- Stop / Disable {} ---; systemctl stop {} ; systemctl disable {}; echo"
     ```
 
   * **Nginx is not needed**, when **NO TLS certificates** required
 
     ```bash
-    echo "mariadb php-fpm puma nginx" | sed 's/ /\n/g' | xargs -i bash -c "echo --- Stop / Disable {} ---; systemctl stop {} ; systemctl disable {}; echo"
+    echo "mariadb php-fpm puma nginx" | sed 's/ /\n/g' | xargs -I{} bash -c "echo --- Stop / Disable {} ---; systemctl stop {} ; systemctl disable {}; echo"
     ```
 
 # Quick Install
@@ -83,7 +83,7 @@ Table of Contents
 
     ```bash
     cd databag
-    ls |xargs -i bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
+    ls |xargs -I{} bash -c "cp {} \$(echo {}|sed 's/\.sample//g')"
     ```
 
   * Mostly used configuration :
@@ -157,7 +157,7 @@ Table of Contents
     cd databag
 
     echo ; \
-    ls *.cfg | xargs -i bash -c " \
+    ls *.cfg | xargs -I{} bash -c " \
     echo -e '\e[0;33m'; \
     echo ---------------------------; \
     echo {}; \
@@ -175,7 +175,7 @@ Table of Contents
     cd databag
 
     echo ; \
-    ls *.cfg | xargs -i bash -c " \
+    ls *.cfg | xargs -I{} bash -c " \
     echo -e '\e[0;33m'; \
     echo ---------------------------; \
     echo {}; \
@@ -492,7 +492,7 @@ Table of Contents
   **Command**
 
     ```bash
-    # fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -i bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
+    # fail2ban-client status|tail -n 1 | cut -d':' -f2 | sed "s/\s//g" | tr ',' '\n' |xargs -I{} bash -c "echo \"----{}----\" ;fail2ban-client status {} ; echo "
     ```
 
   **Result**
@@ -844,3 +844,7 @@ Table of Contents
     * changelog: https://github.com/charlietag/os_security/compare/v2.1.0...v3.0.0
       * Migrate to CentOS Stream 9
         * goaccess (epel ~~manually compile~~)
+* 2023/01/13
+  * tag: v3.0.1
+    * changelog: https://github.com/charlietag/os_security/compare/v3.0.0...v3.0.1
+      * xargs `-i` is deprecated, use `-I{}` instead
