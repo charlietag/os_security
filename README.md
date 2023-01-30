@@ -27,7 +27,7 @@ Table of Contents
   * [Glances usage](#glances-usage)
 - [CHANGELOG](#changelog)
 
-# Purpose
+# Try Ubuntu now
 **Try Ubuntu World ===> https://github.com/charlietag/ubuntu_security**
 
 # Purpose
